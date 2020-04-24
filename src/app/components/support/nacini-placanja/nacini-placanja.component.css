@@ -1,8 +1,9 @@
 #container {
-    height: auto;
-    min-height: 100vh;
+  height: auto;
+  min-height: 100vh;
+  margin: 0;
 }
 
 i {
-    float: right;
+  float: right;
 }

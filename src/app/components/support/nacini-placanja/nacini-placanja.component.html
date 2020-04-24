@@ -1,0 +1,277 @@
+<div class="row bg-light container-fluid mx-0" id="container">
+  <div class="col-2"></div>
+  <div class="col-8 py-3">
+    <h3>Online plaćanje</h3>
+    <p>
+      Poštovani korisnici, <br />Strive Shop je najveći prodavac odeće u Srbiji
+      i trudimo se da našim kupcima uvek ponudimo najbolje uslove, kao i da
+      pružamo kompletnu online uslugu i olakšamo proces kupovine, tako da Vi
+      možete ostati kod kuće, a nas pustiti da radimo za Vas.
+    </p>
+    <!--Accordion wrapper-->
+    <div
+      class="accordion md-accordion"
+      id="accordionEx"
+      role="tablist"
+      aria-multiselectable="true"
+    >
+      <!-- Accordion card -->
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingOne1">
+          <a
+            class="text-dark accordion-toggle"
+            data-toggle="collapse"
+            data-parent="#accordionEx"
+            href="#collapseOne1"
+            aria-expanded="true"
+            aria-controls="collapseOne1"
+            (click)="changeScrollArrow(1)"
+          >
+            <h5 class="mb-0">
+              Uplatnica
+
+              <i
+                class="fas fa-angle-up rotate-icon"
+                *ngIf="scrollActive === 1"
+              ></i>
+              <i
+                class="fas fa-angle-down rotate-icon"
+                *ngIf="scrollActive != 1"
+              ></i>
+            </h5>
+          </a>
+        </div>
+
+        <!-- Card body -->
+        <div
+          id="collapseOne1"
+          class="collapse show"
+          role="tabpanel"
+          aria-labelledby="headingOne1"
+          data-parent="#accordionEx"
+        >
+          <div class="card-body">
+            Plaćanje uplatnicom podrazumeva da svoju narudžbinu možete platiti
+            direktnom uplatom u bilo kojoj pošti ili banci. Detaljne podatke
+            koje je potrebno navesti na uplatnici dobijate putem e-maila
+            neposredno nakon potvrde narudžbine od strane naših komercijalista.
+            Po evidentiranju Vaše uplate, roba se šalje na izabranu adresu
+            isporuke.
+          </div>
+        </div>
+      </div>
+      <!-- Accordion card -->
+
+      <!-- Accordion card -->
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingTwo2">
+          <a
+            class="collapsed text-dark"
+            data-toggle="collapse"
+            data-parent="#accordionEx"
+            href="#collapseTwo2"
+            aria-expanded="false"
+            aria-controls="collapseTwo2"
+            (click)="changeScrollArrow(2)"
+          >
+            <h5 class="mb-0">
+              Nalog za prenos (Virmansko plaćanje)
+
+              <i
+                class="fas fa-angle-up rotate-icon"
+                *ngIf="scrollActive === 2"
+              ></i>
+              <i
+                class="fas fa-angle-down rotate-icon"
+                *ngIf="scrollActive != 2"
+              ></i>
+            </h5>
+          </a>
+        </div>
+
+        <!-- Card body -->
+        <div
+          id="collapseTwo2"
+          class="collapse"
+          role="tabpanel"
+          aria-labelledby="headingTwo2"
+          data-parent="#accordionEx"
+        >
+          <div class="card-body">
+            Ukoliko ste pravno lice ili korisnik elektronskog bankarstva
+            (e-banking-a), uplatu možete izvršiti prenosom sredstava sa Vašeg
+            računa. Detaljne podatke koje je potrebno navesti na nalogu za
+            prenos dobijate putem e-maila od strane naših komercijalista
+            neposredno nakon potvrde narudžbine. Po evidentiranju Vaše uplate,
+            roba se šalje na izabranu adresu isporuke.
+          </div>
+        </div>
+      </div>
+      <!-- Accordion card -->
+
+      <!-- Accordion card -->
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingThree3">
+          <a
+            class="collapsed text-dark"
+            data-toggle="collapse"
+            data-parent="#accordionEx"
+            href="#collapseThree3"
+            aria-expanded="false"
+            aria-controls="collapseThree3"
+            (click)="changeScrollArrow(3)"
+          >
+            <h5 class="mb-0">
+              Gotovinski (POUZEĆEM)
+              <i
+                class="fas fa-angle-up rotate-icon"
+                *ngIf="scrollActive === 3"
+              ></i>
+              <i
+                class="fas fa-angle-down rotate-icon"
+                *ngIf="scrollActive != 3"
+              ></i>
+            </h5>
+          </a>
+        </div>
+
+        <!-- Card body -->
+        <div
+          id="collapseThree3"
+          class="collapse"
+          role="tabpanel"
+          aria-labelledby="headingThree3"
+          data-parent="#accordionEx"
+        >
+          <div class="card-body">
+            Nudimo Vam i opciju plaćanja pouzećem (gotovinsko plaćanje kuriru na
+            adresi isporuke). U ovom slučaju nakon potvrde narudžbine roba će
+            Vam biti poslata kurirskom službom, a Vi ćete je platiti kuriru pri
+            preuzimanju. Za narudžbine čiji je iznos 2000 dinara ili veći Strive
+            Shop Vam pruža besplatnu isporuku robe na teritoriji cele Srbije.
+            Ukoliko je vrednost narudžbine manja od 2000 dinara, cena isporuke
+            će iznositi 240 dinara uključujući PDV.
+          </div>
+        </div>
+      </div>
+      <!-- Accordion card -->
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingOne4">
+          <a
+            class="text-dark accordion-toggle"
+            data-toggle="collapse"
+            data-parent="#accordionEx"
+            href="#collapseOne4"
+            aria-expanded="false"
+            aria-controls="collapseOne4"
+            (click)="changeScrollArrow(4)"
+          >
+            <h5 class="mb-0">
+              Platna kartica
+
+              <i
+                class="fas fa-angle-up rotate-icon"
+                *ngIf="scrollActive === 4"
+              ></i>
+              <i
+                class="fas fa-angle-down rotate-icon"
+                *ngIf="scrollActive != 4"
+              ></i>
+            </h5>
+          </a>
+        </div>
+
+        <!-- Card body -->
+        <div
+          id="collapseOne4"
+          class="collapse"
+          role="tabpanel"
+          aria-labelledby="headingOne4"
+          data-parent="#accordionEx"
+        >
+          <div class="card-body d-flex flex-column align-items-start">
+            <p>
+              Svoju narudžbinu možete platiti koristeći Visa, Visa Electron,
+              MasterCard ili Maestro platnu (debitnu) karticu. Kartica mora biti
+              odobrena od strane banke izdavaoca za online (Internet)
+              plaćanje.<br />
+              Prilikom online naručivanja, odabirom odgovarajućeg načina
+              plaćanja bićete preusmereni na stranicu Komercijalne banke koja je
+              zaštićena i sigurna za ovakav način plaćanja. Niti jednog trenutka
+              podaci o Vašoj platnoj kartici nisu dostupni našem sistemu.
+            </p>
+            <img
+              src="../../../../assets/images/komercijalna_banka_payment_page-1.jpg"
+              class="img-fluid mb-2 align-self-center"
+              style="width: 80%;"
+            />
+            <p>
+              Na ovoj stranici je potrebno da unesete sledeće podatke: Broj
+              kartice, Datum isteka i CVC2/CVV2 kod, koje možete pročitati sa
+              Vaše kartice.
+            </p>
+            <img
+              src="../../../../assets/images/dc-data.jpg"
+              class="img-fluid mb-2 align-self-center"
+              style="width: 100%;"
+            />
+            <p>
+              Radi sigurnije Internet kupovine, Komercijalna banka podržava
+              Verified by Visa i MasterCard Secure code zaštitu (3D Secure
+              verifikaciju kartica). 3D Secure je međunarodni standard koji se
+              koristi za proveru korisnika kartice i obezbeđuje dodatnu
+              sigurnost prilikom online kupovine. Usluga pomaže u zaštiti od
+              neovlašćenog korišćenja kartice od strane trećih lica prilikom
+              realizacije Internet transakcija.<br /><br />
+              3D Secure podrazumeva da prilikom online plaćanja korisnik kartice
+              potvrđuje svoj identitet pomoću tajne lozinke koju je od strane
+              banke dobio putem SMS poruke ili elektronske pošte, čime se
+              smanjuje mogućnost zloupotrebe - slično kao korišćenje PIN-a na
+              bankomatu. U nekim slučajevima od banke možete dobiti prenosni
+              čitač za generisanje lozinke.<br /><br />
+              Unos i provera lozinke isključivo se obavljaju između korisnika
+              kartice i banke, a Internet trgovac nema uvid u podatke koji se
+              razmenjuju.<br /><br />
+              Primer 3D secure stranice Telenor banke je dat na slici ispod.
+            </p>
+            <img
+              src="../../../../assets/images/telenor_3d_page1.jpg"
+              class="img-fluid mb-2 align-self-center"
+              style="width: 100%; height: 80vh;"
+            />
+            <p>
+              O tome da li Vaša kartica podržava 3D secure validaciju, kako je
+              možete aktivirati i na koji način je realizovana, možete se
+              raspitati kod svoje banke izdavaoca kartice. Ukoliko Vaša kartica
+              nema mogućnost 3D validacije, plaćanje možete izvršiti na
+              uobičajen način, bez ovog dodatnog koraka.
+            </p>
+            <p>
+              Plaćanje nije moguće u stranoj valuti, već isključivo u valuti
+              RSD. Plaćanje je moguće platnim karticama domaćih i inostranih
+              banaka.
+            </p>
+            <p>
+              Kupac koji koristi uslugu online plaćanja karticama preko WinWin
+              sajta mora ispunjavati sledeće uslove:
+            </p>
+            <p>
+              Korisnik mora imati otvoren korisnički nalog na Strive Shop
+              internet portalu.<br> Isporuka robe je moguća samo na teritoriji
+              Republike Srbije, na Vašoj adresi.<br> Samo vlasnik platne kartice
+              može izvršiti plaćanje.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Accordion card -->
+    </div>
+    <!-- Accordion wrapper -->
+  </div>
+
+  <div class="col-2">idk</div>
+</div>

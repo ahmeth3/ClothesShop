@@ -6,4 +6,6 @@
 
 i {
   float: right;
+  pointer-events: none;
+  cursor: default;
 }

@@ -26,19 +26,12 @@
             href="#collapseOne1"
             aria-expanded="true"
             aria-controls="collapseOne1"
-            (click)="changeScrollArrow(1)"
+            (click)="changeScrollArrow(1);"
           >
             <h5 class="mb-0">
               Uplatnica
-
-              <i
-                class="fas fa-angle-up rotate-icon"
-                *ngIf="scrollActive === 1"
-              ></i>
-              <i
-                class="fas fa-angle-down rotate-icon"
-                *ngIf="scrollActive != 1"
-              ></i>
+              <i class="fas fa-angle-up" *ngIf="scrollActive === 1"></i>
+              <i class="fas fa-angle-down" *ngIf="scrollActive != 1"></i>
             </h5>
           </a>
         </div>
@@ -256,14 +249,15 @@
               banaka.
             </p>
             <p>
-              Kupac koji koristi uslugu online plaćanja karticama preko Strive Shop
-              sajta mora ispunjavati sledeće uslove:
+              Kupac koji koristi uslugu online plaćanja karticama preko Strive
+              Shop sajta mora ispunjavati sledeće uslove:
             </p>
             <p>
               Korisnik mora imati otvoren korisnički nalog na Strive Shop
-              internet portalu.<br> Isporuka robe je moguća samo na teritoriji
-              Republike Srbije, na Vašoj adresi.<br> Samo vlasnik platne kartice
-              može izvršiti plaćanje.
+              internet portalu.<br />
+              Isporuka robe je moguća samo na teritoriji Republike Srbije, na
+              Vašoj adresi.<br />
+              Samo vlasnik platne kartice može izvršiti plaćanje.
             </p>
           </div>
         </div>

@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { NajcescaPitanjaComponent } from './components/support/najcesca-pitanja/najcesca-pitanja.component';
 import { NaciniPlacanjaComponent } from './components/support/nacini-placanja/nacini-placanja.component';
+import { ProductComponent } from './components/shop/product/product.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, NajcescaPitanjaComponent, NaciniPlacanjaComponent],
+  declarations: [AppComponent, HeaderComponent, NajcescaPitanjaComponent, NaciniPlacanjaComponent, ProductComponent],
   imports: [BrowserModule, AppRoutingModule, Ng2PageScrollModule],
   providers: [],
   bootstrap: [AppComponent],

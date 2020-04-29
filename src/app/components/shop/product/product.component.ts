@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -6,17 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  hoverActive: boolean = false;
+  constructor(private router: Router) {}
 
-  constructor() {}
+  ngOnInit(): void {
+  
 
-  ngOnInit(): void {}
-
-  hoverImage(): void {
-    this.hoverActive = true;
   }
 
-  unhoverImage(): void {
-    this.hoverActive = false;
+  redirect() {
+    // this.router.navigate(['./najcesca-pitanja']);
   }
 }

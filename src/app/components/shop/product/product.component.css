@@ -8,17 +8,39 @@
 }
 
 .overlayText {
-  /* display: none; */
   opacity: 0;
   transition: opacity 0.7s ease;
 }
 
+.imageContainer {
+  cursor: pointer;
+}
+
 .imageContainer:hover .overlayText {
-  /* display: block; */
   opacity: 1;
 }
 
 .imageContainer:hover .card-img-overlay {
   background-color: rgba(171, 171, 171, 0.3);
-  /* filter: blur(2px); */
+}
+
+.favWrapper {
+  width: 40px;
+  height: 32px;
+  transition: width ease-in .3s;
+}
+
+h5 {
+  opacity: 0;
+  transition: opacity ease .1s;
+}
+
+.favWrapper:hover {
+  width: 190px;
+}
+
+.favWrapper:hover h5 {
+  display: block;
+  opacity: 1;
+  transition: opacity ease-in 1.2s;
 }

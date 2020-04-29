@@ -21,26 +21,27 @@
 }
 
 .imageContainer:hover .card-img-overlay {
-  background-color: rgba(171, 171, 171, 0.3);
+  background-color: rgba(171, 171, 171, 0.4);
 }
 
 .favWrapper {
   width: 40px;
   height: 32px;
-  transition: width ease-in .3s;
+  transition: width ease-in 0.3s;
 }
 
 h5 {
   opacity: 0;
-  transition: opacity ease .1s;
+  transition: opacity none 0s;
 }
 
 .favWrapper:hover {
   width: 190px;
+  background-color: rgba(171, 171, 171, 0.05);
 }
 
 .favWrapper:hover h5 {
   display: block;
   opacity: 1;
-  transition: opacity ease-in 1.2s;
+  transition: opacity ease-in 1.8s;
 }

@@ -1,6 +1,6 @@
 #container {
   height: auto;
-  min-height: 100vh;
+  min-height: auto;
   margin: 0;
 }
 

@@ -4,7 +4,7 @@
       <h1 class="display-4">Strive Shop</h1>
     </div>
     <div class="col-4 d-flex justify-content-center">
-      <form class="form-inline my-2 my-lg-0">
+      <form class="form-inline my-2 my-lg-0" [formGroup]="">
         <input
           class="form-control mr-sm-2 searchBox"
           type="search"
@@ -84,7 +84,7 @@
     <button
       class="btn btn-outline-secondary pl-0 mx-4"
       id="idk"
-      (click)="loginHandler()"
+      (click)="loginShow()"
     >
       <i class="fas fa-user"></i> Moj nalog
     </button>
@@ -95,4 +95,14 @@
   </div>
 </nav>
 
-<app-login *ngIf="loginActive" (modalDismissed)="loginClosed()"></app-login>
+<app-login
+  *ngIf="loginActive"
+  (modalDismissed)="loginClose()"
+  (registerActive)="registerShow()"
+></app-login>
+
+<app-register
+  *ngIf="registerActive"
+  (modalDismissed)="registerClose()"
+  (loginActive)="loginShow()"
+></app-register>

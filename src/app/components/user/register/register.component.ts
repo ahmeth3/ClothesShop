@@ -2,21 +2,21 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   @Output() modalDismissed: EventEmitter<any> = new EventEmitter<any>();
-  @Output() registerActive: EventEmitter<any> = new EventEmitter<any>();
-  loginForm: FormGroup;
+  @Output() loginActive: EventEmitter<any> = new EventEmitter<any>();
+  registerForm: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     document.getElementById('openModalButton').click();
 
-    this.loginForm = this.fb.group({
+    this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: [
         '',
@@ -31,19 +31,19 @@ export class LoginComponent implements OnInit {
   }
 
   get email() {
-    return this.loginForm.get('email');
+    return this.registerForm.get('email');
   }
 
   get password() {
-    return this.loginForm.get('password');
+    return this.registerForm.get('password');
   }
 
   public modalDismissedHandler(): void {
     this.modalDismissed.emit();
   }
 
-  public registerActiveHandler(): void {
+  public loginActiveHandler(): void {
     this.modalDismissedHandler();
-    this.registerActive.emit();
+    this.loginActive.emit();
   }
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { NaciniPlacanjaComponent } from './components/support/nacini-placanja/na
 import { ProductComponent } from './components/shop/product/product.component';
 import { ProductPageComponent } from './components/shop/product-page/product-page.component';
 import { LoginComponent } from './components/user/login/login.component';
+import { RegisterComponent } from './components/user/register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,14 @@ import { LoginComponent } from './components/user/login/login.component';
     ProductComponent,
     ProductPageComponent,
     LoginComponent,
+    RegisterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, Ng2PageScrollModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    Ng2PageScrollModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

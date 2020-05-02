@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -6,17 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  myForm: FormGroup;
   loginActive: boolean = false;
+  registerActive: boolean = false;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  loginHandler() {
+  loginShow() {
     this.loginActive = true;
   }
 
-  loginClosed() {
+  loginClose() {
     this.loginActive = false;
+  }
+
+  registerShow() {
+    this.registerActive = true;
+  }
+
+  registerClose() {
+    this.registerActive = false;
   }
 }

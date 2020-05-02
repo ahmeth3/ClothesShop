@@ -19,7 +19,7 @@
         <div class="avatar">
           <img src="../../../../assets/images/user.png" alt="Avatar" />
         </div>
-        <h4 class="modal-title">Prijavite se</h4>
+        <h4 class="modal-title">Registrujte se</h4>
         <button
           type="button"
           class="close"
@@ -32,7 +32,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="loginForm">
+        <form [formGroup]="registerForm">
           <div class="form-group">
             <input
               type="text"
@@ -85,8 +85,8 @@
           href="#"
           data-dismiss="modal"
           aria-hidden="true"
-          (click)="registerActiveHandler()"
-          >Nemate korisnički nalog? Registrujte se ovde!</a
+          (click)="loginActiveHandler()"
+          >Već imate korisnički nalog? Prijavite se!</a
         >
       </div>
     </div>

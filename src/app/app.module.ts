@@ -11,6 +11,7 @@ import { NajcescaPitanjaComponent } from './components/support/najcesca-pitanja/
 import { NaciniPlacanjaComponent } from './components/support/nacini-placanja/nacini-placanja.component';
 import { ProductComponent } from './components/shop/product/product.component';
 import { ProductPageComponent } from './components/shop/product-page/product-page.component';
+import { LoginComponent } from './components/user/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ProductPageComponent } from './components/shop/product-page/product-pag
     NaciniPlacanjaComponent,
     ProductComponent,
     ProductPageComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, Ng2PageScrollModule],
   providers: [],

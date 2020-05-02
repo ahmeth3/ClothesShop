@@ -62,9 +62,13 @@
         Odeća
       </a>
       <div class="dropdown-menu py-0" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" [routerLink]="['product-page', 'men']">Muškarci</a>
+        <a class="dropdown-item" [routerLink]="['product-page', 'men']"
+          >Muškarci</a
+        >
         <div class="dropdown-divider my-0"></div>
-        <a class="dropdown-item" [routerLink]="['product-page', 'women']">Žene</a>
+        <a class="dropdown-item" [routerLink]="['product-page', 'women']"
+          >Žene</a
+        >
         <div class="dropdown-divider my-0"></div>
         <a class="dropdown-item" href="#">Something else here</a>
       </div>
@@ -77,11 +81,18 @@
     </li>
   </ul>
   <div class="col-4 d-flex justify-content-end">
-    <button class="btn btn-outline-secondary pl-0 mx-4" id="idk">
+    <button
+      class="btn btn-outline-secondary pl-0 mx-4"
+      id="idk"
+      (click)="loginHandler()"
+    >
       <i class="fas fa-user"></i> Moj nalog
     </button>
+
     <button class="btn btn-outline-secondary pl-0 mr-5" id="idk">
       <i class="fas fa-shopping-cart"></i> Korpa
     </button>
   </div>
 </nav>
+
+<app-login *ngIf="loginActive" (modalDismissed)="loginClosed()"></app-login>

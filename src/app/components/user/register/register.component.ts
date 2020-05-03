@@ -18,16 +18,29 @@ export class RegisterComponent implements OnInit {
 
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-          Validators.min(6),
-          Validators.max(21),
-        ],
-      ],
+      passwordGroup: this.fb.group(
+        {
+          password: [
+            '',
+            [
+              Validators.required,
+              Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+              Validators.min(6),
+              Validators.max(21),
+            ],
+          ],
+          confirmPassword: ['', [Validators.required]],
+        },
+        { validator: this.passwordMatchValidator }
+      ),
     });
+  }
+
+  passwordMatchValidator(formGroup: FormGroup) {
+    return formGroup.controls['password'].value ===
+      formGroup.controls['confirmPassword'].value
+      ? null
+      : { misMatch: true };
   }
 
   get email() {

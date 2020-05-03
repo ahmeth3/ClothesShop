@@ -48,20 +48,49 @@
               Your email does not look right
             </span>
           </div>
-          <div class="form-group">
-            <input
-              type="password"
-              [ngClass]="
-                password.invalid && password.touched
-                  ? 'formControlInvalid'
-                  : 'formControlValid'
-              "
-              formControlName="password"
-              placeholder="Password"
-            />
-            <span *ngIf="password.invalid && password.touched">
-              That password sucks...
-            </span>
+          <div formGroupName="passwordGroup">
+            <div class="form-group">
+              <input
+                type="password"
+                [ngClass]="
+                  registerForm.get('passwordGroup.password').invalid &&
+                  registerForm.get('passwordGroup.password').touched
+                    ? 'formControlInvalid'
+                    : 'formControlValid'
+                "
+                formControlName="password"
+                placeholder="Password"
+              />
+              <span
+                *ngIf="
+                  registerForm.get('passwordGroup.password').invalid &&
+                  registerForm.get('passwordGroup.password').touched
+                "
+              >
+                That password sucks...
+              </span>
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                [ngClass]="
+                  registerForm.get('passwordGroup').errors &&
+                  registerForm.get('passwordGroup.confirmPassword').touched
+                    ? 'formControlInvalid'
+                    : 'formControlValid'
+                "
+                formControlName="confirmPassword"
+                placeholder="Password"
+              />
+              <span
+                *ngIf="
+                  registerForm.get('passwordGroup').errors &&
+                  registerForm.get('passwordGroup.confirmPassword').touched
+                "
+              >
+                That password sucks...
+              </span>
+            </div>
           </div>
           <div class="extraContentWrapper">
             <label style="float: left;"

@@ -25,8 +25,7 @@ export class RegisterComponent implements OnInit {
             [
               Validators.required,
               Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-              Validators.min(6),
-              Validators.max(21),
+              Validators.minLength(6),
             ],
           ],
           confirmPassword: ['', [Validators.required]],
@@ -47,8 +46,16 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('email');
   }
 
+  get passwordGroup() {
+    return this.registerForm.get('passwordGroup');
+  }
+
   get password() {
-    return this.registerForm.get('password');
+    return this.registerForm.get('passwordGroup.password');
+  }
+
+  get confirmPassword() {
+    return this.registerForm.get('passwordGroup.confirmPassword');
   }
 
   public modalDismissedHandler(): void {

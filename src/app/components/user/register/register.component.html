@@ -37,74 +37,74 @@
             <input
               type="text"
               [ngClass]="
-                email.invalid && email.touched
+                email.errors && email.touched
                   ? 'formControlInvalid'
                   : 'formControlValid'
               "
               formControlName="email"
               placeholder="Email"
             />
-            <span *ngIf="email.invalid && email.touched">
-              Your email does not look right
-            </span>
+            <div *ngIf="email.errors && email.touched" class="mt-1">
+              <span *ngIf="email.errors.required">
+                Unesite email adresu
+              </span>
+              <span *ngIf="email.errors.email">
+                Email mora biti validna email adresa
+              </span>
+            </div>
           </div>
           <div formGroupName="passwordGroup">
             <div class="form-group">
               <input
                 type="password"
                 [ngClass]="
-                  registerForm.get('passwordGroup.password').invalid &&
-                  registerForm.get('passwordGroup.password').touched
+                  (password.errors && password.touched) || passwordGroup.errors
                     ? 'formControlInvalid'
                     : 'formControlValid'
                 "
                 formControlName="password"
-                placeholder="Password"
+                placeholder="Lozinka"
               />
-              <span
-                *ngIf="
-                  registerForm.get('passwordGroup.password').invalid &&
-                  registerForm.get('passwordGroup.password').touched
-                "
-              >
-                That password sucks...
-              </span>
+              <div *ngIf="password.errors && password.touched" class="mt-1">
+                <span *ngIf="password.errors.required">Unesite lozinku</span>
+                <span *ngIf="password.errors.minlength"
+                  >Lozinka mora imati minimum 6 karaktera</span
+                >
+              </div>
             </div>
             <div class="form-group">
               <input
                 type="password"
                 [ngClass]="
-                  registerForm.get('passwordGroup').errors &&
-                  registerForm.get('passwordGroup.confirmPassword').touched
+                  passwordGroup.errors && confirmPassword.touched
                     ? 'formControlInvalid'
                     : 'formControlValid'
                 "
                 formControlName="confirmPassword"
-                placeholder="Password"
+                placeholder="Potvrda lozinke"
               />
-              <span
-                *ngIf="
-                  registerForm.get('passwordGroup').errors &&
-                  registerForm.get('passwordGroup.confirmPassword').touched
-                "
+              <div
+                *ngIf="passwordGroup.errors && confirmPassword.touched"
+                class="mt-1"
               >
-                That password sucks...
-              </span>
+                <span *ngIf="passwordGroup.errors">Lozinke nisu identične</span>
+              </div>
             </div>
           </div>
           <div class="extraContentWrapper">
             <label style="float: left;"
-              ><input type="checkbox" /> Remember me</label
+              ><input type="checkbox" /> Zapamti me</label
             >
-            <a href="#" style="float: right;">Forgot Password?</a>
+            <label style="float: right;"
+              ><input type="checkbox" /> Prijavi se na naš newsletter</label
+            >
           </div>
-
           <div class="form-group">
             <button
               type="submit"
               class="btn btn-primary btn-lg btn-block login-btn"
             >
-              Prijava
+              Registracija
             </button>
           </div>
         </form>

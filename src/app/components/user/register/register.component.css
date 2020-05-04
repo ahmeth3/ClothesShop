@@ -118,3 +118,9 @@
   display: inline-block;
   margin: 100px auto;
 }
+
+@media (max-width: 600px) {
+  .modal-login {
+    width: 100%;
+  }
+}

@@ -31,9 +31,9 @@
   </div>
 </div> -->
 <nav
-  class="navbar navbar-expand-md navbar-light bg-light sticky-top border-bottom border-dark"
+  class="navbar navbar-expand-lg navbar-light bg-light sticky-top border-bottom border-dark"
 >
-  <div class="col-md-6 col-xs-12 bg-dark">
+  <div>
     <a><img src="../../../../assets/images/s.png" /></a>
     <a><img src="../../../../assets/images/t.png" /></a>
     <a><img src="../../../../assets/images/r.png" /></a>
@@ -42,57 +42,67 @@
     <a><img src="../../../../assets/images/e.png" /></a>
   </div>
 
-  <ul class="navbar-nav container-fluid col-md-6 justify-content-center bg-primary">
-    <li class="nav-item mx-3">
-      <a href="#" class="nav-link">Link 1</a>
-    </li>
-    <li class="nav-item mx-3">
-      <a href="#" class="nav-link">Link 2</a>
-    </li>
-    <li class="nav-item dropdown mx-3">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        Odeća
-      </a>
-      <div class="dropdown-menu py-0" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" [routerLink]="['product-page', 'men']"
-          >Muškarci</a
-        >
-        <div class="dropdown-divider my-0"></div>
-        <a class="dropdown-item" [routerLink]="['product-page', 'women']"
-          >Žene</a
-        >
-        <div class="dropdown-divider my-0"></div>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
-    </li>
-    <li class="nav-item mx-3">
-      <a href="#" class="nav-link">Link 3</a>
-    </li>
-    <li class="nav-item mx-3">
-      <a href="#" class="nav-link">Link 4</a>
-    </li>
-  </ul>
-  <!-- <div class="col-lg-4 d-flex justify-content-end">
-    <button
-      class="btn btn-outline-secondary pl-0 mx-4"
-      id="idk"
-      (click)="loginShow()"
-    >
-      <i class="fas fa-user"></i> Moj nalog
-    </button>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <button class="btn btn-outline-secondary pl-0 mr-5" id="idk">
-      <i class="fas fa-shopping-cart"></i> Korpa
-    </button>
-  </div> -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <section class="collapseContent container-fluid w-100">
+      <ul class="navbar-nav" style="margin-left: auto;">
+        <li class="nav-item mx-3">
+          <a href="#" class="nav-link">Men</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a href="#" class="nav-link">Women</a>
+        </li>
+        <!-- <li class="nav-item dropdown mx-3">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Odeća
+        </a>
+        <div class="dropdown-menu py-0" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['product-page', 'men']"
+            >Muškarci</a
+          >
+          <div class="dropdown-divider my-0"></div>
+          <a class="dropdown-item" [routerLink]="['product-page', 'women']"
+            >Žene</a
+          >
+          <div class="dropdown-divider my-0"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li> -->
+      </ul>
+      <div class="buttonContainer">
+        <button
+          class="btn btn-outline-secondary pl-0 mx-4"
+          id="idk"
+          (click)="loginShow()"
+        >
+          <i class="fas fa-user"></i> Moj nalog
+        </button>
+
+        <button class="btn btn-outline-secondary pl-0 mr-5" id="idk">
+          <i class="fas fa-shopping-cart"></i> Korpa
+        </button>
+      </div>
+    </section>
+  </div>
 </nav>
 
 <app-login

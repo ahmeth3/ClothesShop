@@ -1,13 +1,46 @@
 .nav-item {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 .searchBox {
-    width: 350px;
-    height: 40px;
+  width: 350px;
+  height: 40px;
 }
 
 #idk {
-    font-size: 1.2em;
-    width: 140px;
+  font-size: 1.2em;
+  width: 140px;
+}
+
+nav {
+  z-index: 12;
+}
+
+.collapseContent {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-flow: row;
+  margin-left: auto;
+}
+
+.buttonContainer {
+  margin-left: auto;
+}
+
+@media (max-width: 622px) {
+  .collapseContent {
+    flex-direction: column;
+  }
+
+  .navbar-nav {
+    margin: auto;
+  }
+
+  .buttonContainer {
+    margin-left: 0;
+  }
 }

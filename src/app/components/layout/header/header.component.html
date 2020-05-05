@@ -73,10 +73,10 @@
     <section class="collapseContent container-fluid w-100">
       <ul class="navbar-nav" style="margin-left: auto;">
         <li class="nav-item mx-3">
-          <a href="#" class="nav-link">Men</a>
+          <a [routerLink]="['product-page', 'men']" class="nav-link">Men</a>
         </li>
         <li class="nav-item mx-3">
-          <a href="#" class="nav-link">Women</a>
+          <a [routerLink]="['product-page', 'women']" class="nav-link">Women</a>
         </li>
         <!-- <li class="nav-item dropdown mx-3">
         <a
@@ -106,18 +106,18 @@
       <div class="buttonContainer">
         <button
           class="btn btn-outline-secondary pl-0 mx-4"
-          id="idk"
+          id="navButton"
           (click)="loginShow()"
         >
           <i class="fas fa-user"></i> Moj nalog
         </button>
 
-        <button class="btn btn-outline-secondary pl-0 mr-5" id="idk">
+        <button class="btn btn-outline-secondary pl-0 mr-5" id="navButton">
           <i class="fas fa-shopping-cart"></i> Korpa
         </button>
       </div>
     </section>
-    <form class="form-inline my-2 my-lg-0 row tester" [formGroup]="">
+    <form class="form-inline my-2 my-lg-0 row navSearchForm" [formGroup]="">
       <input
         class="form-control mr-sm-2 searchBox col"
         type="search"

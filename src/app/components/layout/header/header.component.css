@@ -1,5 +1,17 @@
-.nav-item {
-  font-size: 22px;
+.jumbotronWrapper {
+  background-image: linear-gradient(
+    to bottom,
+    rgb(248, 249, 250),
+    rgb(219, 216, 216)
+  );
+}
+
+.jumbotron {
+  background-image: linear-gradient(
+    to bottom,
+    rgb(244, 245, 245),
+    rgb(219, 216, 216)
+  );
 }
 
 .headerContainer {
@@ -12,10 +24,6 @@
   margin: auto;
 }
 
-.linkContainer {
-  min-width: 270px;
-}
-
 form .searchBox {
   height: 40px;
   width: 100%;
@@ -25,22 +33,17 @@ form button {
   width: 50px;
 }
 
-#idk {
-  font-size: 1.2em;
-  width: 140px;
+.linkContainer {
+  min-width: 270px;
 }
 
 nav {
   z-index: 122;
-  background-image: linear-gradient(to top, rgb(238, 239, 240), rgb(219, 216, 216));
-}
-
-.jumbotronWrapper {
-  background-image: linear-gradient(to top, rgb(219, 216, 216), rgb(238, 239, 240));
-}
-
-.jumbotron {
-  background-image: linear-gradient(to top, rgb(219, 216, 216), rgb(238, 239, 240));
+  background-image: linear-gradient(
+    to bottom,
+    rgb(219, 216, 216),
+    rgb(244, 245, 245)
+  );
 }
 
 .collapseContent {
@@ -54,11 +57,20 @@ nav {
   margin-left: auto;
 }
 
+.nav-item {
+  font-size: 22px;
+}
+
 .buttonContainer {
   margin-left: auto;
 }
 
-.tester {
+#navButton {
+  font-size: 1.2em;
+  width: 140px;
+}
+
+.navSearchForm {
   display: none;
 }
 
@@ -81,7 +93,7 @@ nav {
     display: none;
   }
 
-  .tester {
+  .navSearchForm {
     display: flex;
   }
 }

@@ -1,3 +1,108 @@
-<div class="container-fluid" id="container">
-  <app-product></app-product>
+<div class="container-fluid row" id="container">
+  <div class="sideBar col-3">
+    <div class="categoryWrapper p-1 my-1">
+      <div class="categoryHeaderWrapper">
+        <div class="d-flex flex-row">
+          <h4>Categories</h4>
+          <i
+            class="fas fa-angle-down d-flex align-self-center"
+            data-toggle="collapse"
+            data-target="#demo"
+            style="margin-left: auto;"
+          ></i>
+        </div>
+        <hr />
+      </div>
+      <div id="demo" class="collapse">
+        <div>
+          <span>Jackets</span>
+        </div>
+        <div>
+          <span>Shirts</span>
+        </div>
+        <div>
+          <span>T-shirts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="colorWrapper p-1 my-1">
+      <div class="colorHeaderWrapper">
+        <div class="d-flex flex-row">
+          <h4>Colors</h4>
+          <i
+            class="fas fa-angle-down d-flex align-self-center"
+            data-toggle="collapse"
+            data-target="#demo2"
+            style="margin-left: auto;"
+          ></i>
+        </div>
+        <hr />
+      </div>
+      <div id="demo2" class="collapse">
+        <section
+          class="colorContent d-flex flex-row flex-wrap"
+          style="padding-top: 15px; padding-left: 5px; padding-right: 5px;"
+        >
+          <div class="colorItem" style="background-color: white;"></div>
+          <div class="colorItem" style="background-color: black;"></div>
+          <div class="colorItem" style="background-color: red;"></div>
+          <div class="colorItem" style="background-color: green;"></div>
+          <div class="colorItem" style="background-color: orange;"></div>
+          <div class="colorItem" style="background-color: pink;"></div>
+          <div class="colorItem" style="background-color: brown;"></div>
+          <div class="colorItem" style="background-color: purple;"></div>
+        </section>
+      </div>
+    </div>
+
+    <div class="sizeWrapper p-1 my-1">
+      <div class="sizeHeaderWrapper">
+        <div class="d-flex flex-row">
+          <h4>Size</h4>
+          <i
+            class="fas fa-angle-down d-flex align-self-center"
+            data-toggle="collapse"
+            data-target="#demo3"
+            style="margin-left: auto;"
+          ></i>
+        </div>
+        <hr />
+      </div>
+      <div id="demo3" class="collapse">
+        <section
+          class="sizeContent d-flex flex-row flex-wrap align-items-start"
+          style="padding-top: 15px; padding-left: 10px; padding-right: 10px;"
+        >
+          <div class="sizeItem">
+            <span>2XS</span>
+          </div>
+          <div class="sizeItem">
+            <span>XS</span>
+          </div>
+          <div class="sizeItem"><span>S</span></div>
+          <div class="sizeItem">
+            <span>M</span>
+          </div>
+          <div class="sizeItem"><span>L</span></div>
+          <div class="sizeItem">
+            <span>XL</span>
+          </div>
+          <div class="sizeItem"><span>2XL</span></div>
+          <div class="sizeItem">
+            <span>3XL</span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="col d-flex flex-row flex-wrap">
+    <app-product></app-product>
+    <app-product></app-product>
+    <app-product></app-product>
+    <app-product></app-product>
+    <app-product></app-product>
+    <app-product></app-product>
+  </div>
 </div>

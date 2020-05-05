@@ -2,9 +2,27 @@
   font-size: 22px;
 }
 
-.searchBox {
-  width: 350px;
+.headerContainer {
+  min-width: 300px;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.linkContainer {
+  min-width: 270px;
+}
+
+form .searchBox {
   height: 40px;
+  width: 100%;
+}
+
+form button {
+  width: 50px;
 }
 
 #idk {
@@ -13,7 +31,7 @@
 }
 
 nav {
-  z-index: 12;
+  z-index: 122;
 }
 
 .collapseContent {
@@ -31,7 +49,11 @@ nav {
   margin-left: auto;
 }
 
-@media (max-width: 622px) {
+.tester {
+  display: none;
+}
+
+@media (max-width: 639px) {
   .collapseContent {
     flex-direction: column;
   }
@@ -42,5 +64,15 @@ nav {
 
   .buttonContainer {
     margin-left: 0;
+  }
+}
+
+@media (max-width: 762px) {
+  .formContainer form {
+    display: none;
+  }
+
+  .tester {
+    display: flex;
   }
 }

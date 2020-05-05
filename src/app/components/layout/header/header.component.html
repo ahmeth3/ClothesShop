@@ -1,22 +1,35 @@
-<!-- <div class="border-top border-dark container-fluid bg-light m-0">
-  <div class="jumbotron jumbotron-fluid row mb-0 py-2 bg-light">
-    <div class="col-4 d-flex justify-content-center">
+<div class="border-top border-dark container-fluid bg-light m-0">
+  <div class="jumbotron jumbotron-fluid mb-0 py-2 bg-light d-flex flex-row">
+    <div
+      class="d-flex justify-content-center headerContainer"
+      style="margin-left: auto;"
+    >
       <h1 class="display-4">Strive Shop</h1>
     </div>
-    <div class="col-4 d-flex justify-content-center">
-      <form class="form-inline my-2 my-lg-0" [formGroup]="">
+    <div class="d-flex justify-content-center align-items-center formContainer">
+      <form
+        class="form-inline my-2 my-lg-0 row"
+        [formGroup]=""
+        style="width: 100%;"
+      >
         <input
-          class="form-control mr-sm-2 searchBox"
+          class="form-control mr-sm-2 searchBox col"
           type="search"
           placeholder="Pretraga"
           aria-label="Search"
         />
-        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
-          Pretraži
+        <button
+          class="btn btn-outline-secondary my-2 my-sm-0 col-lg-1 col-xs-2"
+          type="submit"
+        >
+          <i class="fas fa-search"></i>
         </button>
       </form>
     </div>
-    <div class="col-4 d-flex justify-content-center">
+    <div
+      class="d-flex justify-content-center linkContainer"
+      style="margin-left: auto;"
+    >
       <div>
         <a routerLink="nacini-placanja" class="text-dark mx-2"
           >Načini plaćanja</a
@@ -29,7 +42,7 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>
 <nav
   class="navbar navbar-expand-lg navbar-light bg-light sticky-top border-bottom border-dark"
 >
@@ -102,6 +115,20 @@
         </button>
       </div>
     </section>
+    <form class="form-inline my-2 my-lg-0 row tester" [formGroup]="">
+      <input
+        class="form-control mr-sm-2 searchBox col"
+        type="search"
+        placeholder="Pretraga"
+        aria-label="Search"
+      />
+      <button
+        class="btn btn-outline-secondary my-2 my-sm-0 col-1"
+        type="submit"
+      >
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
   </div>
 </nav>
 

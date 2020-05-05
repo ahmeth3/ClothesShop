@@ -32,6 +32,15 @@ form button {
 
 nav {
   z-index: 122;
+  background-image: linear-gradient(to top, rgb(238, 239, 240), rgb(219, 216, 216));
+}
+
+.jumbotronWrapper {
+  background-image: linear-gradient(to top, rgb(219, 216, 216), rgb(238, 239, 240));
+}
+
+.jumbotron {
+  background-image: linear-gradient(to top, rgb(219, 216, 216), rgb(238, 239, 240));
 }
 
 .collapseContent {

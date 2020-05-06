@@ -2,16 +2,22 @@
   <div class="sideBar">
     <div class="categoryWrapper mt-2 mb-4">
       <div class="categoryHeaderWrapper">
-        <div class="d-flex flex-row" data-toggle="collapse" data-target="#demo">
+        <div
+          class="d-flex flex-row"
+          data-toggle="collapse"
+          data-target="#demo"
+          (click)="scrollToggler(1)"
+        >
           <h4 class="">Categories</h4>
           <i
             class="fas fa-angle-down d-flex align-self-center"
+            [ngClass]="categoryActive ? 'IconDown' : 'IconUp'"
             style="margin-left: auto;"
           ></i>
         </div>
         <hr />
       </div>
-      <div id="demo" class="collapse categoriesContent">
+      <div id="demo" class="collapse show categoriesContent">
         <div>
           <span>Jackets</span>
         </div>
@@ -30,16 +36,18 @@
           class="d-flex flex-row"
           data-toggle="collapse"
           data-target="#demo2"
+          (click)="scrollToggler(2)"
         >
           <h4>Colors</h4>
           <i
             class="fas fa-angle-down d-flex align-self-center"
+            [ngClass]="colorsActive ? 'IconDown' : 'IconUp'"
             style="margin-left: auto;"
           ></i>
         </div>
         <hr />
       </div>
-      <div id="demo2" class="collapse">
+      <div id="demo2" class="collapse show">
         <section
           class="colorContent d-flex flex-row flex-wrap justify-content-center"
           style="padding-top: 15px; padding-left: 5px; padding-right: 5px;"
@@ -164,16 +172,18 @@
           class="d-flex flex-row"
           data-toggle="collapse"
           data-target="#demo3"
+          (click)="scrollToggler(3)"
         >
           <h4>Size</h4>
           <i
             class="fas fa-angle-down d-flex align-self-center"
+            [ngClass]="sizeActive ? 'IconDown' : 'IconUp'"
             style="margin-left: auto;"
           ></i>
         </div>
         <hr />
       </div>
-      <div id="demo3" class="collapse">
+      <div id="demo3" class="collapse show">
         <section
           class="sizeContent d-flex flex-row flex-wrap justify-content-center"
           style="padding-top: 15px;"

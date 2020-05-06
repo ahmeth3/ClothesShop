@@ -13,6 +13,16 @@
   font-weight: 400;
 }
 
+.IconDown {
+  transform: rotate(0deg);
+  transition: transform 0.4s ease;
+}
+
+.IconUp {
+  transform: rotate(180deg);
+  transition: transform 0.4s ease;
+}
+
 .categoryWrapper {
   max-width: 280px;
   width: 100%;
@@ -42,10 +52,14 @@
 .colorItem {
   width: 60px;
   height: 50px;
-  border: 1px outset rgb(248, 249, 250);
+  border: 1px solid rgb(248, 249, 250);
   border-radius: 15px;
   margin: 2px;
   cursor: pointer;
+}
+
+.colorItem:hover {
+  border-style: outset;
 }
 
 .sizeWrapper {
@@ -63,13 +77,18 @@
   width: 60px;
   height: 40px;
   background-color: white;
-  border: 1px outset rgb(248, 249, 250);
+  border: 1px solid rgb(248, 249, 250);
   border-radius: 15px;
   margin: 4px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
+
+.sizeItem:hover {
+  border-style: outset;
+}
+
 .sizeItem span {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;

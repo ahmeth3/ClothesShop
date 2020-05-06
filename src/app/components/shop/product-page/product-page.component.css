@@ -4,29 +4,58 @@
 }
 
 .sideBar {
+  max-width: 400px;
+  width: 100%;
+  margin-right: auto;
   height: 100vh;
   padding-top: 3%;
+  font-family: "Source Code Pro", monospace;
+  font-weight: 400;
 }
 
 .categoryWrapper {
-  width: 70%;
+  max-width: 280px;
+  width: 100%;
   margin: 0 auto;
+}
+
+.categoryHeaderWrapper {
+  cursor: pointer;
+}
+
+.categoriesContent {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 300;
+  font-size: 1.2rem;
 }
 
 .colorWrapper {
-  width: 70%;
+  max-width: 280px;
+  width: 100%;
   margin: 0 auto;
+}
+
+.colorHeaderWrapper {
+  cursor: pointer;
 }
 
 .colorItem {
-  width: 50px;
+  width: 60px;
   height: 50px;
+  border: 1px outset rgb(248, 249, 250);
+  border-radius: 15px;
   margin: 2px;
+  cursor: pointer;
 }
 
 .sizeWrapper {
-  width: 70%;
+  max-width: 280px;
+  width: 100%;
   margin: 0 auto;
+}
+
+.sizeHeaderWrapper {
+  cursor: pointer;
 }
 
 .sizeItem {
@@ -34,15 +63,26 @@
   width: 60px;
   height: 40px;
   background-color: white;
-  border: 1px solid black;
+  border: 1px outset rgb(248, 249, 250);
+  border-radius: 15px;
   margin: 4px;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+.sizeItem span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
 }
 
 hr {
   background-color: black;
-  border-style: inset;
   border-width: 1px;
   margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  .sideBar {
+    display: none;
+  }
 }

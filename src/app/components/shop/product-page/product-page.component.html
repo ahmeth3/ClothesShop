@@ -1,19 +1,17 @@
-<div class="container-fluid row" id="container">
-  <div class="sideBar col-3">
-    <div class="categoryWrapper p-1 my-1">
+<div class="container-fluid d-flex flex-row" id="container">
+  <div class="sideBar">
+    <div class="categoryWrapper mt-2 mb-4">
       <div class="categoryHeaderWrapper">
-        <div class="d-flex flex-row">
-          <h4>Categories</h4>
+        <div class="d-flex flex-row" data-toggle="collapse" data-target="#demo">
+          <h4 class="">Categories</h4>
           <i
             class="fas fa-angle-down d-flex align-self-center"
-            data-toggle="collapse"
-            data-target="#demo"
             style="margin-left: auto;"
           ></i>
         </div>
         <hr />
       </div>
-      <div id="demo" class="collapse">
+      <div id="demo" class="collapse categoriesContent">
         <div>
           <span>Jackets</span>
         </div>
@@ -26,14 +24,16 @@
       </div>
     </div>
 
-    <div class="colorWrapper p-1 my-1">
+    <div class="colorWrapper my-4">
       <div class="colorHeaderWrapper">
-        <div class="d-flex flex-row">
+        <div
+          class="d-flex flex-row"
+          data-toggle="collapse"
+          data-target="#demo2"
+        >
           <h4>Colors</h4>
           <i
             class="fas fa-angle-down d-flex align-self-center"
-            data-toggle="collapse"
-            data-target="#demo2"
             style="margin-left: auto;"
           ></i>
         </div>
@@ -41,29 +41,133 @@
       </div>
       <div id="demo2" class="collapse">
         <section
-          class="colorContent d-flex flex-row flex-wrap"
+          class="colorContent d-flex flex-row flex-wrap justify-content-center"
           style="padding-top: 15px; padding-left: 5px; padding-right: 5px;"
         >
-          <div class="colorItem" style="background-color: white;"></div>
-          <div class="colorItem" style="background-color: black;"></div>
-          <div class="colorItem" style="background-color: red;"></div>
-          <div class="colorItem" style="background-color: green;"></div>
-          <div class="colorItem" style="background-color: orange;"></div>
-          <div class="colorItem" style="background-color: pink;"></div>
-          <div class="colorItem" style="background-color: brown;"></div>
-          <div class="colorItem" style="background-color: purple;"></div>
+          <div
+            class="colorItem"
+            style="
+              background-image: radial-gradient(
+                circle 621px at 25.3% 13.8%,
+                rgba(255, 255, 255, 1) 0%,
+                rgba(234, 236, 255, 1) 90%
+              );
+            "
+          ></div>
+          <div
+            class="colorItem"
+            style="
+              background-image: radial-gradient(
+                circle 666px at 0.4% 48%,
+                rgba(202, 204, 227, 1) 0%,
+                rgba(89, 89, 99, 1) 97.5%
+              );
+            "
+          ></div>
+          <div
+            class="colorItem"
+            style="
+              background-image: radial-gradient(
+                circle farthest-corner at 10% 20%,
+                rgba(90, 92, 106, 1) 0%,
+                rgba(32, 45, 58, 1) 81.3%
+              );
+            "
+          ></div>
+          <div
+            class="colorItem"
+            style="
+              background-image: linear-gradient(
+                111.8deg,
+                rgba(0, 104, 155, 1) 19.8%,
+                rgba(0, 173, 239, 1) 92.1%
+              );
+            "
+          ></div>
+          <div
+            class="colorItem"
+            style="
+              background-image: radial-gradient(
+                circle farthest-corner at 10% 20%,
+                rgba(1, 150, 21, 1) 0%,
+                rgba(198, 239, 146, 1) 90%
+              );
+            "
+          ></div>
+          <div
+            class="colorItem"
+            style="
+              background-image: linear-gradient(
+                116.9deg,
+                rgba(232, 10, 116, 1) -9.3%,
+                rgba(244, 79, 79, 1) 77.3%
+              );
+            "
+          ></div>
+          <div
+            class="colorItem"
+            style="
+              background-image: radial-gradient(
+                circle farthest-corner at 0.2% 1.8%,
+                rgba(255, 90, 8, 1) 0%,
+                rgba(88, 0, 0, 1) 100.2%
+              );
+            "
+          ></div>
+          <div
+            class="colorItem"
+            style="
+              background-image: radial-gradient(
+                circle 426px at 77.9% 31.3%,
+                rgba(255, 229, 131, 1) 0%,
+                rgba(249, 119, 0, 1) 90%
+              );
+            "
+          ></div>
+          <div
+            class="colorItem"
+            style="
+              background-image: linear-gradient(
+                315deg,
+                #ff4e00 0%,
+                #ec9f05 74%
+              );
+            "
+          ></div>
+          <div
+            class="colorItem"
+            style="
+              background-image: radial-gradient(
+                circle 410px at 49.5% 99%,
+                rgba(250, 208, 196, 1) 0%,
+                rgba(255, 209, 255, 1) 99.5%
+              );
+            "
+          ></div>
+          <div
+            class="colorItem"
+            style="
+              background-image: linear-gradient(
+                109.6deg,
+                rgba(218, 185, 252, 1) 11.2%,
+                rgba(125, 89, 252, 1) 91.1%
+              );
+            "
+          ></div>
         </section>
       </div>
     </div>
 
-    <div class="sizeWrapper p-1 my-1">
+    <div class="sizeWrapper my-4">
       <div class="sizeHeaderWrapper">
-        <div class="d-flex flex-row">
+        <div
+          class="d-flex flex-row"
+          data-toggle="collapse"
+          data-target="#demo3"
+        >
           <h4>Size</h4>
           <i
             class="fas fa-angle-down d-flex align-self-center"
-            data-toggle="collapse"
-            data-target="#demo3"
             style="margin-left: auto;"
           ></i>
         </div>
@@ -71,8 +175,8 @@
       </div>
       <div id="demo3" class="collapse">
         <section
-          class="sizeContent d-flex flex-row flex-wrap align-items-start"
-          style="padding-top: 15px; padding-left: 10px; padding-right: 10px;"
+          class="sizeContent d-flex flex-row flex-wrap justify-content-center"
+          style="padding-top: 15px;"
         >
           <div class="sizeItem">
             <span>2XS</span>
@@ -97,7 +201,9 @@
     </div>
   </div>
 
-  <div class="col d-flex flex-row flex-wrap">
+  <div
+    class="productContainer d-flex flex-row flex-wrap justify-content-center"
+  >
     <app-product></app-product>
     <app-product></app-product>
     <app-product></app-product>

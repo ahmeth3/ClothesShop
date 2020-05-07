@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
+import { ClickOutsideModule } from 'ng-click-outside';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +33,7 @@ import { RegisterComponent } from './components/user/register/register.component
     AppRoutingModule,
     Ng2PageScrollModule,
     ReactiveFormsModule,
+    ClickOutsideModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

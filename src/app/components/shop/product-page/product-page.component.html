@@ -212,8 +212,11 @@
   </div>
 
   <div class="mainContent d-flex flex-column">
-    <div class="filters" style="margin-top: 15px;">
-      <div class="dropdown">
+    <div
+      class="filters d-flex flex-row justify-content-end"
+      style="margin-top: 15px; margin-right: 30px;"
+    >
+      <div class="dropdown mr-3" (clickOutside)="dropdownCloseOnClickOutside()">
         <button
           class="dropdownButton d-flex flex-row"
           type="button"
@@ -223,7 +226,7 @@
           aria-expanded="false"
           (click)="scrollToggler(4)"
         >
-          <span [ngClass]="sortActive ? 'spanActive' : null">Sort by</span>
+          <span [ngClass]="sortActive ? 'spanActive' : null">Sortiraj</span>
           <i
             class="fas fa-angle-down d-flex align-self-center ml-3"
             [ngClass]="sortActive ? 'dropdownIconUp' : 'dropdownIconDown'"
@@ -248,6 +251,17 @@
             prvo</a
           >
         </div>
+      </div>
+
+      <div class="prikazPoStrani">
+        <label for="prikaz" class="mr-2">Prikaži</label>
+
+        <select id="prikaz" class="mr-2">
+          <option value="12">12</option>
+          <option value="24">24</option>
+          <option value="36">36</option>
+        </select>
+        <span>po strani</span>
       </div>
     </div>
     <div

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -27,5 +27,9 @@ export class ProductPageComponent implements OnInit {
     if (counter === 2) this.colorsActive = !this.colorsActive;
     if (counter === 3) this.sizeActive = !this.sizeActive;
     if (counter === 4) this.sortActive = !this.sortActive;
+  }
+
+  dropdownCloseOnClickOutside() {
+    this.sortActive = false;
   }
 }

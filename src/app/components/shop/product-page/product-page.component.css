@@ -100,6 +100,47 @@ hr {
   margin: 0 auto;
 }
 
+.dropdownButton {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.dropdownButton span {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.spanActive {
+  /* color: red; */
+}
+
+.dropdownIconUp {
+  transform: rotate(180deg);
+}
+
+.dropdownIconDown {
+  transform: rotate(0deg);
+}
+
+.radio {
+  position: relative;
+  top: 1px;
+  margin-right: 6px;
+}
+
+.dropdown-item {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+.dropdown-item:focus {
+  background: rgb(108, 117, 125);
+}
+
 @media (max-width: 992px) {
   .sideBar {
     display: none;

@@ -211,14 +211,54 @@
     </div>
   </div>
 
-  <div
-    class="productContainer d-flex flex-row flex-wrap justify-content-center"
-  >
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
+  <div class="mainContent d-flex flex-column">
+    <div class="filters" style="margin-top: 15px;">
+      <div class="dropdown">
+        <button
+          class="dropdownButton d-flex flex-row"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          (click)="scrollToggler(4)"
+        >
+          <span [ngClass]="sortActive ? 'spanActive' : null">Sort by</span>
+          <i
+            class="fas fa-angle-down d-flex align-self-center ml-3"
+            [ngClass]="sortActive ? 'dropdownIconUp' : 'dropdownIconDown'"
+            style="margin-left: auto;"
+          ></i>
+        </button>
+        <div class="dropdown-menu m-0 p-0" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#"
+            ><input
+              class="radio"
+              type="radio"
+              name="optradio"
+              checked
+            />Najskuplje prvo</a
+          >
+          <a class="dropdown-item" href="#"
+            ><input class="radio" type="radio" name="optradio" />Najjeftinije
+            prvo</a
+          >
+          <a class="dropdown-item" href="#"
+            ><input class="radio" type="radio" name="optradio" />Najveći popust
+            prvo</a
+          >
+        </div>
+      </div>
+    </div>
+    <div
+      class="productContainer d-flex flex-row flex-wrap justify-content-center"
+    >
+      <app-product></app-product>
+      <app-product></app-product>
+      <app-product></app-product>
+      <app-product></app-product>
+      <app-product></app-product>
+      <app-product></app-product>
+    </div>
   </div>
 </div>

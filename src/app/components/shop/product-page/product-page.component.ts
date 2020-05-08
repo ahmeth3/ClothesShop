@@ -10,8 +10,8 @@ export class ProductPageComponent implements OnInit {
   category: string;
 
   categoryActive: boolean = true;
-  colorsActive: boolean = true;
-  sizeActive: boolean = true;
+  colorsActive: boolean = false;
+  sizeActive: boolean = false;
   sortActive: boolean = false;
 
   constructor(private route: ActivatedRoute) {}
@@ -31,5 +31,21 @@ export class ProductPageComponent implements OnInit {
 
   dropdownCloseOnClickOutside() {
     this.sortActive = false;
+  }
+
+  openNav() {
+    document.getElementById('sideBar').style.display = 'block';
+    document.getElementById('sideBar').style.marginLeft = 'auto';
+    document.getElementById('sideBar').style.marginRight = 'auto';
+
+    document.getElementById('mainContent').style.width = '0';
+    document.getElementById('mainContent').style.height = '0';
+  }
+
+  closeNav() {
+    document.getElementById('sideBar').style.display = 'none';
+
+    document.getElementById('mainContent').style.width = '100%';
+    document.getElementById('mainContent').style.height = '100vh';
   }
 }

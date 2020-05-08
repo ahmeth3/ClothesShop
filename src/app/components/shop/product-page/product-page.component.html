@@ -1,5 +1,7 @@
-<div class="container-fluid d-flex flex-row" id="container">
-  <div class="sideBar">
+<div class="d-flex flex-row" id="container">
+  <div id="sideBar" class="sideBar">
+    <!-- <i class="fas fa-times closeFiltersButton" (click)="closeNav()"></i> -->
+    <i class="closeFiltersButton" (click)="closeNav()">&times;</i>
     <div class="categoryWrapper mt-2 mb-4">
       <div class="categoryHeaderWrapper">
         <div
@@ -47,7 +49,7 @@
         </div>
         <hr />
       </div>
-      <div id="demo2" class="collapse show">
+      <div id="demo2" class="collapse">
         <section
           class="colorContent d-flex flex-row flex-wrap justify-content-center"
           style="padding-top: 15px; padding-left: 5px; padding-right: 5px;"
@@ -183,7 +185,7 @@
         </div>
         <hr />
       </div>
-      <div id="demo3" class="collapse show">
+      <div id="demo3" class="collapse">
         <section
           class="sizeContent d-flex flex-row flex-wrap justify-content-center"
           style="padding-top: 15px;"
@@ -211,11 +213,15 @@
     </div>
   </div>
 
-  <div class="mainContent d-flex flex-column">
+  <div id="mainContent" class="mainContent d-flex flex-column">
     <div
-      class="filters d-flex flex-row justify-content-end"
+      class="filters d-flex flex-row justify-content-center"
       style="margin-top: 15px; margin-right: 30px;"
     >
+      <button class="filterButton mr-3" (click)="openNav()">
+        <span>Filteri</span>
+      </button>
+
       <div class="dropdown mr-3" (clickOutside)="dropdownCloseOnClickOutside()">
         <button
           class="dropdownButton d-flex flex-row"
@@ -234,7 +240,7 @@
           ></i>
         </button>
         <div class="dropdown-menu m-0 p-0" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#"
+          <a class="dropdown-item" href="javascript:void(0)"
             ><input
               class="radio"
               type="radio"
@@ -242,11 +248,11 @@
               checked
             />Najskuplje prvo</a
           >
-          <a class="dropdown-item" href="#"
+          <a class="dropdown-item" href="javascript:void(0)"
             ><input class="radio" type="radio" name="optradio" />Najjeftinije
             prvo</a
           >
-          <a class="dropdown-item" href="#"
+          <a class="dropdown-item" href="javascript:void(0)"
             ><input class="radio" type="radio" name="optradio" />Najveći popust
             prvo</a
           >
@@ -262,6 +268,14 @@
           <option value="36">36</option>
         </select>
         <span>po strani</span>
+      </div>
+    </div>
+    <div
+      class="chosenFilters d-flex flex-row justify-content-start align-items-center px-3"
+    >
+      <div class="chosenFilter d-flex flex-row align-items-center">
+        <span>jackets</span>
+        <i class="fas fa-times"></i>
       </div>
     </div>
     <div

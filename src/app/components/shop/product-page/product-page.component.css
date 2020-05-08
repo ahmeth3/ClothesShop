@@ -7,10 +7,21 @@
   max-width: 400px;
   width: 100%;
   margin-right: auto;
-  height: 100vh;
+  /* height: 100vh; */
   padding-top: 3%;
   font-family: "Source Code Pro", monospace;
   font-weight: 400;
+}
+
+.closeFiltersButton {
+  display: none;
+  position: relative;
+  top: -30px;
+  float: right;
+  margin-top: 5px;
+  color: rgb(56, 55, 55);
+  font-size: 40px;
+  transform: rotate(-1deg);
 }
 
 .IconDown {
@@ -100,6 +111,18 @@ hr {
   margin: 0 auto;
 }
 
+.mainContent {
+  overflow-x: hidden;
+  background-image: linear-gradient(
+    to right,
+    rgb(248, 249, 250),
+    rgb(255, 255, 255)
+  );
+}
+
+.filters {
+}
+
 .dropdownButton {
   background: none;
   border: none;
@@ -156,8 +179,71 @@ hr {
   word-spacing: -5px;
 }
 
+.filterButton {
+  background: none;
+  border: none;
+  outline: none;
+  margin-bottom: auto;
+  display: none;
+}
+
+.filterButton span {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.chosenFilters {
+  background-color: rgb(236, 236, 236);
+  max-width: 95%;
+  width: 100%;
+  min-height: 40px;
+  margin: auto;
+}
+
+.chosenFilter {
+  min-width: 60px;
+  height: 20px;
+  width: auto;
+  background-color: rgb(111, 111, 111);
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.chosenFilter span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  color: white;
+  margin-right: 5px;
+}
+
+.chosenFilter i {
+  color: rgb(183, 183, 183);
+  font-size: 13px;
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.chosenFilter:hover span {
+  text-decoration: line-through;
+}
+
+.chosenFilter i:hover {
+  color: rgb(248, 249, 250);
+}
+
 @media (max-width: 992px) {
   .sideBar {
     display: none;
+  }
+
+  .sideBar .closeFiltersButton {
+    display: inline;
+  }
+
+  .filterButton {
+    display: inline;
   }
 }

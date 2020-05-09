@@ -1,0 +1,92 @@
+<div class="container-fluid d-flex flex-row">
+  <div class="mainContent d-flex flex-column">
+    <div class="imageContainer d-flex flex-row mb-4">
+      <img
+        src="../../../../assets/images/product-details/product-details1.jpg"
+        alt=""
+      />
+      <img
+        src="../../../../assets/images/product-details/product-details2.jpg"
+        alt=""
+      />
+    </div>
+    <div class="productDetails mb-4">
+      <p class="productDetailsHeader">
+        Shirt in a linen and cotton weave with a turn-down collar, classic front
+        and yoke at the back. Long sleeves with adjustable buttoning at the
+        cuffs, and a rounded hem. Regular Fit – a classic fit with good room for
+        movement and a gently tapered waist to create a comfortable, tailored
+        silhouette.
+      </p>
+      <div class="productDetailsAdditionalInfo">
+        <p>
+          <b style="color: black;">Size -</b> The model is 188cm and wears a
+          size L
+        </p>
+        <p><b style="color: black;">Composition -</b> Cotton 70%, Linen 30%</p>
+      </div>
+    </div>
+    <div class="imageContainer d-flex flex-row">
+      <img
+        src="../../../../assets/images/product-details/product-details3.jpg"
+        alt=""
+      />
+      <img
+        src="../../../../assets/images/product-details/product-details4.jpg"
+        alt=""
+      />
+    </div>
+  </div>
+  <div class="productReCap">
+    <div class="d-flex flex-row justify-content-between">
+      <h4>Linen-blend shirt</h4>
+      <div
+        class="iconContainer"
+        (mouseover)="iconHover()"
+        (mouseleave)="this.iconActive = false"
+      >
+        <i
+          *ngIf="!this.iconActive"
+          class="far fa-heart text-dark"
+          style="font-size: 30px;"
+        ></i>
+        <i
+          *ngIf="this.iconActive"
+          class="fas fa-heart"
+          style="font-size: 30px; color: rgb(230, 30, 35);"
+        ></i>
+      </div>
+    </div>
+    <h4>1.999 din</h4>
+    <h6>Black</h6>
+    <div class="colorImagesContainer">
+      <img src="../../../../assets/images/product-details/boja1.jpg" alt="" />
+      <img
+        src="../../../../assets/images/product-details/boja2.jpg"
+        alt=""
+        style="border: 1px solid black;"
+      />
+      <img src="../../../../assets/images/product-details/boja3.jpg" alt="" />
+    </div>
+    <p class="mt-2 mb-1">Select size</p>
+    <div
+      class="sizeContainer d-flex flex-row flex-wrap justify-content-start mb-2"
+    >
+      <div class="sizeItem">
+        <span>XS</span>
+      </div>
+      <div class="sizeItemNotAvailable"><span>S</span></div>
+      <div class="sizeItem">
+        <span>M</span>
+      </div>
+      <div class="sizeItem"><span>L</span></div>
+      <div class="sizeItem">
+        <span>XL</span>
+      </div>
+      <div class="sizeItemNotAvailable"><span>2XL</span></div>
+    </div>
+    <button type="submit" class="btn btn-lg btn-block addToCartbtn">
+      Dodaj u korpu
+    </button>
+  </div>
+</div>

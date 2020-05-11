@@ -1,22 +1,25 @@
 .mainContent {
-  max-width: 950px;
+  max-width: 70%;
   width: 100%;
   padding: 10px;
 }
 
 .imageContainer {
+  max-width: 95%;
+  width: 100%;
 }
 
 .imageContainer img {
-  max-width: 460px;
+  max-width: 50%;
   height: 630px;
   width: 100%;
-  margin-right: 5px;
+  margin: auto;
+  /* margin-right: 5px; */
   cursor: pointer;
 }
 
 .productDetails {
-  max-width: 925px;
+  max-width: 95%;
   width: 100%;
   background-color: white;
   padding: 20px 130px;
@@ -46,9 +49,10 @@
 }
 
 .productReCap {
-  max-width: 400px;
-  width: 100%;
-  margin: 0 auto;
+  position: fixed;
+  width: 28%;
+  margin-top: 150px;
+  margin-left: 69%;
 }
 
 .productReCap h4,
@@ -105,4 +109,34 @@ button {
 .addToCartbtn:hover {
   background: #868686;
   outline: none;
+}
+
+@media (max-width: 1360px) {
+  .mainContent {
+    max-width: 60%;
+  }
+
+  .productReCap {
+    width: 35%;
+    margin-left: 60%;
+  }
+
+  #secondPhoto {
+    display: none;
+  }
+
+  .imageContainer img {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .productDetails {
+    padding: 20px 60px;
+  }
+
+  #secondImageContainer img {
+    max-width: 50%;
+    height: 400px;
+    margin: 0 auto;
+  }
 }

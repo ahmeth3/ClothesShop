@@ -32,10 +32,17 @@
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="registerForm">
+        <form
+          [formGroup]="registerForm"
+          #f="ngForm"
+          name="theForm"
+          (submit)="addUser(f)"
+        >
           <div class="form-group">
             <input
               type="text"
+              name="email"
+              [(ngModel)]="user.email"
               [ngClass]="
                 email.errors && email.touched
                   ? 'formControlInvalid'
@@ -57,6 +64,8 @@
             <div class="form-group">
               <input
                 type="password"
+                name="password"
+                [(ngModel)]="user.password"
                 [ngClass]="
                   (password.errors && password.touched) || passwordGroup.errors
                     ? 'formControlInvalid'

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ import { ProductDetailsComponent } from './components/shop/product-details/produ
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     Ng2PageScrollModule,
     ReactiveFormsModule,
     ClickOutsideModule,

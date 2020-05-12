@@ -1,6 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { User } from 'src/app/models/User';
+import { UserService } from '../../../services/user.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,7 +14,12 @@ export class RegisterComponent implements OnInit {
   @Output() loginActive: EventEmitter<any> = new EventEmitter<any>();
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  users: User[];
+  user = new User('', '');
+  error = '';
+  success = '';
+
+  constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {
     document.getElementById('openModalButton').click();
@@ -65,5 +73,24 @@ export class RegisterComponent implements OnInit {
   public loginActiveHandler(): void {
     this.modalDismissedHandler();
     this.loginActive.emit();
+  }
+
+  addUser(f) {
+    this.error = '';
+    this.success = '';
+
+    this.userService.store(this.user).subscribe(
+      (res: User[]) => {
+        // Update the list of cars
+        this.users = res;
+
+        // Inform the user
+        this.success = 'Created successfully';
+
+        // Reset the form
+        f.reset();
+      },
+      (err) => (this.error = err)
+    );
   }
 }

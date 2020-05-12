@@ -22,6 +22,7 @@
         <h4 class="modal-title">Prijavite se</h4>
         <button
           type="button"
+          id="closeButton"
           class="close"
           data-dismiss="modal"
           aria-hidden="true"
@@ -32,7 +33,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="loginForm">
+        <form [formGroup]="loginForm" (submit)="login()">
           <div class="form-group">
             <input
               type="text"
@@ -44,9 +45,17 @@
               formControlName="email"
               placeholder="Email"
             />
-            <span *ngIf="email.invalid && email.touched">
-              Your email does not look right
-            </span>
+            <div *ngIf="email.errors && email.touched" class="mt-1">
+              <span *ngIf="email.errors.required">
+                Unesite email adresu
+              </span>
+              <span *ngIf="email.errors.email">
+                Email mora biti validna email adresa
+              </span>
+              <span *ngIf="email.getError('incorrect')">
+                Email koji ste uneli nije tacan
+              </span>
+            </div>
           </div>
           <div class="form-group">
             <input
@@ -59,9 +68,12 @@
               formControlName="password"
               placeholder="Password"
             />
-            <span *ngIf="password.invalid && password.touched">
-              That password sucks...
-            </span>
+            <div *ngIf="password.errors && password.touched" class="mt-1">
+              <span *ngIf="password.errors.required">Unesite lozinku</span>
+              <span *ngIf="password.getError('incorrect')"
+                >Lozinka nije tacna</span
+              >
+            </div>
           </div>
           <div class="extraContentWrapper">
             <label style="float: left;"
@@ -74,6 +86,7 @@
             <button
               type="submit"
               class="btn btn-primary btn-lg btn-block login-btn"
+              [disabled]="loginForm.invalid"
             >
               Prijava
             </button>

@@ -14,10 +14,9 @@ export class RegisterComponent implements OnInit {
   @Output() loginActive: EventEmitter<any> = new EventEmitter<any>();
   registerForm: FormGroup;
 
-  users: User[];
   user = new User('', '');
-  error = '';
-  success = '';
+  error: string = '';
+  success: string = '';
 
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
@@ -75,22 +74,26 @@ export class RegisterComponent implements OnInit {
     this.loginActive.emit();
   }
 
-  addUser(f) {
-    this.error = '';
-    this.success = '';
+  register() {
+    this.mapFormValuesToUser();
 
     this.userService.store(this.user).subscribe(
-      (res: User[]) => {
-        // Update the list of cars
-        this.users = res;
-
+      () => {
         // Inform the user
         this.success = 'Created successfully';
 
         // Reset the form
-        f.reset();
+        this.registerForm.reset();
+
+        // Close the register form
+        document.getElementById('closeButton').click();
       },
       (err) => (this.error = err)
     );
+  }
+
+  mapFormValuesToUser() {
+    this.user.email = this.email.value;
+    this.user.password = this.password.value;
   }
 }

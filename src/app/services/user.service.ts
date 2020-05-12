@@ -15,14 +15,25 @@ import { User } from '../models/User';
 })
 export class UserService {
   baseUrl = 'http://localhost/ClothesShopApi/user';
+  user = new User('', '');
   users: User[];
 
   constructor(private http: HttpClient) {}
 
+  login(email: string): Observable<User> {
+    const params = new HttpParams().set('email', email);
+
+    return this.http.get(`${this.baseUrl}/login`, { params: params }).pipe(
+      map((res) => {
+        this.user = res['data'];
+        return this.user;
+      })
+    );
+  }
+
   store(user: User): Observable<User[]> {
     return this.http.post(`${this.baseUrl}/create`, { data: user }).pipe(
-      map((res) => {
-        this.users.push(res['data']);
+      map(() => {
         return this.users;
       }),
       catchError(this.handleError)

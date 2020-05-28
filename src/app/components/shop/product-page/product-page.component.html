@@ -281,12 +281,9 @@
     <div
       class="productContainer d-flex flex-row flex-wrap justify-content-center"
     >
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
+      <div *ngFor="let product of products">
+        <app-product [model]="product"></app-product>
+      </div>
     </div>
   </div>
 </div>

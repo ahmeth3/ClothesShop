@@ -113,11 +113,13 @@ hr {
 
 .mainContent {
   overflow-x: hidden;
-  background-image: linear-gradient(
+  max-width: 3000px;
+  width: 100%;
+  /* background-image: linear-gradient(
     to right,
     rgb(248, 249, 250),
     rgb(255, 255, 255)
-  );
+  ); */
 }
 
 .filters {

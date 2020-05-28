@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/models/Product';
 
 @Component({
   selector: 'app-product',
@@ -7,12 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
+  @Input() model: Product;
+
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  
-
-  }
+  ngOnInit(): void {}
 
   redirect() {
     // this.router.navigate(['./najcesca-pitanja']);

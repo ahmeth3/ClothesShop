@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/models/Product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-page',
@@ -14,12 +16,21 @@ export class ProductPageComponent implements OnInit {
   sizeActive: boolean = false;
   sortActive: boolean = false;
 
-  constructor(private route: ActivatedRoute) {}
+  products: Product[];
+  error = '';
+  success = '';
+
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
       (params) => (this.category = params.get('category'))
     );
+
+    this.getProducts();
   }
 
   scrollToggler(counter) {
@@ -47,5 +58,17 @@ export class ProductPageComponent implements OnInit {
 
     document.getElementById('mainContent').style.width = '100%';
     document.getElementById('mainContent').style.height = '100vh';
+  }
+
+  //gets all products fetched from Product Service
+  getProducts(): void {
+    this.productService.get().subscribe(
+      (res: Product[]) => {
+        this.products = res;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
   }
 }

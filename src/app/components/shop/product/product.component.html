@@ -1,6 +1,6 @@
 <div class="card m-3" style="max-width: 18rem;">
   <div class="imageContainer">
-    <img src="../../../../assets/images/product1.jpg" class="card-img-top" />
+    <img src="{{ this.model.picUrl }}" class="card-img-top" />
     <div
       class="card-img-overlay d-flex flex-column justify-content-center align-items-center"
     >
@@ -24,8 +24,6 @@
     <a routerLink="../../product-details" class="text-dark"
       ><h6 class="card-title">{{ model.name }}</h6></a
     >
-    <p class="card-text text-danger">
-      {{ model.price }} RSD
-    </p>
+    <p class="card-text text-danger">{{ model.price }} RSD</p>
   </div>
 </div>

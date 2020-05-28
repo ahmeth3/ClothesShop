@@ -38,6 +38,8 @@ export class ProductPageComponent implements OnInit {
     if (counter === 2) this.colorsActive = !this.colorsActive;
     if (counter === 3) this.sizeActive = !this.sizeActive;
     if (counter === 4) this.sortActive = !this.sortActive;
+
+    console.log(this.products[0].picUrl);
   }
 
   dropdownCloseOnClickOutside() {

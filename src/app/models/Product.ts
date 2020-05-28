@@ -6,6 +6,7 @@ export class Product {
   gender: string;
   color: string;
   size: string;
+  picUrl: string;
 
   constructor(
     name: string,

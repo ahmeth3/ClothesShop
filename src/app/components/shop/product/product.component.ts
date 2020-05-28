@@ -12,7 +12,9 @@ export class ProductComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.model.picUrl)
+  }
 
   redirect() {
     // this.router.navigate(['./najcesca-pitanja']);

@@ -50,6 +50,10 @@
   font-size: 1.2rem;
 }
 
+.categoriesContent span {
+  cursor: pointer;
+}
+
 .colorWrapper {
   max-width: 280px;
   width: 100%;

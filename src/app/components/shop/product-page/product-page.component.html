@@ -20,14 +20,27 @@
         <hr />
       </div>
       <div id="demo" class="collapse show categoriesContent">
-        <div>
-          <span>Jackets</span>
+        <div class="maleCategories" *ngIf="this.category === 'men'">
+          <div>
+            <span (click)="this.getProducts()">View all</span>
+          </div>
+          <div>
+            <span (click)="getProductsByCategory('Shirts')">Shirts</span>
+          </div>
+          <div>
+            <span (click)="getProductsByCategory('Jackets')">Jackets</span>
+          </div>
         </div>
-        <div>
-          <span>Shirts</span>
-        </div>
-        <div>
-          <span>T-shirts</span>
+        <div class="femaleCategories" *ngIf="this.category === 'women'">
+          <div>
+            <span (click)="this.getProducts()">View all</span>
+          </div>
+          <div>
+            <span (click)="getProductsByCategory('Shirts')">Shirts</span>
+          </div>
+          <div>
+            <span (click)="getProductsByCategory('Dresses')">Dresses</span>
+          </div>
         </div>
       </div>
     </div>
@@ -273,9 +286,20 @@
     <div
       class="chosenFilters d-flex flex-row justify-content-start align-items-center px-3"
     >
-      <div class="chosenFilter d-flex flex-row align-items-center">
-        <span>jackets</span>
-        <i class="fas fa-times"></i>
+      <div
+        class="chosenFilter d-flex flex-row align-items-center"
+        *ngIf="this.productCategory !== 'View All'"
+      >
+        <span>{{ productCategory | lowercase }}</span>
+        <i class="fas fa-times" (click)="filterRemoveHandler(0)"></i>
+      </div>
+
+      <div
+        class="chosenFilter d-flex flex-row align-items-center"
+        *ngIf="this.colorCategory !== 'None'"
+      >
+        <span>{{ colorCategory | lowercase }}</span>
+        <i class="fas fa-times" (click)="filterRemoveHandler(1)"></i>
       </div>
     </div>
     <div

@@ -22,24 +22,24 @@
       <div id="demo" class="collapse show categoriesContent">
         <div class="maleCategories" *ngIf="this.category === 'men'">
           <div>
-            <span (click)="this.getProducts()">View all</span>
+            <span (click)="chosenFilterHandler(0, 'View All')">View all</span>
           </div>
           <div>
-            <span (click)="getProductsByCategory('Shirts')">Shirts</span>
+            <span (click)="chosenFilterHandler(0, 'Shirts')">Shirts</span>
           </div>
           <div>
-            <span (click)="getProductsByCategory('Jackets')">Jackets</span>
+            <span (click)="chosenFilterHandler(0, 'Jackets')">Jackets</span>
           </div>
         </div>
         <div class="femaleCategories" *ngIf="this.category === 'women'">
           <div>
-            <span (click)="this.getProducts()">View all</span>
+            <span (click)="chosenFilterHandler(0, 'View All')">View all</span>
           </div>
           <div>
-            <span (click)="getProductsByCategory('Shirts')">Shirts</span>
+            <span (click)="chosenFilterHandler(0, 'Shirts')">Shirts</span>
           </div>
           <div>
-            <span (click)="getProductsByCategory('Dresses')">Dresses</span>
+            <span (click)="chosenFilterHandler(0, 'Dresses')">Dresses</span>
           </div>
         </div>
       </div>
@@ -300,6 +300,14 @@
       >
         <span>{{ colorCategory | lowercase }}</span>
         <i class="fas fa-times" (click)="filterRemoveHandler(1)"></i>
+      </div>
+
+      <div
+        class="chosenFilter d-flex flex-row align-items-center"
+        *ngIf="this.sizeCategory !== 'None'"
+      >
+        <span>{{ sizeCategory | lowercase }}</span>
+        <i class="fas fa-times" (click)="filterRemoveHandler(2)"></i>
       </div>
     </div>
     <div

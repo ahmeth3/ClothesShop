@@ -14,7 +14,8 @@ export class ProductPageComponent implements OnInit {
   category: string;
   genderHandler: string;
   productCategory = 'View All'; // product category handler (defines chosen product category)
-  colorCategory = 'None'; // product category handler (defines chosen product category)
+  colorCategory = 'None'; // product color handler (defines chosen product color)
+  sizeCategory = 'None'; // product size handler (defines chosen product size)
 
   categoryActive: boolean = true;
   colorsActive: boolean = false;
@@ -42,10 +43,11 @@ export class ProductPageComponent implements OnInit {
       if (this.category === 'men') this.genderHandler = 'M';
       else this.genderHandler = 'F';
 
-      this.getProducts();
+      this.getProductsByFilters();
     });
 
     this.addClickEventToColorItem();
+    this.addClickEventToSizeItem();
   }
 
   scrollToggler(counter) {
@@ -117,81 +119,107 @@ export class ProductPageComponent implements OnInit {
       }
       elements[i].addEventListener(
         'click',
-        this.getProductsByColor.bind(this, color)
+        this.chosenFilterHandler.bind(this, 1, color)
       );
     }
   }
 
+  addClickEventToSizeItem() {
+    let elements = this.elRef.nativeElement.querySelectorAll('.sizeItem');
+
+    for (var i = 0; i < elements.length; i++) {
+      var size;
+      switch (i) {
+        case 0:
+          size = '2XS';
+          break;
+        case 1:
+          size = 'XS';
+          break;
+        case 2:
+          size = 'S';
+          break;
+        case 3:
+          size = 'M';
+          break;
+        case 4:
+          size = 'L';
+          break;
+        case 5:
+          size = 'XL';
+          break;
+        case 6:
+          size = '2XL';
+          break;
+        case 7:
+          size = '3XL';
+          break;
+      }
+      elements[i].addEventListener(
+        'click',
+        this.chosenFilterHandler.bind(this, 2, size)
+      );
+    }
+  }
+
+  /* 
+    This function is called on any filter mouse click event.
+    Type of filter that is active is set through this function
+  */
+  chosenFilterHandler(chosenFilter: number, filter: string) {
+    switch (chosenFilter) {
+      case 0:
+        this.productCategory = filter;
+        break;
+      case 1:
+        this.colorCategory = filter;
+        break;
+      case 2:
+        this.sizeCategory = filter;
+        break;
+      default:
+        break;
+    }
+    this.getProductsByFilters();
+  }
+
+  /* 
+    This function is called when chosen filter is removed.
+    It resets the value of active filter variable.
+  */
   filterRemoveHandler(chosenFilter: number) {
-    /* 
-      If the category is removed and color is still active getProductsByColor should be called but
-      category has to be 'View All'
-   */
-    if (chosenFilter === 0 && this.colorCategory !== 'None') {
-      this.productCategory = 'View All';
-      this.getProductsByColor(this.colorCategory);
+    switch (chosenFilter) {
+      case 0:
+        this.productCategory = 'View All';
+        break;
+      case 1:
+        this.colorCategory = 'None';
+        break;
+      case 2:
+        this.sizeCategory = 'None';
+        break;
+      default:
+        break;
     }
-
-    /* 
-      If the category is removed and color is not active getProducts should be called and category
-      has to be 'View All'
-    */
-    if (chosenFilter === 0 && this.colorCategory === 'None') {
-      this.productCategory = 'View All';
-      this.getProducts();
-    }
-
-    /* If the color is removed and category is still active getProductsByCategory should be called 
-       and colorCategory should be None
-    */
-    if (chosenFilter === 1 && this.productCategory !== 'View All') {
-      this.colorCategory = 'None';
-      this.getProductsByCategory(this.productCategory);
-    }
-
-    /* If the color is removed and category is still not active getProducts should be called 
-       and colorCategory should be None
-    */
-    if (chosenFilter === 1 && this.productCategory === 'View All') {
-      this.colorCategory = 'None';
-      this.getProducts();
-    }
-  }
-  // Gets all products filtered by gender fetched from Product Service
-  getProducts(): void {
-    this.productService.get(this.genderHandler).subscribe(
-      (res: Product[]) => {
-        this.products = res;
-      },
-      (err) => {
-        this.error = err;
-      }
-    );
+    this.getProductsByFilters();
   }
 
-  // Gets products filtered by category fetched from Product Service
-  getProductsByCategory(category: string): void {
-    this.productService.getByCategory(this.genderHandler, category).subscribe(
-      (res: Product[]) => {
-        this.products = res;
-        // Sets chosen product category
-        this.productCategory = category;
-      },
-      (err) => {
-        this.error = err;
-      }
-    );
-  }
-
-  // Gets produts filtered by color fetched from Product Service
-  public getProductsByColor(color): void {
+  // Gets produts based on search criteria fetched from Product Service
+  getProductsByFilters(): void {
+    console.log(this.genderHandler);
+    console.log(this.productCategory);
+    console.log(this.colorCategory);
+    console.log(this.sizeCategory);
     this.productService
-      .getByColor(this.genderHandler, this.productCategory, color)
+      .getByFilters(
+        this.genderHandler,
+        this.productCategory,
+        this.colorCategory,
+        this.sizeCategory
+      )
       .subscribe(
         (res: Product[]) => {
           this.products = res;
-          // Sets chosen color category
-          this.colorCategory = color;
         },
         (err) => {
           this.error = err;

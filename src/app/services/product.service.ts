@@ -14,7 +14,7 @@ import { Product } from '../models/Product';
 })
 export class ProductService {
   baseUrl = 'http://localhost/ClothesShopApi/product';
-  product = new Product('', null, '', '', '', '');
+  product = new Product('', null, '', '', '', '', '', '');
   products: Product[];
 
   constructor(private http: HttpClient) {}

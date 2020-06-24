@@ -6,10 +6,10 @@
     >
       <h2 class="overlayText text-light mt-auto">
         Detaljnije<br />
-        <i
+        <!-- <i
           class="fas fa-long-arrow-alt-right d-flex justify-content-center"
           style="font-size: 35px;"
-        ></i>
+        ></i> -->
       </h2>
 
       <div
@@ -21,9 +21,13 @@
     </div>
   </div>
   <div class="card-body text-dark">
-    <a routerLink="../../product-details" class="text-dark"
+    <a
+      [routerLink]="['/product-details']"
+      [queryParams]="{ product: model | json }"
+      queryParamsHandling="merge"
+      class="text-dark"
       ><h6 class="card-title">{{ model.name }}</h6></a
     >
-    <p class="card-text text-danger">{{ model.price }} RSD</p>
+    <p class="card-text text-danger">{{ model.price | pointReplacer }} RSD</p>
   </div>
 </div>

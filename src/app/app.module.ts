@@ -17,6 +17,9 @@ import { ProductPageComponent } from './components/shop/product-page/product-pag
 import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { ProductDetailsComponent } from './components/shop/product-details/product-details.component';
+import { CartHoverComponent } from './components/shop/cart/cart-hover/cart-hover.component';
+import { FullPageCartComponent } from './components/shop/cart/full-page-cart/full-page-cart.component';
+import { PointReplacerPipe } from './components/OverwrittenAngularComponents/point-replacer.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { ProductDetailsComponent } from './components/shop/product-details/produ
     LoginComponent,
     RegisterComponent,
     ProductDetailsComponent,
+    CartHoverComponent,
+    FullPageCartComponent,
+    PointReplacerPipe,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,7 @@ import { ProductDetailsComponent } from './components/shop/product-details/produ
     ReactiveFormsModule,
     ClickOutsideModule,
   ],
-  providers: [],
+  providers: [PointReplacerPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

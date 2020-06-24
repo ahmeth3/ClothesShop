@@ -13,10 +13,10 @@ export class ProductComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    console.log(this.model.picUrl)
+    this.model.productDetailsFolderUrl =
+      'http://localhost/ClothesShopApi/product/product-details-images/' +
+      this.model.picUrl.substr(47, this.model.picUrl.length);
   }
 
-  redirect() {
-    // this.router.navigate(['./najcesca-pitanja']);
-  }
+  
 }

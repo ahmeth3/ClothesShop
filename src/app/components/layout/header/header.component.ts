@@ -10,6 +10,8 @@ export class HeaderComponent implements OnInit {
   myForm: FormGroup;
   loginActive: boolean = false;
   registerActive: boolean = false;
+  cartActive: boolean = false;
+  cartHover: boolean = false;
 
   constructor() {}
 
@@ -29,5 +31,21 @@ export class HeaderComponent implements OnInit {
 
   registerClose() {
     this.registerActive = false;
+  }
+
+  cartHoverShow() {
+    this.cartActive = true;
+  }
+
+  cartHoverHide() {
+    this.cartActive = false;
+  }
+
+  cartHoverActive() {
+    this.cartHover = true;
+  }
+
+  cartHoverInactive() {
+    this.cartHover = false;
   }
 }

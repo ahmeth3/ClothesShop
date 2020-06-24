@@ -1,0 +1,56 @@
+.container {
+  width: 300px;
+  min-height: 50px;
+  /* height: auto; */
+  background-color: white;
+  position: absolute;
+  right: 2%;
+
+  border: 1px;
+  border-style: groove;
+  border-radius: 5px;
+}
+
+.topContent p {
+  color: rgb(124, 124, 124);
+  margin-bottom: 0px;
+  margin-left: auto;
+}
+
+.topContent h6 {
+  color: rgb(138, 146, 142);
+  margin-top: 0px;
+  margin-left: auto;
+}
+
+.products h6 {
+  color: rgb(98, 98, 98);
+  padding-left: 4px;
+}
+
+.productsContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.productOverview {
+  margin: 1px;
+  padding-left: 4px;
+}
+
+.productOverview p {
+  color: rgb(124, 124, 124);
+}
+
+.productOverview span {
+  color: rgb(70, 68, 68);
+}
+
+.productOverview img {
+  width: 55px;
+  height: 65px;
+}
+
+.buttonContainer {
+  padding: 10px;
+}

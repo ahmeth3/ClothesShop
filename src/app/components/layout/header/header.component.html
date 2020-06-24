@@ -112,9 +112,16 @@
           <i class="fas fa-user"></i> Moj nalog
         </button>
 
-        <button class="btn btn-outline-secondary pl-0 mr-5" id="navButton">
-          <i class="fas fa-shopping-cart"></i> Korpa
-        </button>
+        <div
+          class=""
+          (mouseover)="cartHoverShow()"
+          (mouseleave)="cartHoverHide()"
+        >
+          <button class="btn btn-outline-secondary pl-0 mr-5" id="navButton">
+            <i class="fas fa-shopping-cart"></i> Korpa
+          </button>
+          <app-cart-hover *ngIf="cartActive"></app-cart-hover>
+        </div>
       </div>
     </section>
     <form class="form-inline my-2 my-lg-0 row navSearchForm" [formGroup]="">

@@ -5,6 +5,7 @@ import { NaciniPlacanjaComponent } from './components/support/nacini-placanja/na
 import { ProductComponent } from './components/shop/product/product.component';
 import { ProductPageComponent } from './components/shop/product-page/product-page.component';
 import { ProductDetailsComponent } from './components/shop/product-details/product-details.component';
+import { FullPageCartComponent } from './components/shop/cart/full-page-cart/full-page-cart.component';
 
 const routes: Routes = [
   { path: 'najcesca-pitanja', component: NajcescaPitanjaComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'product-page/:category', component: ProductPageComponent },
   { path: 'product', component: ProductComponent },
   { path: 'product-details', component: ProductDetailsComponent },
+  { path: 'cart', component: FullPageCartComponent },
 ];
 
 @NgModule({

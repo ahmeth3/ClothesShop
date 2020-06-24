@@ -31,6 +31,7 @@ export class UserService {
     );
   }
 
+  // register method
   store(user: User): Observable<User[]> {
     return this.http.post(`${this.baseUrl}/create`, { data: user }).pipe(
       map(() => {

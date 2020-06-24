@@ -1,0 +1,102 @@
+.wrapper {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+
+  background-color: rgb(248, 249, 250);
+
+  padding: 1% 20%;
+}
+
+.iconContainer {
+  width: 170px;
+  height: 150px;
+  background-color: rgb(204, 204, 204);
+  border-radius: 350px;
+  margin-top: 50px;
+}
+
+.iconContainer i {
+  color: white;
+  font-size: 92px;
+  position: relative;
+  right: 5px;
+}
+
+.numberContainer {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(204, 204, 204);
+  border: 2px solid white;
+  border-radius: 450px;
+
+  position: relative;
+  right: 35px;
+  top: 45px;
+}
+
+.numberContainer span {
+  color: white;
+  font-size: 24px;
+}
+
+.textContainer {
+  margin-top: 25px;
+  margin-right: 20px;
+}
+
+.textContainer p {
+  text-align: center;
+}
+
+.topContent p {
+  color: rgb(124, 124, 124);
+  margin-bottom: 0px;
+  margin-left: auto;
+  font-size: 18px;
+}
+
+.topContent h4 {
+  color: rgb(138, 146, 142);
+  margin-top: 0px;
+  margin-left: auto;
+  font-size: 28px;
+}
+
+.products h4 {
+  color: rgb(98, 98, 98);
+  font-size: 28px;
+  padding-left: 4px;
+}
+
+.productOverview {
+  margin: 1px;
+  padding-left: 4px;
+}
+
+.productOverview p {
+  color: rgb(124, 124, 124);
+  font-size: 22px;
+}
+
+.productOverview span {
+  color: rgb(70, 68, 68);
+  font-size: 22px;
+}
+
+.productOverview img {
+  width: 110px;
+  height: 100px;
+}
+
+.buttonContainer {
+  padding: 0px 4px;
+}
+
+#continueShoppingButton {
+  margin-left: 35px;
+}
+
+#checkoutButton {
+  margin-left: auto;
+}

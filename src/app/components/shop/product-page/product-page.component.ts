@@ -206,10 +206,6 @@ export class ProductPageComponent implements OnInit {
 
   // Gets produts based on search criteria fetched from Product Service
   getProductsByFilters(): void {
-    console.log(this.genderHandler);
-    console.log(this.productCategory);
-    console.log(this.colorCategory);
-    console.log(this.sizeCategory);
     this.productService
       .getByFilters(
         this.genderHandler,

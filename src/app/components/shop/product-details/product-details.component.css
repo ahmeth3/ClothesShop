@@ -38,16 +38,6 @@
   font-size: 12px;
 }
 
-.colorImagesContainer {
-  padding-top: 10px;
-}
-
-.colorImagesContainer img {
-  width: 60px;
-  height: 80px;
-  margin-right: 5px;
-}
-
 .productReCap {
   position: fixed;
   width: 28%;
@@ -94,6 +84,16 @@ button {
 .sizeItemNotAvailable span {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
+}
+
+.quantityContainer input {
+  width: 50px;
+  margin-left: 10px;
+  margin-top: 1px;
+}
+
+.error {
+  color: #d9534f;
 }
 
 .addToCartbtn {

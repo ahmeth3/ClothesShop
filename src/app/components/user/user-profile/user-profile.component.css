@@ -1,0 +1,89 @@
+.sidebar {
+  width: 30%;
+  margin-top: 40px;
+}
+
+.sidebar h4 {
+  margin: 0 auto 10px auto;
+}
+
+hr {
+  width: 55%;
+  border: 1px solid black;
+}
+
+.buttonContainer {
+  width: 55%;
+  margin: 0 auto;
+  padding: 1px 0px;
+}
+
+.buttonContainer button {
+  background-color: rgb(247, 248, 249);
+  font-size: 20px;
+  text-align: left;
+  border: none;
+  outline: none;
+}
+
+.buttonContainer button:focus {
+  background-color: rgb(108, 117, 125);
+  color: white;
+}
+
+.buttonContainer button:hover {
+  background-color: rgb(108, 117, 125);
+  color: white;
+}
+
+.content {
+  width: 70%;
+  margin-top: 40px;
+}
+
+.addressType {
+  width: 80%;
+}
+
+.formControlValid,
+.formControlInvalid {
+  display: block;
+  width: 100%;
+  height: 45px;
+  padding-left: 10px;
+  border: 1px solid rgb(206, 212, 218);
+  border-radius: 5px;
+  outline: none;
+}
+
+.formControlInvalid {
+  border: 1px solid red;
+}
+
+.form-group span {
+  color: #d9534f;
+  margin-top: 4px;
+  margin-bottom: 0px;
+}
+
+.order {
+  width: 80%;
+  /* height: 200px; */
+  border: 1px solid black;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 25px;
+}
+
+.order span {
+  color: rgb(29, 27, 27);
+  font-size: 18px;
+}
+
+.order em {
+  color: rgb(124, 124, 124);
+}
+
+.priceInfo {
+  margin-right: 50px;
+}

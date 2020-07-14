@@ -27,6 +27,10 @@ export class CartHoverComponent implements OnInit {
     this.router.navigate(['/cart']);
   }
 
+  loadCheckoutPage() {
+    this.router.navigate(['/checkout']);
+  }
+
   removeProduct(product) {
     this.cartService.removeFromCart(product);
     this.recentlyAddedProductsHandler();

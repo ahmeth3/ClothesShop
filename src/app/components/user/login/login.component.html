@@ -53,7 +53,7 @@
                 Email mora biti validna email adresa
               </span>
               <span *ngIf="email.getError('incorrect')">
-                Email koji ste uneli nije tacan
+                Email koji ste uneli nije tačan
               </span>
             </div>
           </div>
@@ -71,15 +71,9 @@
             <div *ngIf="password.errors && password.touched" class="mt-1">
               <span *ngIf="password.errors.required">Unesite lozinku</span>
               <span *ngIf="password.getError('incorrect')"
-                >Lozinka nije tacna</span
+                >Lozinka nije tačna</span
               >
             </div>
-          </div>
-          <div class="extraContentWrapper">
-            <label style="float: left;"
-              ><input type="checkbox" /> Remember me</label
-            >
-            <a href="#" style="float: right;">Forgot Password?</a>
           </div>
 
           <div class="form-group">

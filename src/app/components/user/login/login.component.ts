@@ -23,8 +23,11 @@ export class LoginComponent implements OnInit {
     document.getElementById('openModalButton').click();
 
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      email: [
+        'akihalilovic@gmail.com',
+        [Validators.required, Validators.email],
+      ],
+      password: ['ahmet1997', [Validators.required]],
     });
   }
 
@@ -48,39 +51,30 @@ export class LoginComponent implements OnInit {
   login() {
     this.mapFormValuesToUser();
 
-    let selectedUser = new User('', '');
-
-    this.userService.login(this.user.email).subscribe(
-      (res: User) => {
-        selectedUser = res;
-
-        this.loginErrorHandler(selectedUser);
+    this.userService.login(this.user).subscribe(
+      (res) => {
+        localStorage.setItem('token', res['jwt'].toString());
+        this.loginErrorHandler('200');
       },
       (err) => {
-        this.error = err;
+        this.error = err['error'].message;
+        this.loginErrorHandler('400');
       }
     );
   }
 
-  loginErrorHandler(selectedUser: User): void {
-    if (selectedUser === null) {
-      selectedUser = new User('', '');
-    }
-
-    if (
-      selectedUser.email === this.email.value &&
-      selectedUser.password === this.password.value
-    ) {
-      document.getElementById('closeButton').click();
-    } else {
-      if (selectedUser.password != this.password.value)
+  loginErrorHandler(statusCode: string): void {
+    if (statusCode === '200') document.getElementById('closeButton').click();
+    else if (statusCode === '400') {
+      if (this.error === 'Wrong password.')
         this.loginForm.controls['password'].setErrors({ incorrect: true });
-      if (selectedUser.email != this.email.value)
+      if (this.error === 'Email address is wrong.')
         this.loginForm.controls['email'].setErrors({ incorrect: true });
     }
   }
 
   mapFormValuesToUser() {
     this.user.email = this.email.value;
+    this.user.password = this.password.value;
   }
 }

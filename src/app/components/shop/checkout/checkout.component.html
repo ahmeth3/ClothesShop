@@ -1,0 +1,181 @@
+<div class="wrapper">
+  <div class="content d-flex flex-column" *ngIf="!proceed">
+    <div class="d-flex flex-row">
+      <div class="left-part">
+        <h2>Nemate nalog? Registrujte se</h2>
+        <span>Kreiranjem naloga bićete u mogućnosti da:</span>
+        <ul>
+          <li>prolazite brže kroz proces plaćanja,</li>
+          <li>da koristite više adresa za isporuku,</li>
+          <li>pregledate i pratite Vaše porudžbine itd.</li>
+        </ul>
+        <span>Kreirajte nalog klikom na <em>Moj nalog</em></span>
+      </div>
+      <div class="right-part">
+        <div class="login">
+          <h4>Već ste registrovani?</h4>
+          <span>Prijavite se klikom na <em>Moj nalog</em></span>
+        </div>
+
+        <div class="guest">
+          <h4>
+            Ukoliko kupovinu želite da izvršite kao gost, nastavite dalje
+            <br />bez prijave
+          </h4>
+        </div>
+      </div>
+    </div>
+    <button
+      class="btn btn-outline-secondary"
+      (click)="proceedToAddressForm()"
+      id="proceed"
+    >
+      Dalje
+    </button>
+  </div>
+  <div class="address" *ngIf="proceed">
+    <form [formGroup]="addressForm" class="d-flex flex-row align-items-start">
+      <div class="contactSection">
+        <h5>Kontakt informacije</h5>
+        <div class="form-group">
+          <input
+            id="name"
+            type="text"
+            [ngClass]="
+              name.invalid && name.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="name"
+            placeholder="Ime"
+          />
+          <div *ngIf="name.errors && name.touched" class="mt-1">
+            <span *ngIf="name.errors.required">
+              Unesite ime
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [ngClass]="
+              surname.invalid && surname.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="surname"
+            placeholder="Prezime"
+          />
+          <div *ngIf="surname.errors && surname.touched" class="mt-1">
+            <span *ngIf="surname.errors.required">
+              Unesite prezime
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [ngClass]="
+              phone.invalid && phone.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="phone"
+            placeholder="Broj telefona"
+          />
+          <div *ngIf="phone.errors && phone.touched" class="mt-1">
+            <span *ngIf="phone.errors.required">
+              Unesite broj telefona
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="addressSection">
+        <h5>Adresa</h5>
+        <div class="form-group">
+          <input
+            id="name"
+            type="text"
+            [ngClass]="
+              address.invalid && address.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="address"
+            placeholder="Adresa"
+          />
+          <div *ngIf="address.errors && address.touched" class="mt-1">
+            <span *ngIf="address.errors.required">
+              Unesite adresu
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [ngClass]="
+              city.invalid && city.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="city"
+            placeholder="Grad"
+          />
+          <div *ngIf="city.errors && city.touched" class="mt-1">
+            <span *ngIf="city.errors.required">
+              Unesite grad
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [ngClass]="
+              zipCode.invalid && zipCode.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="zipCode"
+            placeholder="Poštanski broj"
+          />
+          <div *ngIf="zipCode.errors && zipCode.touched" class="mt-1">
+            <span *ngIf="zipCode.errors.required">
+              Unesite poštanski broj
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [ngClass]="
+              country.invalid && country.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="country"
+            placeholder="Država"
+          />
+          <div *ngIf="country.errors && country.touched" class="mt-1">
+            <span *ngIf="country.errors.required">
+              Unesite državu
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="orderSection d-flex flex-column align-items-center justify-content-center"
+      >
+        <span>Plaćanje se vrši pouzećem.</span>
+        <button
+          class="btn btn-outline-secondary"
+          type="submit"
+          [disabled]="addressForm.invalid"
+          id="order"
+          (click)="createOrder()"
+        >
+          Poručite
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

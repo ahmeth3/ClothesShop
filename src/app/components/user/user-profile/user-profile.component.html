@@ -1,0 +1,200 @@
+<div class="wrapper container-fluid d-flex flex-row">
+  <div class="sidebar d-flex flex-column">
+    <h4><i class="fas fa-user"></i> Moj nalog</h4>
+    <hr style="margin: 0 auto;" />
+    <div class="buttonContainer d-flex flex-column">
+      <button (click)="setActiveContent(1)">Adresar</button>
+      <button (click)="setActiveContent(2)">
+        Moje narudžbine
+      </button>
+      <button (click)="setActiveContent(3)">Moje želje</button>
+    </div>
+    <hr style="margin: 0 auto;" />
+  </div>
+  <div class="content">
+    <div class="addressType" *ngIf="activeContent === 1">
+      <h4>Izmeni adresu</h4>
+      <h5>Kontakt informacije</h5>
+      <form [formGroup]="addressForm" (submit)="updateAddress()">
+        <div class="form-group">
+          <input
+            id="name"
+            type="text"
+            [ngClass]="
+              name.invalid && name.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="name"
+            placeholder="Ime"
+          />
+          <div *ngIf="name.errors && name.touched" class="mt-1">
+            <span *ngIf="name.errors.required">
+              Unesite ime
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [ngClass]="
+              surname.invalid && surname.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="surname"
+            placeholder="Prezime"
+          />
+          <div *ngIf="surname.errors && surname.touched" class="mt-1">
+            <span *ngIf="surname.errors.required">
+              Unesite prezime
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [ngClass]="
+              phone.invalid && phone.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="phone"
+            placeholder="Broj telefona"
+          />
+          <div *ngIf="phone.errors && phone.touched" class="mt-1">
+            <span *ngIf="phone.errors.required">
+              Unesite broj telefona
+            </span>
+          </div>
+        </div>
+        <h5>Adresa</h5>
+        <div class="form-group">
+          <input
+            id="name"
+            type="text"
+            [ngClass]="
+              address.invalid && address.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="address"
+            placeholder="Adresa"
+          />
+          <div *ngIf="address.errors && address.touched" class="mt-1">
+            <span *ngIf="address.errors.required">
+              Unesite adresu
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [ngClass]="
+              city.invalid && city.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="city"
+            placeholder="Grad"
+          />
+          <div *ngIf="city.errors && city.touched" class="mt-1">
+            <span *ngIf="city.errors.required">
+              Unesite grad
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [ngClass]="
+              zipCode.invalid && zipCode.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="zipCode"
+            placeholder="Poštanski broj"
+          />
+          <div *ngIf="zipCode.errors && zipCode.touched" class="mt-1">
+            <span *ngIf="zipCode.errors.required">
+              Unesite poštanski broj
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [ngClass]="
+              country.invalid && country.touched
+                ? 'formControlInvalid'
+                : 'formControlValid'
+            "
+            formControlName="country"
+            placeholder="Država"
+          />
+          <div *ngIf="country.errors && country.touched" class="mt-1">
+            <span *ngIf="country.errors.required">
+              Unesite državu
+            </span>
+          </div>
+        </div>
+        <button
+          class="btn btn-outline-secondary"
+          type="submit"
+          [disabled]="addressForm.invalid"
+        >
+          Sačuvajte
+        </button>
+      </form>
+    </div>
+    <div class="orders" *ngIf="activeContent === 2">
+      <h4>Moje narudžbine</h4>
+      <div *ngFor="let order of orders">
+        <div class="order">
+          <div class="d-flex flex-row justify-content-between">
+            <span
+              ><b>#{{ order.id }}</b></span
+            >
+            <span
+              >Stanje: <b>{{ order.status }}</b></span
+            >
+          </div>
+          <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-column">
+              <span
+                >Datum narudžbine:
+                <em>{{ order.date | date: "dd/MM/yyyy" }}</em></span
+              >
+              <span
+                >Ime i prezime naručioca:
+                <em>{{ order.name }} {{ order.surname }}</em></span
+              >
+              <span
+                >Kontakt: <em>{{ order.phone }}</em></span
+              >
+              <span
+                >Adresa:
+                <em
+                  >{{ order.address }}, {{ order.city }},
+                  {{ order.country }}</em
+                ></span
+              >
+              <span
+                >Poštanski broj: <em>{{ order.zipCode }}</em></span
+              >
+            </div>
+            <div class="d-flex flex-column justify-content-center priceInfo">
+              <span
+                >Cena: <em>{{ order.price | pointReplacer }} RSD</em></span
+              >
+              <span>Način plaćanja: <em>pouzećem</em></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wishlist" *ngIf="activeContent === 3">
+      <h4>Moje želje</h4>
+    </div>
+  </div>
+</div>

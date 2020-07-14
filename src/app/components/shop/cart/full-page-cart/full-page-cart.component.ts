@@ -24,6 +24,10 @@ export class FullPageCartComponent implements OnInit {
     this.router.navigate(['/product-page', 'men']);
   }
 
+  loadCheckoutPage() {
+    this.router.navigate(['/checkout']);
+  }
+
   clearCart() {
     this.products = this.cartService.clearCart();
     this.productsShow = false;

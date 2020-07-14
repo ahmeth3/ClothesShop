@@ -20,6 +20,8 @@ import { ProductDetailsComponent } from './components/shop/product-details/produ
 import { CartHoverComponent } from './components/shop/cart/cart-hover/cart-hover.component';
 import { FullPageCartComponent } from './components/shop/cart/full-page-cart/full-page-cart.component';
 import { PointReplacerPipe } from './components/OverwrittenAngularComponents/point-replacer.pipe';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
+import { CheckoutComponent } from './components/shop/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { PointReplacerPipe } from './components/OverwrittenAngularComponents/poi
     CartHoverComponent,
     FullPageCartComponent,
     PointReplacerPipe,
+    UserProfileComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

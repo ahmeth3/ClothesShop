@@ -9,6 +9,7 @@ import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { User } from '../models/User';
+import { Address } from '../models/Address';
 
 @Injectable({
   providedIn: 'root',
@@ -17,18 +18,52 @@ export class UserService {
   baseUrl = 'http://localhost/ClothesShopApi/user';
   user = new User('', '');
   users: User[];
+  address = new Address('', '', '', '', '', '', '');
 
   constructor(private http: HttpClient) {}
 
-  login(email: string): Observable<User> {
-    const params = new HttpParams().set('email', email);
+  updateAddress(address: Address, token: string) {
+    return this.http
+      .post(`${this.baseUrl}/address/create`, {
+        data: address,
+        token: token,
+      })
+      .pipe((res) => {
+        return res;
+      });
+  }
 
-    return this.http.get(`${this.baseUrl}/login`, { params: params }).pipe(
+  getAddress(token: string) {
+    return this.http
+      .get(`${this.baseUrl}/address/list`, {
+        params: { token: token },
+      })
+      .pipe(
+        map((res) => {
+          this.address = res['data'];
+          return this.address;
+        })
+      );
+  }
+
+  login(user: User) {
+    return this.http.post(`${this.baseUrl}/login`, { data: user }).pipe(
       map((res) => {
-        this.user = res['data'];
-        return this.user;
+        return res;
       })
     );
+  }
+
+  // auto login (if token is valid)
+  autoLogin(token: string) {
+    return this.http
+      .get(`${this.baseUrl}/automaticLogin`, { params: { token: token } })
+      .pipe(
+        map((res) => {
+          return res;
+        })
+        // catchError(this.handleError)
+      );
   }
 
   // register method

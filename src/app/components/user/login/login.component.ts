@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,17 +18,18 @@ export class LoginComponent implements OnInit {
   error: string = '';
   success: string = '';
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     document.getElementById('openModalButton').click();
 
     this.loginForm = this.fb.group({
-      email: [
-        'akihalilovic@gmail.com',
-        [Validators.required, Validators.email],
-      ],
-      password: ['ahmet1997', [Validators.required]],
+      email: ['admin@admin.com', [Validators.required, Validators.email]],
+      password: ['admin123', [Validators.required]],
     });
   }
 
@@ -55,6 +57,8 @@ export class LoginComponent implements OnInit {
       (res) => {
         localStorage.setItem('token', res['jwt'].toString());
         this.loginErrorHandler('200');
+        if (this.user.email == 'admin@admin.com')
+          this.router.navigate(['/admin-page']);
       },
       (err) => {
         this.error = err['error'].message;

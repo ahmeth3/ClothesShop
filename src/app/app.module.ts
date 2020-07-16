@@ -22,6 +22,7 @@ import { FullPageCartComponent } from './components/shop/cart/full-page-cart/ful
 import { PointReplacerPipe } from './components/OverwrittenAngularComponents/point-replacer.pipe';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { CheckoutComponent } from './components/shop/checkout/checkout.component';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CheckoutComponent } from './components/shop/checkout/checkout.component
     PointReplacerPipe,
     UserProfileComponent,
     CheckoutComponent,
+    AdminPageComponent,
   ],
   imports: [
     BrowserModule,

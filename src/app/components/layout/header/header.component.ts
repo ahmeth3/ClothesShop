@@ -24,10 +24,12 @@ export class HeaderComponent implements OnInit {
     var token = localStorage.getItem('token');
     this.userService.autoLogin(token).subscribe(
       (res) => {
-        this.router.navigate(['/user-profile']);
+        if (res['id'] == '39') this.router.navigate(['/admin-page']);
+        else this.router.navigate(['/user-profile']);
       },
       (err) => {
         this.loginActive = true;
+        console.log(err);
       }
     );
   }

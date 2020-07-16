@@ -19,6 +19,28 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
+  createProduct(
+    product: Product,
+    avatar: File,
+    images: File[]
+  ): Observable<Product> {
+    const formData = new FormData();
+
+    formData.append('avatar', avatar);
+    for (let i = 0; i < images.length; i++) {
+      formData.append('image[]', images[i]);
+    }
+    formData.append('data', JSON.stringify(product));
+
+    return this.http.post(`${this.baseUrl}/create`, formData).pipe(
+      map((res) => {
+        this.product = res['data'];
+        return this.product;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   // Gets all products from API based on filters
   getByFilters(
     gender: string,

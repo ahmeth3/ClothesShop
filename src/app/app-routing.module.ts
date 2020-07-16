@@ -8,6 +8,7 @@ import { ProductDetailsComponent } from './components/shop/product-details/produ
 import { FullPageCartComponent } from './components/shop/cart/full-page-cart/full-page-cart.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { CheckoutComponent } from './components/shop/checkout/checkout.component';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'product-page/men', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'cart', component: FullPageCartComponent },
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'admin-page', component: AdminPageComponent },
 ];
 
 @NgModule({

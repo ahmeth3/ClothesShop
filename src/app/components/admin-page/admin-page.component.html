@@ -169,28 +169,6 @@
             </span>
           </div>
         </div>
-        <!-- <div class="imageUploadContainer d-flex flex-row">
-          <label>
-            <span>Izaberite naslovnu sliku proizvoda</span>
-            <input
-              #imageInput
-              type="file"
-              accept="image/*"
-              (change)="processFile(imageInput)"
-            />
-          </label>
-
-          <label>
-            <span>Izaberite 4 slike proizvoda</span>
-            <input
-              type="file"
-              accept="image/*"
-              (change)="processFiles($event)"
-              multiple
-            />
-          </label>
-        </div> -->
-
         <div
           class="imageUploadContainer d-flex flex-row justify-content-between"
         >
@@ -206,7 +184,9 @@
                 (change)="processFile(imageInput)"
               />
             </label>
-            <strong>Izabrano je: </strong><span>{{ avatarCount }} slika</span>
+            <strong *ngIf="avatarName == ''">Nema izabrane slike</strong>
+            <strong *ngIf="avatarName != ''">Izabrana slika je: </strong
+            ><span>{{ avatarName }}</span>
           </div>
 
           <div>
@@ -223,14 +203,30 @@
             ><span>{{ productDetailsImages.length }} slika</span>
           </div>
         </div>
-        <button
-          class="btn btn-outline-secondary"
-          type="submit"
-          [disabled]="productForm.invalid"
-          (click)="createProduct()"
+
+        <div
+          class="formButtonContainer"
+          [ngClass]="
+            productForm.invalid ||
+            avatar == null ||
+            productDetailsImages.length != 4
+              ? 'formButtonInvalid'
+              : 'formButtonValid'
+          "
+          (mousemove)="showErrorDialog($event)"
+          (mouseleave)="hideErrorDialog()"
         >
-          Sačuvajte
-        </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="submit"
+            (click)="createProduct()"
+          >
+            Sačuvajte
+          </button>
+        </div>
+        <div class="dialogErrorMessage" id="dialogErrorMessage">
+          Popunite formu i izaberite slike
+        </div>
       </form>
     </div>
     <div class="orders" *ngIf="activeContent === 2">

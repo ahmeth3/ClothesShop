@@ -91,8 +91,33 @@ input {
   margin-left: 5px;
 }
 
-form button {
-  margin-left: 90%;
+.formButtonContainer {
+  width: 95px;
+  margin-left: auto;
+}
+
+.formButtonValid {
+  cursor: pointer;
+}
+
+.formButtonInvalid {
+  cursor: not-allowed;
+}
+
+.formButtonInvalid button {
+  pointer-events: none;
+}
+
+.dialogErrorMessage {
+  display: none;
+  width: 235px;
+  padding: 8px;
+  background-color: rgb(250, 214, 214);
+  border-color: rgb(250, 214, 214);
+  border-radius: 25px;
+  position: absolute;
+  /* top: 0%; */
+  /* left: 0%; */
 }
 
 .order {

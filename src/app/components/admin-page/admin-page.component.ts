@@ -51,7 +51,7 @@ export class AdminPageComponent implements OnInit {
   product = new Product('', null, '', '', '', '', '', '');
 
   avatar: File;
-  avatarCount = 0;
+  avatarName = '';
   productDetailsImages: File[] = [];
 
   constructor(
@@ -139,6 +139,7 @@ export class AdminPageComponent implements OnInit {
     var randomString = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     var charactersLength = characters.length;
+
     for (var i = 0; i < 5; i++) {
       randomString += characters.charAt(
         Math.floor(Math.random() * charactersLength)
@@ -146,61 +147,66 @@ export class AdminPageComponent implements OnInit {
     }
 
     var randomNumber = Math.floor(Math.random() * 1000000 + 1);
-
     var fileName = randomNumber.toString() + randomString + '.jpg';
-
     var fileForUpload = new File([file], fileName);
 
     this.avatar = fileForUpload;
-    this.avatarCount = 1;
+    this.avatarName = imageInput.files[0].name;
   }
 
   processFiles(imageInput: any) {
-    // var file = imageInput.target.files[0];
-    // var pom = new File([file], 'productdetails1.jpg');
+    if (imageInput.target.files.length != 4) {
+      window.alert('Izaberite 4 slike!');
+    } else {
+      // Deleting the first images user selected in order to place the new ones
+      this.productDetailsImages = [];
 
-    // this.idk.push(pom);
-
-    // file = imageInput.target.files[1];
-    // pom = new File([file], 'productdetails2.jpg');
-
-    // this.idk.push(pom);
-
-    // file = imageInput.target.files[2];
-    // pom = new File([file], 'productdetails3.jpg');
-
-    // this.idk.push(pom);
-
-    // file = imageInput.target.files[3];
-    // pom = new File([file], 'productdetails4.jpg');
-
-    // this.idk.push(pom);
-
-    // console.log(this.idk);
-
-    for (var i = 0; i < 4; i++) {
-      var file = imageInput.target.files[i];
-
-      var fileName = 'productdetails' + (i + 1).toString() + '.jpg';
-      var renamedFile = new File([file], fileName);
-
-      this.productDetailsImages.push(renamedFile);
+      for (var i = 0; i < 4; i++) {
+        var file = imageInput.target.files[i];
+        var fileName = 'productdetails' + (i + 1).toString() + '.jpg';
+        var renamedFile = new File([file], fileName);
+        this.productDetailsImages.push(renamedFile);
+      }
     }
   }
 
-  createProduct() {
-    this.matchValuesToObject();
+  showErrorDialog($event) {
+    if (
+      this.productForm.invalid ||
+      this.avatar == null ||
+      this.productDetailsImages.length != 4
+    ) {
+      var xOffset = $event.pageX + 2;
+      var yOffset = $event.pageY - 42;
 
-    this.productService
-      .createProduct(this.product, this.avatar, this.productDetailsImages)
-      .subscribe(
-        (res) => {
-          console.log(res);
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      document.getElementById('dialogErrorMessage').style.display = 'block';
+      document.getElementById('dialogErrorMessage').style.left = xOffset + 'px';
+      document.getElementById('dialogErrorMessage').style.top = yOffset + 'px';
+    }
+  }
+
+  hideErrorDialog() {
+    document.getElementById('dialogErrorMessage').style.display = 'none';
+  }
+
+  createProduct() {
+    if (
+      !this.productForm.invalid &&
+      this.avatar != null &&
+      this.productDetailsImages.length == 4
+    ) {
+      this.matchValuesToObject();
+      this.productService
+        .createProduct(this.product, this.avatar, this.productDetailsImages)
+        .subscribe(
+          (res) => {
+            console.log(res);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+    }
   }
 
   matchValuesToObject() {

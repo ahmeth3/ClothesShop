@@ -75,6 +75,11 @@ nav {
   display: none;
 }
 
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 @media (max-width: 639px) {
   .collapseContent {
     flex-direction: column;

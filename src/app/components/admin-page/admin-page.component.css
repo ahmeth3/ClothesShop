@@ -12,6 +12,11 @@ hr {
   border: 1px solid black;
 }
 
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .buttonContainer {
   width: 55%;
   margin: 0 auto;
@@ -26,22 +31,12 @@ hr {
   outline: none;
 }
 
-.buttonContainer button:focus {
-  background-color: rgb(108, 117, 125);
-  color: white;
-}
-
-.buttonContainer button:hover {
-  background-color: rgb(108, 117, 125);
-  color: white;
-}
-
 .content {
   width: 70%;
   margin-top: 20px;
 }
 
-.addressType {
+.createProductForm {
   width: 80%;
 }
 
@@ -75,6 +70,11 @@ select,
 option,
 input {
   color: rgb(117, 117, 117);
+}
+
+select:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .imageUploadContainer {
@@ -116,13 +116,48 @@ input {
   border-color: rgb(250, 214, 214);
   border-radius: 25px;
   position: absolute;
-  /* top: 0%; */
-  /* left: 0%; */
+}
+
+.products {
+  width: 80%;
+}
+
+.IconDown {
+  transform: rotate(0deg);
+  transition: transform 0.4s ease;
+}
+
+.IconUp {
+  transform: rotate(180deg);
+  transition: transform 0.4s ease;
+}
+
+.categoryWrapper {
+  /* max-width: 280px; */
+  width: 100%;
+}
+
+.categoryHeaderWrapper {
+  cursor: pointer;
+}
+
+.categoryHeaderWrapper hr {
+  width: 100%;
+  margin-top: -3px;
+}
+
+.categoriesContent {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.categoriesContent span {
+  cursor: pointer;
 }
 
 .order {
   width: 80%;
-  /* height: 200px; */
   border: 1px solid black;
   border-radius: 30px;
   padding: 20px;

@@ -3,15 +3,18 @@
     <h4><i class="fas fa-user"></i> Admin panel</h4>
     <hr style="margin: 0 auto;" />
     <div class="buttonContainer d-flex flex-column">
-      <button (click)="setActiveContent(1)">Produkti</button>
-      <button (click)="setActiveContent(2)">
+      <button (click)="setActiveContent(1)" id="1">Kreiraj proizvod</button>
+      <button (click)="setActiveContent(2)" id="2">
+        Svi produkti
+      </button>
+      <button (click)="setActiveContent(3)" id="3">
         Narudžbine
       </button>
     </div>
     <hr style="margin: 0 auto;" />
   </div>
   <div class="content">
-    <div class="addressType" *ngIf="activeContent === 1">
+    <div class="createProductForm" *ngIf="activeContent === 1">
       <h4>Kreirajte proizvod</h4>
       <form [formGroup]="productForm">
         <div class="form-group">
@@ -106,7 +109,7 @@
             "
             (change)="changeColor($event)"
           >
-            <option value="">Izaberite boju produkta</option>
+            <option value="" disabled>Izaberite boju produkta</option>
             <option *ngFor="let color of colors" [ngValue]="color">{{
               color
             }}</option>
@@ -229,7 +232,69 @@
         </div>
       </form>
     </div>
-    <div class="orders" *ngIf="activeContent === 2">
+    <div class="products" *ngIf="activeContent === 2">
+      <h4>Svi produkti</h4>
+      <div class="categoryWrapper mt-4 mb-2">
+        <div class="categoryHeaderWrapper">
+          <div
+            class="d-flex flex-row"
+            data-toggle="collapse"
+            data-target="#demo"
+            (click)="scrollToggler(1)"
+          >
+            <h4 class="">Muški proizvodi</h4>
+            <i
+              class="fas fa-angle-down d-flex align-self-center"
+              [ngClass]="maleCategoryActive ? 'IconUp' : 'IconDown'"
+              style="margin-left: auto;"
+            ></i>
+          </div>
+          <hr />
+        </div>
+        <div id="demo" class="collapse show categoriesContent">
+          <div class="d-flex flex-row flex-wrap justify-content-center">
+            <div *ngFor="let product of maleProducts">
+              <app-product
+                [model]="product"
+                [adminView]="true"
+                (productDeleted)="getAllProducts()"
+              ></app-product>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="categoryWrapper mt-4 mb-2">
+        <div class="categoryHeaderWrapper">
+          <div
+            class="d-flex flex-row"
+            data-toggle="collapse"
+            data-target="#demo2"
+            (click)="scrollToggler(2)"
+          >
+            <h4 class="">Ženski proizvodi</h4>
+            <i
+              class="fas fa-angle-down d-flex align-self-center"
+              [ngClass]="femaleCategoryActive ? 'IconUp' : 'IconDown'"
+              style="margin-left: auto;"
+            ></i>
+          </div>
+          <hr />
+        </div>
+        <div id="demo2" class="collapse show categoriesContent">
+          <div class="d-flex flex-row flex-wrap justify-content-center">
+            <div *ngFor="let product of femaleProducts">
+              <app-product
+                [model]="product"
+                [adminView]="true"
+                (productDeleted)="getAllProducts()"
+              ></app-product>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="orders" *ngIf="activeContent === 3">
       <h4>Moje narudžbine</h4>
     </div>
   </div>

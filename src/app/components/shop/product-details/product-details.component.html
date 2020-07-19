@@ -52,7 +52,9 @@
     >
       <div
         [ngClass]="
-          this.model.size.includes('XS') ? 'sizeItem' : 'sizeItemNotAvailable'
+          this.availableSizes.includes('XS')
+            ? 'sizeItem'
+            : 'sizeItemNotAvailable'
         "
         id="XS"
         (click)="selectedSizeHandler('XS')"
@@ -61,7 +63,9 @@
       </div>
       <div
         [ngClass]="
-          this.model.size.includes('S') ? 'sizeItem' : 'sizeItemNotAvailable'
+          this.availableSizes.includes('S')
+            ? 'sizeItem'
+            : 'sizeItemNotAvailable'
         "
         id="S"
         (click)="selectedSizeHandler('S')"
@@ -70,7 +74,9 @@
       </div>
       <div
         [ngClass]="
-          this.model.size.includes('M') ? 'sizeItem' : 'sizeItemNotAvailable'
+          this.availableSizes.includes('M')
+            ? 'sizeItem'
+            : 'sizeItemNotAvailable'
         "
         id="M"
         (click)="selectedSizeHandler('M')"
@@ -79,7 +85,9 @@
       </div>
       <div
         [ngClass]="
-          this.model.size.includes('L') ? 'sizeItem' : 'sizeItemNotAvailable'
+          this.availableSizes.includes('L')
+            ? 'sizeItem'
+            : 'sizeItemNotAvailable'
         "
         id="L"
         (click)="selectedSizeHandler('L')"
@@ -88,7 +96,9 @@
       </div>
       <div
         [ngClass]="
-          this.model.size.includes('XL') ? 'sizeItem' : 'sizeItemNotAvailable'
+          this.availableSizes.includes('XL')
+            ? 'sizeItem'
+            : 'sizeItemNotAvailable'
         "
         id="XL"
         (click)="selectedSizeHandler('XL')"
@@ -98,7 +108,9 @@
 
       <div
         [ngClass]="
-          this.model.size.includes('2XL') ? 'sizeItem' : 'sizeItemNotAvailable'
+          this.availableSizes.includes('2XL')
+            ? 'sizeItem'
+            : 'sizeItemNotAvailable'
         "
         id="2XL"
         (click)="selectedSizeHandler('2XL')"

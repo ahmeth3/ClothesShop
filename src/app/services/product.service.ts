@@ -41,6 +41,17 @@ export class ProductService {
     );
   }
 
+  // Gets all products from API
+  getAll(): Observable<Product[]> {
+    return this.http.get(`${this.baseUrl}/list`).pipe(
+      map((res) => {
+        this.products = res['data'];
+        return this.products;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   // Gets all products from API based on filters
   getByFilters(
     gender: string,
@@ -56,6 +67,18 @@ export class ProductService {
         map((res) => {
           this.products = res['data'];
           return this.products;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  // Deletes product with given ID
+  deleteProduct(id: number) {
+    return this.http
+      .get(`${this.baseUrl}/delete`, { params: { id: id.toString() } })
+      .pipe(
+        map((res) => {
+          return res;
         }),
         catchError(this.handleError)
       );

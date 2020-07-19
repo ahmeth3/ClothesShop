@@ -9,7 +9,9 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./admin-page.component.css'],
 })
 export class AdminPageComponent implements OnInit {
-  activeContent: number = 1;
+  activeContent: number = 2;
+  maleCategoryActive: boolean = true;
+  femaleCategoryActive: boolean = true;
 
   productForm: FormGroup;
 
@@ -49,6 +51,8 @@ export class AdminPageComponent implements OnInit {
   ];
 
   product = new Product('', null, '', '', '', '', '', '');
+  maleProducts: Product[];
+  femaleProducts: Product[];
 
   avatar: File;
   avatarName = '';
@@ -70,6 +74,8 @@ export class AdminPageComponent implements OnInit {
       caption: ['', [Validators.required]],
       composition: ['', [Validators.required]],
     });
+
+    this.setActiveContent(this.activeContent);
   }
 
   get name() {
@@ -104,6 +110,31 @@ export class AdminPageComponent implements OnInit {
     return this.productForm.get('composition');
   }
 
+  setActiveContent(contentType: number) {
+    document.getElementById(
+      this.activeContent.toString()
+    ).style.backgroundColor = 'rgb(247, 248, 249)';
+    document.getElementById(this.activeContent.toString()).style.color =
+      'black';
+
+    this.activeContent = contentType;
+
+    document.getElementById(
+      this.activeContent.toString()
+    ).style.backgroundColor = 'rgb(108, 117, 125)';
+    document.getElementById(this.activeContent.toString()).style.color =
+      'white';
+
+    if (contentType === 2) {
+      this.getAllProducts();
+    }
+  }
+
+  scrollToggler(counter) {
+    if (counter === 1) this.maleCategoryActive = !this.maleCategoryActive;
+    if (counter === 2) this.femaleCategoryActive = !this.femaleCategoryActive;
+  }
+
   changeGender(e) {
     var selectedValue = e.target.value;
     selectedValue = selectedValue.split(' ')[1];
@@ -127,10 +158,6 @@ export class AdminPageComponent implements OnInit {
     selectedValue = selectedValue.split(' ')[1];
 
     this.color.setValue(selectedValue, { onlySelf: true });
-  }
-
-  setActiveContent(contentType: number) {
-    this.activeContent = contentType;
   }
 
   processFile(imageInput: any) {
@@ -239,5 +266,15 @@ export class AdminPageComponent implements OnInit {
     this.product.size = this.size.value;
     this.product.caption = this.caption.value;
     this.product.composition = this.composition.value;
+  }
+
+  getAllProducts() {
+    this.productService.getAll().subscribe(
+      (res: Product[]) => {
+        this.maleProducts = res.filter((prod) => prod.gender === 'M');
+        this.femaleProducts = res.filter((prod) => prod.gender === 'F');
+      },
+      (err) => {}
+    );
   }
 }

@@ -16,6 +16,8 @@ export class ProductDetailsComponent implements OnInit {
 
   model: Product;
 
+  availableSizes = [];
+
   productDetails = new Array();
 
   myForm = new FormGroup({});
@@ -51,6 +53,10 @@ export class ProductDetailsComponent implements OnInit {
     this.productDetails.push(pom2);
     this.productDetails.push(pom3);
     this.productDetails.push(pom4);
+
+    this.availableSizes = this.model.size.split(',');
+    // if (this.availableSizes.includes('S')) console.log('da');
+    // else console.log('ne');
   }
 
   iconHover() {

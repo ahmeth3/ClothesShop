@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
+import { Order } from 'src/app/models/Order';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -9,7 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./admin-page.component.css'],
 })
 export class AdminPageComponent implements OnInit {
-  activeContent: number = 2;
+  activeContent: number = 3;
   maleCategoryActive: boolean = true;
   femaleCategoryActive: boolean = true;
 
@@ -58,9 +60,12 @@ export class AdminPageComponent implements OnInit {
   avatarName = '';
   productDetailsImages: File[] = [];
 
+  orders: Order[];
+
   constructor(
     private fb: FormBuilder,
-    private productService: ProductService
+    private productService: ProductService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
@@ -127,6 +132,10 @@ export class AdminPageComponent implements OnInit {
 
     if (contentType === 2) {
       this.getAllProducts();
+    }
+
+    if (contentType === 3) {
+      this.getOrders();
     }
   }
 
@@ -275,6 +284,58 @@ export class AdminPageComponent implements OnInit {
         this.femaleProducts = res.filter((prod) => prod.gender === 'F');
       },
       (err) => {}
+    );
+  }
+
+  getOrders(): void {
+    var token = localStorage.getItem('token');
+
+    this.orderService.getAllOrders(token).subscribe(
+      (res: Order[]) => {
+        this.orders = res;
+        this.orders = this.orders.sort((a, b) => b.id - a.id);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  showMessageDialog($event, messageType: number) {
+    var xOffset = $event.pageX + 2;
+    var yOffset = $event.pageY - 42;
+
+    document.getElementById('dialogMessage').style.display = 'block';
+    document.getElementById('dialogMessage').style.left = xOffset + 'px';
+    document.getElementById('dialogMessage').style.top = yOffset + 'px';
+
+    if (messageType === 1) {
+      document.getElementById('dialogMessage').innerHTML =
+        "Promenite stanje u <b><em>'Izvršeno'</em></b>";
+      document.getElementById('dialogMessage').style.width = '230px';
+    }
+
+    if (messageType === 2) {
+      document.getElementById('dialogMessage').innerHTML =
+        "Promenite stanje u <b><em>'Isporučeno'</em></b>";
+      document.getElementById('dialogMessage').style.width = '250px';
+    }
+  }
+
+  hideMessageDialog() {
+    document.getElementById('dialogMessage').style.display = 'none';
+  }
+
+  updateStatus(id: string, status: string) {
+    var token = localStorage.getItem('token');
+
+    this.orderService.updateStatus(token, id, status).subscribe(
+      (res) => {
+        this.setActiveContent(3);
+      },
+      (err) => {
+        console.log(err);
+      }
     );
   }
 }

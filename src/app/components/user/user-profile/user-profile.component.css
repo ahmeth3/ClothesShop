@@ -84,6 +84,14 @@ hr {
   color: rgb(124, 124, 124);
 }
 
+.orderedProducts {
+  font-size: 18px;
+}
+
+.orderedProducts a {
+  color: rgb(124, 124, 124);
+}
+
 .priceInfo {
-  margin-right: 50px;
+  margin-right: 20px;
 }

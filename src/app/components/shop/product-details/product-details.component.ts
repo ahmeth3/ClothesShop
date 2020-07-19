@@ -41,6 +41,14 @@ export class ProductDetailsComponent implements OnInit {
       this.model = JSON.parse(params.product) as Product;
     });
 
+    this.router.queryParams.subscribe((params) => {
+      this.model = JSON.parse(params.product) as ChosenProduct;
+    });
+
+    this.model.productDetailsFolderUrl =
+      'http://localhost/ClothesShopApi/product/product-details-images/' +
+      this.model.picUrl.substr(47, this.model.picUrl.length);
+
     var pom1 = this.model.productDetailsFolderUrl + '/' + 'productdetails1.jpg';
 
     var pom2 = this.model.productDetailsFolderUrl + '/' + 'productdetails2.jpg';

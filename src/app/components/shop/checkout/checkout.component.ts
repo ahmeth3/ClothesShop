@@ -146,11 +146,18 @@ export class CheckoutComponent implements OnInit {
 
     var price = this.getTotalPrice();
 
+    var orderedProducts = '';
+    this.products.forEach((prod) => {
+      orderedProducts +=
+        prod.quantity + ',' + prod.chosenSize + ',' + prod.id + ';';
+    });
+
     var order = new Order(
       this.addressObj,
       'Isporučeno',
       price.toString(),
-      new Date()
+      new Date(),
+      orderedProducts
     );
 
     var token = localStorage.getItem('token');
@@ -161,7 +168,7 @@ export class CheckoutComponent implements OnInit {
 
     this.orderService.createOrder(order, token).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
       },
       (err) => {
         console.log('err je ' + err);

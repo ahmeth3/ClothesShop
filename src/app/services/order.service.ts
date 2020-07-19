@@ -3,6 +3,7 @@ import { Order } from '../models/Order';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { stat } from 'fs';
 
 @Injectable({
   providedIn: 'root',
@@ -34,6 +35,34 @@ export class OrderService {
         map((res) => {
           this.orders = res['data'];
           return this.orders;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  getAllOrders(token: string) {
+    return this.http
+      .post(`${this.baseUrl}/listAll`, {
+        token: token,
+      })
+      .pipe(
+        map((res) => {
+          this.orders = res['data'];
+          return this.orders;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  updateStatus(token: string, id: string, status: string) {
+    return this.http
+      .post(`${this.baseUrl}/updateStatus`, {
+        token: token,
+        data: { id: id, status: status },
+      })
+      .pipe(
+        map((res) => {
+          return res;
         }),
         catchError(this.handleError)
       );

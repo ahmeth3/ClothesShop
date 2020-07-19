@@ -3,6 +3,7 @@ import { Product } from './Product';
 export class ChosenProduct extends Product {
   quantity: string;
   chosenSize: string;
+  product: Product;
 
   constructor(product: Product, quantity: string, chosenSize: string) {
     super(
@@ -29,5 +30,9 @@ export class ChosenProduct extends Product {
     this.productDetailsFolderUrl = product.productDetailsFolderUrl;
     this.quantity = quantity;
     this.chosenSize = chosenSize;
+  }
+
+  setProduct() {
+    
   }
 }

@@ -4,6 +4,8 @@ import { UserService } from 'src/app/services/user.service';
 import { Address } from 'src/app/models/Address';
 import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/models/Order';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/models/Product';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,11 +20,13 @@ export class UserProfileComponent implements OnInit {
   addressObj: Address;
 
   orders: Order[];
+  products = [];
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
@@ -77,10 +81,10 @@ export class UserProfileComponent implements OnInit {
     var token = localStorage.getItem('token');
 
     this.userService.updateAddress(this.addressObj, token).subscribe(
-      (res) => {
+      () => {
         // console.log(res);
       },
-      (err) => {
+      () => {
         // console.log('err je ' + err);
       }
     );
@@ -138,8 +142,11 @@ export class UserProfileComponent implements OnInit {
     this.orderService.getUsersOrders(token).subscribe(
       (res: Order[]) => {
         this.orders = res;
+        this.orders = this.orders.sort((a, b) => b.id - a.id);
       },
-      (err) => {}
+      (err) => {
+        // console.log(err);
+      }
     );
   }
 }

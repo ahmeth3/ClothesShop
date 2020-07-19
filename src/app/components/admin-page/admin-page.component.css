@@ -158,10 +158,43 @@ select:focus {
 
 .order {
   width: 80%;
+  /* height: 200px; */
   border: 1px solid black;
   border-radius: 30px;
   padding: 20px;
   margin: 25px;
+}
+
+.iconContainer {
+  cursor: pointer;
+}
+
+#check {
+  margin-right: 10px;
+  font-size: 20px;
+  color: rgb(39, 207, 17);
+}
+
+#check:hover {
+  color: rgb(45, 226, 21);
+}
+
+#cross {
+  font-size: 22px;
+  color: rgb(231, 19, 19);
+}
+
+#cross:hover {
+  color: rgb(238, 94, 94);
+}
+
+.dialogMessage {
+  display: none;
+  width: 235px;
+  padding: 8px;
+  background-color: rgba(221, 213, 213, 0.719);
+  border-radius: 25px;
+  position: absolute;
 }
 
 .order span {
@@ -173,6 +206,14 @@ select:focus {
   color: rgb(124, 124, 124);
 }
 
+.orderedProducts {
+  font-size: 18px;
+}
+
+.orderedProducts a {
+  color: rgb(124, 124, 124);
+}
+
 .priceInfo {
-  margin-right: 50px;
+  margin-right: 20px;
 }

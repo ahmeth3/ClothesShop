@@ -183,6 +183,21 @@
                 >Poštanski broj: <em>{{ order.zipCode }}</em></span
               >
             </div>
+            <div
+              class="d-flex flex-column justify-content-center orderedProducts"
+            >
+              <span>Poručeni proizvodi:</span>
+              <div *ngFor="let product of order.products">
+                <a
+                  [routerLink]="['/product-details']"
+                  [queryParams]="{ product: product | json }"
+                  queryParamsHandling="merge"
+                  >{{ product.quantity }} x {{ product.name }} ({{
+                    product.chosenSize
+                  }})</a
+                >
+              </div>
+            </div>
             <div class="d-flex flex-column justify-content-center priceInfo">
               <span
                 >Cena: <em>{{ order.price | pointReplacer }} RSD</em></span

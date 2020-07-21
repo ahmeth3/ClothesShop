@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
     document.getElementById('openModalButton').click();
 
     this.loginForm = this.fb.group({
-      email: ['admin@admin.com', [Validators.required, Validators.email]],
-      password: ['admin123', [Validators.required]],
+      email: ['akihalilovic@gmail.com', [Validators.required, Validators.email]],
+      password: ['ahmet1997', [Validators.required]],
     });
   }
 

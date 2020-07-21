@@ -42,6 +42,7 @@
 
 .categoryHeaderWrapper {
   cursor: pointer;
+  border-bottom: 1px solid black;
 }
 
 .categoriesContent {
@@ -62,6 +63,7 @@
 
 .colorHeaderWrapper {
   cursor: pointer;
+  border-bottom: 1px solid black;
 }
 
 .colorItem {
@@ -85,6 +87,7 @@
 
 .sizeHeaderWrapper {
   cursor: pointer;
+  border-bottom: 1px solid black;
 }
 
 .sizeItem {
@@ -107,12 +110,6 @@
 .sizeItem span {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-}
-
-hr {
-  background-color: black;
-  border-width: thin;
-  margin: 0 auto;
 }
 
 .mainContent {

@@ -55,6 +55,12 @@
   cursor: pointer;
 }
 
+.outletCategoryHeaderWrapper {
+  cursor: pointer;
+  border-bottom: 1px solid black;
+  width: 80%;
+}
+
 .colorWrapper {
   max-width: 280px;
   width: 100%;

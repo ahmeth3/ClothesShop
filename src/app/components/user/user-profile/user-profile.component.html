@@ -7,7 +7,8 @@
       <button (click)="setActiveContent(2)">
         Moje narudžbine
       </button>
-      <button (click)="setActiveContent(3)">Moje želje</button>
+      <button (click)="setActiveContent(3)">Prodajte i Vi</button>
+      <button (click)="setActiveContent(4)">Moji oglasi</button>
     </div>
     <hr style="margin: 0 auto;" />
   </div>
@@ -208,8 +209,261 @@
         </div>
       </div>
     </div>
-    <div class="wishlist" *ngIf="activeContent === 3">
-      <h4>Moje želje</h4>
+    <div class="sellYourProduct" *ngIf="activeContent === 3">
+      <h4>Prodajte i Vi</h4>
+      <span id="headline">
+        <em
+          >Preko naše platforme imate mogućnost i da zaradite. Ispunite sledeću
+          formu i prodajte svoj proizvod.<br />Naš sajt služi kao posrednik
+          između Vas, kao prodavca, i potencijalnih kupaca, bez bilo kakve
+          provizije.</em
+        >
+      </span>
+      <div class="createProductForm">
+        <h4>Forma za kreiranje proizvoda</h4>
+        <form [formGroup]="productForm">
+          <div class="form-group">
+            <input
+              id="name"
+              type="text"
+              [ngClass]="
+                nameOfProduct.invalid && nameOfProduct.touched
+                  ? 'formControlInvalid'
+                  : 'formControlValid'
+              "
+              formControlName="nameOfProduct"
+              placeholder="Naziv proizvoda"
+            />
+            <div
+              *ngIf="nameOfProduct.errors && nameOfProduct.touched"
+              class="mt-1"
+            >
+              <span *ngIf="nameOfProduct.errors.required">
+                Unesite naziv proizvoda
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              [ngClass]="
+                price.invalid && price.touched
+                  ? 'formControlInvalid'
+                  : 'formControlValid'
+              "
+              formControlName="price"
+              placeholder="Cena"
+            />
+            <div *ngIf="price.errors && price.touched" class="mt-1">
+              <span *ngIf="price.errors.required">
+                Unesite cenu proizvoda
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <select
+              class="custom-select"
+              [ngClass]="
+                gender.invalid && gender.touched
+                  ? 'formControlInvalid'
+                  : 'formControlValid'
+              "
+              formControlName="gender"
+              (change)="changeGender($event)"
+            >
+              <option value="" disabled
+                >Izaberite pol za koji je produkt namenjen</option
+              >
+              <option *ngFor="let gender of genders" [ngValue]="gender">{{
+                gender
+              }}</option>
+            </select>
+            <div *ngIf="gender.errors && gender.touched" class="mt-1">
+              <span *ngIf="gender.errors.required">
+                Izaberite pol za koji je produkt namenjen
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <select
+              class="custom-select"
+              formControlName="category"
+              [ngClass]="
+                category.invalid && category.touched
+                  ? 'formControlInvalid'
+                  : 'formControlValid'
+              "
+              (change)="changeCategory($event)"
+            >
+              <option value="" disabled>Izaberite kategoriju produkta</option>
+              <option
+                *ngFor="let category of categories"
+                [ngValue]="category"
+                >{{ category }}</option
+              >
+            </select>
+            <div *ngIf="category.errors && category.touched" class="mt-1">
+              <span *ngIf="category.errors.required">
+                Izaberite kategoriju proizvoda
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <select
+              class="custom-select"
+              formControlName="color"
+              [ngClass]="
+                color.invalid && color.touched
+                  ? 'formControlInvalid'
+                  : 'formControlValid'
+              "
+              (change)="changeColor($event)"
+            >
+              <option value="" disabled>Izaberite boju produkta</option>
+              <option *ngFor="let color of colors" [ngValue]="color">{{
+                color
+              }}</option>
+            </select>
+            <div *ngIf="color.errors && color.touched" class="mt-1">
+              <span *ngIf="color.errors.required">
+                Izaberite boju proizvoda
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              [ngClass]="
+                size.invalid && size.touched
+                  ? 'formControlInvalid'
+                  : 'formControlValid'
+              "
+              formControlName="size"
+              placeholder="Dostupne veličine proizvoda (zapišite u formatu XS,S,M,...)"
+            />
+            <div *ngIf="size.errors && size.touched" class="mt-1">
+              <span *ngIf="size.errors.required">
+                Unesite veličine proizvoda ili proverite da li ste ih zapisali u
+                korektnom formatu
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              [ngClass]="
+                caption.invalid && caption.touched
+                  ? 'formControlInvalid'
+                  : 'formControlValid'
+              "
+              formControlName="caption"
+              placeholder="Opis proizvoda"
+            />
+            <div *ngIf="caption.errors && caption.touched" class="mt-1">
+              <span *ngIf="caption.errors.required">
+                Unesite opis proizvoda
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              [ngClass]="
+                composition.invalid && composition.touched
+                  ? 'formControlInvalid'
+                  : 'formControlValid'
+              "
+              formControlName="composition"
+              placeholder="Sastav proizvoda"
+            />
+            <div *ngIf="composition.errors && composition.touched" class="mt-1">
+              <span *ngIf="composition.errors.required">
+                Unesite sastav proizvoda
+              </span>
+            </div>
+          </div>
+          <div
+            class="imageUploadContainer d-flex flex-row justify-content-between"
+          >
+            <div>
+              <label class="btn btn-secondary">
+                <i class="fa fa-image"></i>
+                Izaberite naslovnu sliku
+                <input
+                  #imageInput
+                  type="file"
+                  style="display: none;"
+                  accept="image/*"
+                  (change)="processFile(imageInput)"
+                />
+              </label>
+              <strong *ngIf="avatarName == ''">Nema izabrane slike</strong>
+              <strong *ngIf="avatarName != ''">Izabrana slika je: </strong
+              ><span>{{ avatarName }}</span>
+            </div>
+
+            <div>
+              <label class="btn btn-secondary">
+                <i class="fa fa-image"></i> Izaberite 4 slike proizvoda<input
+                  type="file"
+                  style="display: none;"
+                  accept="image/*"
+                  multiple
+                  (change)="processFiles($event)"
+                />
+              </label>
+              <strong>Izabrano je: </strong
+              ><span>{{ productDetailsImages.length }} slika</span>
+            </div>
+          </div>
+
+          <div
+            class="formButtonContainer"
+            [ngClass]="
+              productForm.invalid ||
+              avatar == null ||
+              productDetailsImages.length != 4
+                ? 'formButtonInvalid'
+                : 'formButtonValid'
+            "
+            (mousemove)="showErrorDialog($event)"
+            (mouseleave)="hideErrorDialog()"
+          >
+            <button
+              class="btn btn-outline-secondary"
+              type="submit"
+              (click)="createProduct()"
+            >
+              Sačuvajte
+            </button>
+          </div>
+          <div class="dialogErrorMessage" id="dialogErrorMessage">
+            Popunite formu i izaberite slike
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="myProducts" *ngIf="activeContent === 4">
+      <h4>Moji oglasi</h4>
+      <span id="headline">
+        <em
+          >Preko naše platforme imate mogućnost i da zaradite. Naš sajt služi
+          kao posrednik između Vas, kao prodavca, i potencijalnih kupaca, bez
+          bilo kakve provizije. <br />Na sledećoj listi prikazani su proizvodi
+          koje vi prodajete. Klikom na proizvod možete
+          <b>izbrisati</b> oglas.</em
+        >
+      </span>
+      <div class="d-flex flex-row flex-wrap justify-content-center">
+        <div *ngFor="let product of products">
+          <app-product
+            [model]="product"
+            [adminView]="true"
+            [typeOfProduct]="1"
+            (productDeleted)="getProducts()"
+          ></app-product>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -2,7 +2,7 @@
   <div id="sideBar" class="sideBar">
     <!-- <i class="fas fa-times closeFiltersButton" (click)="closeNav()"></i> -->
     <i class="closeFiltersButton" (click)="closeNav()">&times;</i>
-    <div class="categoryWrapper mt-2 mb-4">
+    <div class="categoryWrapper mt-2 mb-4" *ngIf="category !== 'outlet'">
       <div class="categoryHeaderWrapper">
         <div
           class="d-flex flex-row"
@@ -39,6 +39,68 @@
           </div>
           <div>
             <span (click)="chosenFilterHandler(0, 'Dresses')">Dresses</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="categoryWrapper mt-2 mb-4" *ngIf="category === 'outlet'">
+      <div class="categoryHeaderWrapper">
+        <div
+          class="d-flex flex-row"
+          data-toggle="collapse"
+          data-target="#demo5"
+          (click)="scrollToggler(5)"
+        >
+          <h4 class="">Male</h4>
+          <i
+            class="fas fa-angle-down d-flex align-self-center"
+            [ngClass]="maleOutletActive ? 'IconUp' : 'IconDown'"
+            style="margin-left: auto;"
+          ></i>
+        </div>
+      </div>
+      <div id="demo5" class="collapse show categoriesContent">
+        <div class="maleCategories">
+          <div>
+            <span (click)="chosenFilterHandler(4, 'View All')">View all</span>
+          </div>
+          <div>
+            <span (click)="chosenFilterHandler(4, 'Shirts')">Shirts</span>
+          </div>
+          <div>
+            <span (click)="chosenFilterHandler(4, 'Jackets')">Jackets</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="categoryWrapper mt-2 mb-4" *ngIf="category === 'outlet'">
+      <div class="categoryHeaderWrapper">
+        <div
+          class="d-flex flex-row"
+          data-toggle="collapse"
+          data-target="#demo6"
+          (click)="scrollToggler(6)"
+        >
+          <h4 class="">Female</h4>
+          <i
+            class="fas fa-angle-down d-flex align-self-center"
+            [ngClass]="femaleOutletActive ? 'IconUp' : 'IconDown'"
+            style="margin-left: auto;"
+          ></i>
+        </div>
+      </div>
+      <div id="demo6" class="collapse show categoriesContent">
+        <div class="femaleCategories">
+          <div>
+            <span (click)="chosenFilterHandler(5, 'View All')">View all</span>
+          </div>
+          <div>
+            <span (click)="chosenFilterHandler(5, 'Dresses')">Dresses</span>
+          </div>
+          <div>
+            <span (click)="chosenFilterHandler(5, 'Shirts')">Shirts</span>
           </div>
         </div>
       </div>
@@ -285,6 +347,15 @@
     >
       <div
         class="chosenFilter d-flex flex-row align-items-center"
+        *ngIf="this.category === 'outlet' && this.genderHandler != 'None'"
+      >
+        <span *ngIf="genderHandler === 'M'">male</span>
+        <span *ngIf="genderHandler === 'F'">female</span>
+        <i class="fas fa-times" (click)="filterRemoveHandler(3)"></i>
+      </div>
+
+      <div
+        class="chosenFilter d-flex flex-row align-items-center"
         *ngIf="this.productCategory !== 'View All'"
       >
         <span>{{ productCategory | lowercase }}</span>
@@ -309,9 +380,22 @@
     </div>
     <div
       class="productContainer d-flex flex-row flex-wrap justify-content-center"
+      *ngIf="category != 'outlet'"
     >
       <div *ngFor="let product of products">
         <app-product [model]="product"></app-product>
+      </div>
+    </div>
+    <div
+      class="productContainer d-flex flex-row flex-wrap justify-content-center"
+      *ngIf="category === 'outlet'"
+    >
+      <div *ngFor="let product of userProducts">
+        <app-product
+          [model]="product"
+          [adminView]="false"
+          [typeOfProduct]="1"
+        ></app-product>
       </div>
     </div>
   </div>

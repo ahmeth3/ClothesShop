@@ -95,3 +95,76 @@ hr {
 .priceInfo {
   margin-right: 20px;
 }
+
+.sellYourProduct {
+  width: 80%;
+}
+
+#headline {
+  font-size: 18px;
+}
+
+.createProductForm {
+  margin-top: 10px;
+}
+
+.createProductForm h4 {
+  margin-bottom: 10px;
+}
+
+::placeholder {
+  color: rgb(117, 117, 117);
+  opacity: 1; /* Firefox */
+}
+
+select,
+option,
+input {
+  color: rgb(117, 117, 117);
+}
+
+select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.imageUploadContainer {
+  text-align: center;
+}
+
+.imageUploadContainer i {
+  font-size: 18px;
+  padding-right: 5px;
+}
+
+.imageUploadContainer strong {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.formButtonContainer {
+  width: 95px;
+  margin-left: auto;
+}
+
+.formButtonValid {
+  cursor: pointer;
+}
+
+.formButtonInvalid {
+  cursor: not-allowed;
+}
+
+.formButtonInvalid button {
+  pointer-events: none;
+}
+
+.dialogErrorMessage {
+  display: none;
+  width: 235px;
+  padding: 8px;
+  background-color: rgb(250, 214, 214);
+  border-color: rgb(250, 214, 214);
+  border-radius: 25px;
+  position: absolute;
+}

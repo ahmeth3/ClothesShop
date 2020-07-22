@@ -2,8 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
-import { stringify } from 'querystring';
-import { element } from 'protractor';
+import { UserProduct } from 'src/app/models/UserProduct';
 
 @Component({
   selector: 'app-product-page',
@@ -12,7 +11,7 @@ import { element } from 'protractor';
 })
 export class ProductPageComponent implements OnInit {
   category: string;
-  genderHandler: string;
+  genderHandler: string = 'None';
   productCategory = 'View All'; // product category handler (defines chosen product category)
   colorCategory = 'None'; // product color handler (defines chosen product color)
   sizeCategory = 'None'; // product size handler (defines chosen product size)
@@ -21,10 +20,14 @@ export class ProductPageComponent implements OnInit {
   colorsActive: boolean = false;
   sizeActive: boolean = false;
   sortActive: boolean = false;
+  maleOutletActive: boolean = true;
+  femaleOutletActive: boolean = true;
 
   products: Product[];
   error = '';
   success = '';
+
+  userProducts: UserProduct[];
 
   constructor(
     private route: ActivatedRoute,
@@ -43,7 +46,10 @@ export class ProductPageComponent implements OnInit {
       if (this.category === 'men') this.genderHandler = 'M';
       else this.genderHandler = 'F';
 
-      this.getProductsByFilters();
+      if (this.category === 'outlet') {
+        this.genderHandler = 'None';
+        this.getUserProductsByFilters();
+      } else this.getProductsByFilters();
     });
 
     this.addClickEventToColorItem();
@@ -55,6 +61,8 @@ export class ProductPageComponent implements OnInit {
     if (counter === 2) this.colorsActive = !this.colorsActive;
     if (counter === 3) this.sizeActive = !this.sizeActive;
     if (counter === 4) this.sortActive = !this.sortActive;
+    if (counter === 5) this.maleOutletActive = !this.maleOutletActive;
+    if (counter === 6) this.femaleOutletActive = !this.femaleOutletActive;
   }
 
   dropdownCloseOnClickOutside() {
@@ -177,10 +185,20 @@ export class ProductPageComponent implements OnInit {
       case 2:
         this.sizeCategory = filter;
         break;
+      case 4:
+        this.genderHandler = 'M';
+        this.productCategory = filter;
+        break;
+      case 5:
+        this.genderHandler = 'F';
+        this.productCategory = filter;
+        break;
       default:
         break;
     }
-    this.getProductsByFilters();
+
+    if (this.category !== 'outlet') this.getProductsByFilters();
+    else this.getUserProductsByFilters();
   }
 
   /* 
@@ -198,10 +216,20 @@ export class ProductPageComponent implements OnInit {
       case 2:
         this.sizeCategory = 'None';
         break;
+      case 3:
+        this.genderHandler = 'None';
+        this.productCategory = 'View All';
+        this.colorCategory = 'None';
+        this.sizeCategory = 'None';
+        break;
       default:
         break;
     }
-    this.getProductsByFilters();
+
+    if (this.category !== 'outlet') this.getProductsByFilters();
+    else {
+      this.getUserProductsByFilters();
+    }
   }
 
   // Gets produts based on search criteria fetched from Product Service
@@ -216,6 +244,25 @@ export class ProductPageComponent implements OnInit {
       .subscribe(
         (res: Product[]) => {
           this.products = res;
+        },
+        (err) => {
+          this.error = err;
+        }
+      );
+  }
+
+  // Gets user produts based on search criteria fetched from Product Service
+  getUserProductsByFilters(): void {
+    this.productService
+      .getUserProductsByFilters(
+        this.genderHandler,
+        this.productCategory,
+        this.colorCategory,
+        this.sizeCategory
+      )
+      .subscribe(
+        (res: UserProduct[]) => {
+          this.userProducts = res;
         },
         (err) => {
           this.error = err;

@@ -15,11 +15,11 @@
       </p>
       <div class="productDetailsAdditionalInfo">
         <p>
-          <b style="color: black;">Size -</b> The model is 188cm and wears a
-          size L
-        </p>
-        <p>
           <b style="color: black;">Composition -</b> {{ model.composition }}
+        </p>
+        <p *ngIf="productType === 'outlet'">
+          <b style="color: black;">Kontakt prodavca -</b>
+          <span> {{ this.email }}</span>
         </p>
       </div>
     </div>
@@ -118,7 +118,7 @@
         <span>2XL</span>
       </div>
     </div>
-    <div class="quantityContainer">
+    <div class="quantityContainer" *ngIf="productType !== 'outlet'">
       <form [formGroup]="myForm">
         <label for="quantity">Quantity: </label>
         <input
@@ -130,6 +130,21 @@
         />
         <div *ngIf="f.quantity.errors" class="error">
           Unesite količinu između 1-5.
+        </div>
+      </form>
+    </div>
+    <div class="quantityContainer" *ngIf="productType === 'outlet'">
+      <form [formGroup]="myForm">
+        <label for="outletQuantity">Quantity: </label>
+        <input
+          type="number"
+          id="outletQuantity"
+          formControlName="outletQuantity"
+          min="1"
+          max="1"
+        />
+        <div *ngIf="f.outletQuantity.errors" class="error">
+          Ne možete uneti količinu veću od 1.
         </div>
       </form>
     </div>

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ChosenProduct } from 'src/app/models/ChosenProduct';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-product-details',
@@ -14,7 +15,8 @@ export class ProductDetailsComponent implements OnInit {
   iconActive: boolean = false;
   selectedSize: string;
 
-  model: Product;
+  model;
+  email;
 
   availableSizes = [];
 
@@ -22,13 +24,17 @@ export class ProductDetailsComponent implements OnInit {
 
   myForm = new FormGroup({});
 
+  productType = '';
+
   constructor(
     private router: ActivatedRoute,
     private cartService: CartService,
+    private userService: UserService,
     private formBuilder: FormBuilder
   ) {
     this.myForm = formBuilder.group({
       quantity: ['1', [Validators.min(1), Validators.max(5)]],
+      outletQuantity: ['1', [Validators.min(1), Validators.max(1)]],
     });
   }
 
@@ -45,10 +51,6 @@ export class ProductDetailsComponent implements OnInit {
       this.model = JSON.parse(params.product) as ChosenProduct;
     });
 
-    // this.model.productDetailsFolderUrl =
-    //   'http://localhost/ClothesShopApi/product/product-details-images/' +
-    //   this.model.picUrl.substr(47, this.model.picUrl.length);
-
     var pom1 = this.model.productDetailsFolderUrl + '/' + 'productdetails1.jpg';
 
     var pom2 = this.model.productDetailsFolderUrl + '/' + 'productdetails2.jpg';
@@ -63,8 +65,11 @@ export class ProductDetailsComponent implements OnInit {
     this.productDetails.push(pom4);
 
     this.availableSizes = this.model.size.split(',');
-    // if (this.availableSizes.includes('S')) console.log('da');
-    // else console.log('ne');
+
+    if (this.model.sellerId != undefined) {
+      this.productType = 'outlet';
+      this.getEmail();
+    }
   }
 
   iconHover() {
@@ -87,5 +92,18 @@ export class ProductDetailsComponent implements OnInit {
         'rgb(248, 249, 250)';
     document.getElementById(size).style.borderColor = 'black';
     this.selectedSize = size;
+  }
+
+  getEmail() {
+    if (this.productType === 'outlet') {
+      this.userService.getEmail(this.model.sellerId).subscribe(
+        (res) => {
+          this.email = res['data'];
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
   }
 }

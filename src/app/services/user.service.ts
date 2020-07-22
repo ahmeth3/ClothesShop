@@ -76,6 +76,18 @@ export class UserService {
     );
   }
 
+  // get email of the user
+  getEmail(id) {
+    return this.http
+      .get(`${this.baseUrl}/getEmail`, { params: { id: id } })
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
   private handleError(error: HttpErrorResponse) {
     console.log(error);
 

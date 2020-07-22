@@ -208,7 +208,6 @@
   max-width: 95%;
   width: 100%;
   min-height: 40px;
-  margin: auto;
 }
 
 .chosenFilter {
@@ -216,6 +215,7 @@
   height: 20px;
   width: auto;
   background-color: rgb(111, 111, 111);
+  margin: 5px;
   padding-left: 5px;
   cursor: pointer;
 }

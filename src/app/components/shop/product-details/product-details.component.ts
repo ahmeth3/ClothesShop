@@ -51,6 +51,20 @@ export class ProductDetailsComponent implements OnInit {
       this.model = JSON.parse(params.product) as ChosenProduct;
     });
 
+    if (this.model.sellerId != undefined) {
+      this.productType = 'outlet';
+      this.getEmail();
+    }
+
+    if (this.productType != 'outlet')
+      this.model.productDetailsFolderUrl =
+        'http://localhost/ClothesShopApi/product/product-details-images/' +
+        this.model.picUrl.substr(47, this.model.picUrl.length);
+    else if (this.productType === 'outlet')
+      this.model.productDetailsFolderUrl =
+        'http://localhost/ClothesShopApi/userProduct/product-details-images/' +
+        this.model.picUrl.substr(52, this.model.picUrl.length);
+
     var pom1 = this.model.productDetailsFolderUrl + '/' + 'productdetails1.jpg';
 
     var pom2 = this.model.productDetailsFolderUrl + '/' + 'productdetails2.jpg';
@@ -65,11 +79,6 @@ export class ProductDetailsComponent implements OnInit {
     this.productDetails.push(pom4);
 
     this.availableSizes = this.model.size.split(',');
-
-    if (this.model.sellerId != undefined) {
-      this.productType = 'outlet';
-      this.getEmail();
-    }
   }
 
   iconHover() {

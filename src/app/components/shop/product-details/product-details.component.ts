@@ -63,7 +63,7 @@ export class ProductDetailsComponent implements OnInit {
     else if (this.productType === 'outlet')
       this.model.productDetailsFolderUrl =
         'http://localhost/ClothesShopApi/userProduct/product-details-images/' +
-        this.model.picUrl.substr(52, this.model.picUrl.length);
+        this.model.picUrl.substr(51, this.model.picUrl.length);
 
     var pom1 = this.model.productDetailsFolderUrl + '/' + 'productdetails1.jpg';
 
@@ -86,11 +86,22 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart() {
-    let ch = new ChosenProduct(
-      this.model,
-      this.f.quantity.value,
-      this.selectedSize
-    );
+    let ch;
+
+    if (this.productType !== 'outlet') {
+      ch = new ChosenProduct(
+        this.model,
+        this.f.quantity.value,
+        this.selectedSize
+      );
+    } else if (this.productType === 'outlet') {
+      ch = new ChosenProduct(
+        this.model,
+        this.f.quantity.value,
+        this.selectedSize,
+        this.model.sellerId
+      );
+    }
 
     this.cartService.addToCart(ch);
   }

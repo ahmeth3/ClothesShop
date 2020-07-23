@@ -26,7 +26,7 @@ hr {
   outline: none;
 }
 
-.buttonContainer button:focus {
+/* .buttonContainer button:focus {
   background-color: rgb(108, 117, 125);
   color: white;
 }
@@ -34,7 +34,7 @@ hr {
 .buttonContainer button:hover {
   background-color: rgb(108, 117, 125);
   color: white;
-}
+} */
 
 .content {
   width: 70%;
@@ -165,6 +165,45 @@ select:focus {
   padding: 8px;
   background-color: rgb(250, 214, 214);
   border-color: rgb(250, 214, 214);
+  border-radius: 25px;
+  position: absolute;
+}
+
+.myProductsContainer {
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+.iconContainer {
+  cursor: pointer;
+}
+
+#check {
+  margin-right: 10px;
+  font-size: 20px;
+  color: rgb(39, 207, 17);
+}
+
+#check:hover {
+  color: rgb(45, 226, 21);
+}
+
+#cross {
+  font-size: 22px;
+  color: rgb(231, 19, 19);
+}
+
+#cross:hover {
+  color: rgb(238, 94, 94);
+}
+
+.dialogMessage {
+  display: none;
+  width: 235px;
+  padding: 8px;
+  background-color: rgba(221, 213, 213, 0.719);
   border-radius: 25px;
   position: absolute;
 }

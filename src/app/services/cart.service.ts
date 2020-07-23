@@ -14,7 +14,7 @@ export class CartService {
 
   removeFromCart(product) {
     var index = this.products.indexOf(product);
-    this.products.splice(index, 1 );
+    this.products.splice(index, 1);
   }
 
   getProducts() {

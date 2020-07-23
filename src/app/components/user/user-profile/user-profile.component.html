@@ -3,12 +3,15 @@
     <h4><i class="fas fa-user"></i> Moj nalog</h4>
     <hr style="margin: 0 auto;" />
     <div class="buttonContainer d-flex flex-column">
-      <button (click)="setActiveContent(1)">Adresar</button>
-      <button (click)="setActiveContent(2)">
+      <button (click)="setActiveContent(1)" id="1">Adresar</button>
+      <button (click)="setActiveContent(2)" id="2">
         Moje narudžbine
       </button>
-      <button (click)="setActiveContent(3)">Prodajte i Vi</button>
-      <button (click)="setActiveContent(4)">Moji oglasi</button>
+      <button (click)="setActiveContent(3)" id="3">Prodajte i Vi</button>
+      <button (click)="setActiveContent(4)" id="4">Moji oglasi</button>
+      <button (click)="setActiveContent(5)" id="5">
+        Moje outlet narudžbine
+      </button>
     </div>
     <hr style="margin: 0 auto;" />
   </div>
@@ -447,11 +450,8 @@
       <h4>Moji oglasi</h4>
       <span id="headline">
         <em
-          >Preko naše platforme imate mogućnost i da zaradite. Naš sajt služi
-          kao posrednik između Vas, kao prodavca, i potencijalnih kupaca, bez
-          bilo kakve provizije. <br />Na sledećoj listi prikazani su proizvodi
-          koje vi prodajete. Klikom na proizvod možete
-          <b>izbrisati</b> oglas.</em
+          >Na sledećoj listi prikazani su proizvodi koje vi prodajete. Klikom na
+          proizvod možete <b>izbrisati</b> oglas.</em
         >
       </span>
       <div class="d-flex flex-row flex-wrap justify-content-center">
@@ -462,6 +462,149 @@
             [typeOfProduct]="1"
             (productDeleted)="getProducts()"
           ></app-product>
+        </div>
+      </div>
+      <h4>Narudžbine mojih oglasa</h4>
+      <span id="headline">
+        <em
+          >Na sledećoj listi prikazani su aktivne narudžbine produkata koje vi
+          prodajete. Klikom na narudžbinu možete <b>promeniti stanje</b>.</em
+        >
+      </span>
+      <div *ngFor="let order of ordersOfMyProducts">
+        <div class="order">
+          <div class="d-flex flex-row justify-content-between">
+            <span
+              ><b>#{{ order.id }}</b></span
+            >
+            <span
+              >Stanje: <b>{{ order.status }}</b></span
+            >
+            <div class="iconContainer d-flex flex-row">
+              <i
+                class="fas fa-check"
+                id="check"
+                (mousemove)="showMessageDialog($event, 1)"
+                (mouseleave)="hideMessageDialog()"
+                (click)="updateStatus(order.id, 'Izvršeno')"
+              ></i>
+              <i
+                class="fas fa-times"
+                id="cross"
+                (mousemove)="showMessageDialog($event, 2)"
+                (mouseleave)="hideMessageDialog()"
+                (click)="updateStatus(order.id, 'Isporučeno')"
+              ></i>
+            </div>
+            <div class="dialogMessage" id="dialogMessage">
+              Promenite stanje u <b><em>'Izvršeno'</em></b
+              >.
+            </div>
+          </div>
+          <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-column">
+              <span
+                >Datum narudžbine:
+                <em>{{ order.date | date: "dd/MM/yyyy" }}</em></span
+              >
+              <span
+                >Ime i prezime naručioca:
+                <em>{{ order.name }} {{ order.surname }}</em></span
+              >
+              <span
+                >Kontakt: <em>{{ order.phone }}</em></span
+              >
+              <span
+                >Adresa:
+                <em
+                  >{{ order.address }}, {{ order.city }},
+                  {{ order.country }}</em
+                ></span
+              >
+              <span
+                >Poštanski broj: <em>{{ order.zipCode }}</em></span
+              >
+            </div>
+            <div
+              class="d-flex flex-column justify-content-center orderedProducts"
+            >
+              <span>Poručeni proizvodi:</span>
+              <div *ngFor="let product of order.products">
+                <a
+                  [routerLink]="['/product-details']"
+                  [queryParams]="{ product: product | json }"
+                  queryParamsHandling="merge"
+                  >1 x {{ product.name }} ({{ product.size }})</a
+                >
+              </div>
+            </div>
+            <div class="d-flex flex-column justify-content-center priceInfo">
+              <span
+                >Cena: <em>{{ order.price | pointReplacer }} RSD</em></span
+              >
+              <span>Način plaćanja: <em>pouzećem</em></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="userOrders" *ngIf="activeContent === 5">
+      <h4>Moje outlet narudžbine</h4>
+      <div *ngFor="let order of userOrders">
+        <div class="order">
+          <div class="d-flex flex-row justify-content-between">
+            <span
+              ><b>#{{ order.id }}</b></span
+            >
+            <span
+              >Stanje: <b>{{ order.status }}</b></span
+            >
+            <span>Kontakt prodavca: {{ order.email }}</span>
+          </div>
+          <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-column">
+              <span
+                >Datum narudžbine:
+                <em>{{ order.date | date: "dd/MM/yyyy" }}</em></span
+              >
+              <span
+                >Ime i prezime naručioca:
+                <em>{{ order.name }} {{ order.surname }}</em></span
+              >
+              <span
+                >Kontakt: <em>{{ order.phone }}</em></span
+              >
+              <span
+                >Adresa:
+                <em
+                  >{{ order.address }}, {{ order.city }},
+                  {{ order.country }}</em
+                ></span
+              >
+              <span
+                >Poštanski broj: <em>{{ order.zipCode }}</em></span
+              >
+            </div>
+            <div
+              class="d-flex flex-column justify-content-center orderedProducts"
+            >
+              <span>Poručeni proizvodi:</span>
+              <div *ngFor="let product of order.products">
+                <a
+                  [routerLink]="['/product-details']"
+                  [queryParams]="{ product: product | json }"
+                  queryParamsHandling="merge"
+                  >1 x {{ product.name }} ({{ product.size }})</a
+                >
+              </div>
+            </div>
+            <div class="d-flex flex-column justify-content-center priceInfo">
+              <span
+                >Cena: <em>{{ order.price | pointReplacer }} RSD</em></span
+              >
+              <span>Način plaćanja: <em>pouzećem</em></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

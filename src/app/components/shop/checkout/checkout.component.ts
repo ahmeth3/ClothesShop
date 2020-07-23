@@ -6,6 +6,8 @@ import { Address } from '../../../models/Address';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/models/Order';
+import { UserOrder } from 'src/app/models/UserOrder';
+import { UserOrderService } from 'src/app/services/user-order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -26,6 +28,7 @@ export class CheckoutComponent implements OnInit {
     private userService: UserService,
     private cartService: CartService,
     private orderService: OrderService,
+    private userOrderService: UserOrderService,
     private router: Router,
     private fb: FormBuilder
   ) {}
@@ -141,8 +144,49 @@ export class CheckoutComponent implements OnInit {
     return sum;
   }
 
+  getUserProductsPrice(userProds) {
+    let sum = 0;
+    userProds.forEach((element) => {
+      sum += parseInt(element.price) * parseInt(element.quantity);
+    });
+
+    return sum;
+  }
+
   createOrder() {
     this.matchValuesToObject();
+
+    let userOrders = [];
+    let userProducts = [];
+
+    userProducts = this.products.filter((prod) => prod.sellerId !== undefined);
+    this.products = this.products.filter((prod) => prod.sellerId == undefined);
+
+    userProducts.forEach((prod) => {
+      if (!userOrders.find((ord) => ord.sellerId == prod.sellerId)) {
+        let sameSellersProds = userProducts.filter(
+          (p) => p.sellerId == prod.sellerId
+        );
+
+        var orderedProducts = '';
+        sameSellersProds.forEach((pr) => {
+          orderedProducts += pr.id + ',';
+        });
+
+        var price = this.getUserProductsPrice(sameSellersProds);
+
+        var newOrder = new UserOrder(
+          this.addressObj,
+          'Isporučeno',
+          price.toString(),
+          new Date(),
+          orderedProducts,
+          prod.sellerId
+        );
+
+        userOrders.push(newOrder);
+      }
+    });
 
     var price = this.getTotalPrice();
 
@@ -174,5 +218,16 @@ export class CheckoutComponent implements OnInit {
         console.log('err je ' + err);
       }
     );
+
+    userOrders.forEach((ord) => {
+      this.userOrderService.createOrder(ord, token).subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (err) => {
+          console.log('err je ' + err);
+        }
+      );
+    });
   }
 }

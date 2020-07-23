@@ -4,8 +4,14 @@ export class ChosenProduct extends Product {
   quantity: string;
   chosenSize: string;
   product: Product;
+  sellerId?: number;
 
-  constructor(product: Product, quantity: string, chosenSize: string) {
+  constructor(
+    product: Product,
+    quantity: string,
+    chosenSize: string,
+    sellerId?: number
+  ) {
     super(
       product.name,
       product.price,
@@ -30,9 +36,8 @@ export class ChosenProduct extends Product {
     this.productDetailsFolderUrl = product.productDetailsFolderUrl;
     this.quantity = quantity;
     this.chosenSize = chosenSize;
+    this.sellerId = sellerId;
   }
 
-  setProduct() {
-    
-  }
+  setProduct() {}
 }

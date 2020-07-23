@@ -7,6 +7,8 @@ import { Order } from 'src/app/models/Order';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/Product';
 import { UserProduct } from 'src/app/models/UserProduct';
+import { UserOrderService } from 'src/app/services/user-order.service';
+import { UserOrder } from 'src/app/models/UserOrder';
 
 @Component({
   selector: 'app-user-profile',
@@ -21,6 +23,8 @@ export class UserProfileComponent implements OnInit {
   addressObj: Address;
 
   orders: Order[];
+  userOrders: UserOrder[];
+  ordersOfMyProducts: UserOrder[];
 
   maleCategoryActive: boolean = true;
   femaleCategoryActive: boolean = true;
@@ -76,7 +80,8 @@ export class UserProfileComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private orderService: OrderService,
-    private productService: ProductService
+    private productService: ProductService,
+    private userOrderService: UserOrderService
   ) {}
 
   ngOnInit(): void {
@@ -165,6 +170,31 @@ export class UserProfileComponent implements OnInit {
 
   get composition() {
     return this.productForm.get('composition');
+  }
+
+  setActiveContent(contentType: number) {
+    document.getElementById(
+      this.activeContent.toString()
+    ).style.backgroundColor = 'rgb(247, 248, 249)';
+    document.getElementById(this.activeContent.toString()).style.color =
+      'black';
+
+    this.activeContent = contentType;
+
+    document.getElementById(
+      this.activeContent.toString()
+    ).style.backgroundColor = 'rgb(108, 117, 125)';
+    document.getElementById(this.activeContent.toString()).style.color =
+      'white';
+
+    if (this.activeContent === 4) {
+      this.getProducts();
+      this.getOrdersOfMyproducts();
+    }
+
+    if (this.activeContent === 5) {
+      this.getUserOrders();
+    }
   }
 
   changeGender(e) {
@@ -317,14 +347,6 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
-  setActiveContent(contentType: number) {
-    this.activeContent = contentType;
-
-    if (this.activeContent === 4) {
-      this.getProducts();
-    }
-  }
-
   updateAddress() {
     this.matchValuesToObject();
     var token = localStorage.getItem('token');
@@ -395,6 +417,90 @@ export class UserProfileComponent implements OnInit {
       },
       (err) => {
         // console.log(err);
+      }
+    );
+  }
+
+  getUserOrders() {
+    var token = localStorage.getItem('token');
+
+    this.userOrderService.getUsersOrders(token).subscribe({
+      next: (res: UserOrder[]) => {
+        this.userOrders = res;
+        this.userOrders = this.userOrders.sort((a, b) => b.id - a.id);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        this.userOrders.forEach((order) => {
+          var em = '';
+          this.userService.getEmail(order.products[0].sellerId).subscribe({
+            next: (res) => {
+              em = res['data'];
+            },
+            error: (err) => {
+              console.log(err);
+            },
+            complete: () => {
+              order.email = em;
+            },
+          });
+        });
+      },
+    });
+  }
+
+  getOrdersOfMyproducts() {
+    var token = localStorage.getItem('token');
+
+    this.userOrderService.getOrdersOfMyProducts(token).subscribe(
+      (res: UserOrder[]) => {
+        this.ordersOfMyProducts = res;
+        this.ordersOfMyProducts = this.ordersOfMyProducts.sort(
+          (a, b) => b.id - a.id
+        );
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  showMessageDialog($event, messageType: number) {
+    var xOffset = $event.pageX + 2;
+    var yOffset = $event.pageY - 42;
+
+    document.getElementById('dialogMessage').style.display = 'block';
+    document.getElementById('dialogMessage').style.left = xOffset + 'px';
+    document.getElementById('dialogMessage').style.top = yOffset + 'px';
+
+    if (messageType === 1) {
+      document.getElementById('dialogMessage').innerHTML =
+        "Promenite stanje u <b><em>'Izvršeno'</em></b>";
+      document.getElementById('dialogMessage').style.width = '230px';
+    }
+
+    if (messageType === 2) {
+      document.getElementById('dialogMessage').innerHTML =
+        "Promenite stanje u <b><em>'Isporučeno'</em></b>";
+      document.getElementById('dialogMessage').style.width = '250px';
+    }
+  }
+
+  hideMessageDialog() {
+    document.getElementById('dialogMessage').style.display = 'none';
+  }
+
+  updateStatus(id: string, status: string) {
+    var token = localStorage.getItem('token');
+
+    this.userOrderService.updateStatus(token, id, status).subscribe(
+      (res) => {
+        this.setActiveContent(4);
+      },
+      (err) => {
+        console.log(err);
       }
     );
   }

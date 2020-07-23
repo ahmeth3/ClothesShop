@@ -11,7 +11,7 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./admin-page.component.css'],
 })
 export class AdminPageComponent implements OnInit {
-  activeContent: number = 3;
+  activeContent: number = 1;
   maleCategoryActive: boolean = true;
   femaleCategoryActive: boolean = true;
 
@@ -135,6 +135,7 @@ export class AdminPageComponent implements OnInit {
     }
 
     if (contentType === 3) {
+      this.getOrders();
       this.getOrders();
     }
   }

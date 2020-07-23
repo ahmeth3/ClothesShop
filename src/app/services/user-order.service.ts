@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Order } from '../models/Order';
+import { UserOrder } from '../models/UserOrder';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { Order } from '../models/Order';
 
 @Injectable({
   providedIn: 'root',
 })
-export class OrderService {
-  baseUrl = 'http://localhost/ClothesShopApi/order';
+export class UserOrderService {
+  baseUrl = 'http://localhost/ClothesShopApi/userOrder';
 
-  orders: Order[];
+  orders: UserOrder[];
 
   constructor(private http: HttpClient) {}
 
@@ -25,7 +26,7 @@ export class OrderService {
       });
   }
 
-  getUsersOrders(token: string): Observable<Order[]> {
+  getUsersOrders(token: string): Observable<UserOrder[]> {
     return this.http
       .post(`${this.baseUrl}/list`, {
         token: token,
@@ -39,9 +40,9 @@ export class OrderService {
       );
   }
 
-  getAllOrders(token: string) {
+  getOrdersOfMyProducts(token: string): Observable<UserOrder[]> {
     return this.http
-      .post(`${this.baseUrl}/listAll`, {
+      .post(`${this.baseUrl}/listOrdersOfMyProducts`, {
         token: token,
       })
       .pipe(
@@ -66,7 +67,7 @@ export class OrderService {
         catchError(this.handleError)
       );
   }
-
+  
   private handleError(error: HttpErrorResponse) {
     console.log(error);
 

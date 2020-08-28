@@ -191,6 +191,7 @@ export class CheckoutComponent implements OnInit {
     var price = this.getTotalPrice();
 
     var orderedProducts = '';
+    
     this.products.forEach((prod) => {
       orderedProducts +=
         prod.quantity + ',' + prod.chosenSize + ',' + prod.id + ';';

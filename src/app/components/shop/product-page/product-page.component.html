@@ -1,4 +1,4 @@
-<div class="d-flex flex-row" id="container">
+<div class="d-flex flex-row" id="container" (clickOutside)="resetFilters()">
   <div id="sideBar" class="sideBar">
     <!-- <i class="fas fa-times closeFiltersButton" (click)="closeNav()"></i> -->
     <i class="closeFiltersButton" (click)="closeNav()">&times;</i>
@@ -10,35 +10,39 @@
           data-target="#demo"
           (click)="scrollToggler(1)"
         >
-          <h4 class="">Categories</h4>
+          <h4 class="">Kategorije</h4>
           <i
             class="fas fa-angle-down d-flex align-self-center"
             [ngClass]="categoryActive ? 'IconUp' : 'IconDown'"
-            style="margin-left: auto;"
+            style="margin-left: auto"
           ></i>
         </div>
       </div>
       <div id="demo" class="collapse show categoriesContent">
         <div class="maleCategories" *ngIf="this.category === 'men'">
           <div>
-            <span (click)="chosenFilterHandler(0, 'View All')">View all</span>
+            <span (click)="chosenFilterHandler(0, 'View All')"
+              >Sve kategorije</span
+            >
           </div>
           <div>
-            <span (click)="chosenFilterHandler(0, 'Shirts')">Shirts</span>
+            <span (click)="chosenFilterHandler(0, 'Shirts')">Košulje</span>
           </div>
           <div>
-            <span (click)="chosenFilterHandler(0, 'Jackets')">Jackets</span>
+            <span (click)="chosenFilterHandler(0, 'Jackets')">Jakne</span>
           </div>
         </div>
         <div class="femaleCategories" *ngIf="this.category === 'women'">
           <div>
-            <span (click)="chosenFilterHandler(0, 'View All')">View all</span>
+            <span (click)="chosenFilterHandler(0, 'View All')"
+              >Sve kategorije</span
+            >
           </div>
           <div>
-            <span (click)="chosenFilterHandler(0, 'Shirts')">Shirts</span>
+            <span (click)="chosenFilterHandler(0, 'Shirts')">Košulje</span>
           </div>
           <div>
-            <span (click)="chosenFilterHandler(0, 'Dresses')">Dresses</span>
+            <span (click)="chosenFilterHandler(0, 'Dresses')">Haljine</span>
           </div>
         </div>
       </div>
@@ -52,24 +56,26 @@
           data-target="#demo5"
           (click)="scrollToggler(5)"
         >
-          <h4 class="">Male</h4>
+          <h4 class="">Za muškarce</h4>
           <i
             class="fas fa-angle-down d-flex align-self-center"
             [ngClass]="maleOutletActive ? 'IconUp' : 'IconDown'"
-            style="margin-left: auto;"
+            style="margin-left: auto"
           ></i>
         </div>
       </div>
       <div id="demo5" class="collapse show categoriesContent">
         <div class="maleCategories">
           <div>
-            <span (click)="chosenFilterHandler(4, 'View All')">View all</span>
+            <span (click)="chosenFilterHandler(4, 'View All')"
+              >Sve kategorije</span
+            >
           </div>
           <div>
-            <span (click)="chosenFilterHandler(4, 'Shirts')">Shirts</span>
+            <span (click)="chosenFilterHandler(4, 'Shirts')">Košulje</span>
           </div>
           <div>
-            <span (click)="chosenFilterHandler(4, 'Jackets')">Jackets</span>
+            <span (click)="chosenFilterHandler(4, 'Jackets')">Jakne</span>
           </div>
         </div>
       </div>
@@ -83,24 +89,26 @@
           data-target="#demo6"
           (click)="scrollToggler(6)"
         >
-          <h4 class="">Female</h4>
+          <h4 class="">Za žene</h4>
           <i
             class="fas fa-angle-down d-flex align-self-center"
             [ngClass]="femaleOutletActive ? 'IconUp' : 'IconDown'"
-            style="margin-left: auto;"
+            style="margin-left: auto"
           ></i>
         </div>
       </div>
       <div id="demo6" class="collapse show categoriesContent">
         <div class="femaleCategories">
           <div>
-            <span (click)="chosenFilterHandler(5, 'View All')">View all</span>
+            <span (click)="chosenFilterHandler(5, 'View All')"
+              >Sve kategorije</span
+            >
           </div>
           <div>
-            <span (click)="chosenFilterHandler(5, 'Dresses')">Dresses</span>
+            <span (click)="chosenFilterHandler(5, 'Dresses')">Haljine</span>
           </div>
           <div>
-            <span (click)="chosenFilterHandler(5, 'Shirts')">Shirts</span>
+            <span (click)="chosenFilterHandler(5, 'Shirts')">Košulje</span>
           </div>
         </div>
       </div>
@@ -114,18 +122,18 @@
           data-target="#demo2"
           (click)="scrollToggler(2)"
         >
-          <h4>Colors</h4>
+          <h4>Boja</h4>
           <i
             class="fas fa-angle-down d-flex align-self-center"
             [ngClass]="colorsActive ? 'IconUp' : 'IconDown'"
-            style="margin-left: auto;"
+            style="margin-left: auto"
           ></i>
         </div>
       </div>
-      <div id="demo2" class="collapse">
+      <div id="demo2" class="collapse show">
         <section
           class="colorContent d-flex flex-row flex-wrap justify-content-center"
-          style="padding-top: 15px; padding-left: 5px; padding-right: 5px;"
+          style="padding-top: 15px; padding-left: 5px; padding-right: 5px"
         >
           <div
             class="colorItem"
@@ -249,18 +257,18 @@
           data-target="#demo3"
           (click)="scrollToggler(3)"
         >
-          <h4>Size</h4>
+          <h4>Veličina</h4>
           <i
             class="fas fa-angle-down d-flex align-self-center"
             [ngClass]="sizeActive ? 'IconUp' : 'IconDown'"
-            style="margin-left: auto;"
+            style="margin-left: auto"
           ></i>
         </div>
       </div>
-      <div id="demo3" class="collapse">
+      <div id="demo3" class="collapse show">
         <section
           class="sizeContent d-flex flex-row flex-wrap justify-content-center"
-          style="padding-top: 15px;"
+          style="padding-top: 15px"
         >
           <div class="sizeItem">
             <span>2XS</span>
@@ -287,63 +295,7 @@
 
   <div id="mainContent" class="mainContent d-flex flex-column">
     <div
-      class="filters d-flex flex-row justify-content-center"
-      style="margin-top: 15px; margin-right: 30px;"
-    >
-      <button class="filterButton mr-3" (click)="openNav()">
-        <span>Filteri</span>
-      </button>
-
-      <div class="dropdown mr-3" (clickOutside)="dropdownCloseOnClickOutside()">
-        <button
-          class="dropdownButton d-flex flex-row"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          (click)="scrollToggler(4)"
-        >
-          <span [ngClass]="sortActive ? 'spanActive' : null">Sortiraj</span>
-          <i
-            class="fas fa-angle-down d-flex align-self-center ml-3"
-            [ngClass]="sortActive ? 'dropdownIconUp' : 'dropdownIconDown'"
-            style="margin-left: auto;"
-          ></i>
-        </button>
-        <div class="dropdown-menu m-0 p-0" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="javascript:void(0)"
-            ><input
-              class="radio"
-              type="radio"
-              name="optradio"
-              checked
-            />Najskuplje prvo</a
-          >
-          <a class="dropdown-item" href="javascript:void(0)"
-            ><input class="radio" type="radio" name="optradio" />Najjeftinije
-            prvo</a
-          >
-          <a class="dropdown-item" href="javascript:void(0)"
-            ><input class="radio" type="radio" name="optradio" />Najveći popust
-            prvo</a
-          >
-        </div>
-      </div>
-
-      <div class="prikazPoStrani">
-        <label for="prikaz" class="mr-2">Prikaži</label>
-
-        <select id="prikaz" class="mr-2">
-          <option value="12">12</option>
-          <option value="24">24</option>
-          <option value="36">36</option>
-        </select>
-        <span>po strani</span>
-      </div>
-    </div>
-    <div
-      class="chosenFilters d-flex flex-row justify-content-start align-items-center px-3"
+      class="chosenFilters d-flex flex-row justify-content-start align-items-center mt-3 px-3"
     >
       <div
         class="chosenFilter d-flex flex-row align-items-center"
@@ -358,7 +310,7 @@
         class="chosenFilter d-flex flex-row align-items-center"
         *ngIf="this.productCategory !== 'View All'"
       >
-        <span>{{ productCategory | lowercase }}</span>
+        <span>{{ chosenProductCategoryPrinter() }}</span>
         <i class="fas fa-times" (click)="filterRemoveHandler(0)"></i>
       </div>
 
@@ -366,7 +318,7 @@
         class="chosenFilter d-flex flex-row align-items-center"
         *ngIf="this.colorCategory !== 'None'"
       >
-        <span>{{ colorCategory | lowercase }}</span>
+        <span>{{ chosenColorPrinter() }}</span>
         <i class="fas fa-times" (click)="filterRemoveHandler(1)"></i>
       </div>
 

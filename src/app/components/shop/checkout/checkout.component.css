@@ -76,3 +76,48 @@
   margin-top: 50px;
   font-size: 20px;
 }
+
+.formButtonContainer {
+  width: 200px;
+  height: 50px;
+  margin-top: 20px;
+}
+
+.formButtonValid {
+  cursor: pointer;
+}
+
+.formButtonInvalid {
+  cursor: not-allowed;
+}
+
+.formButtonInvalid button {
+  pointer-events: none;
+}
+
+.dialogErrorMessage {
+  display: none;
+  width: 130px;
+  padding: 8px;
+  background-color: rgb(250, 214, 214);
+  border-color: rgb(250, 214, 214);
+  border-radius: 25px;
+  position: absolute;
+  z-index: 10;
+}
+
+.dialogMessage {
+  display: none;
+  width: 265px;
+  padding: 8px;
+  margin-top: 10px;
+  margin-left: auto;
+  color: white;
+  background-color: rgb(103, 161, 112);
+  border-color: rgb(104, 76, 76);
+  border-radius: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+}

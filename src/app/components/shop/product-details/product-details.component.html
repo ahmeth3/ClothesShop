@@ -1,4 +1,8 @@
 <div class="d-flex flex-row">
+  <div class="dialogErrorMessage" id="dialogErrorMessage">Popunite formu</div>
+  <div class="dialogMessage" id="dialogMessage">
+    Produkt je uspešno dodat u korpu.
+  </div>
   <div class="mainContent d-flex flex-column">
     <div class="imageContainer d-flex flex-row mb-2">
       <img src="{{ this.productDetails[0] }}" alt="" />
@@ -14,11 +18,9 @@
         {{ model.caption }}
       </p>
       <div class="productDetailsAdditionalInfo">
-        <p>
-          <b style="color: black;">Composition -</b> {{ model.composition }}
-        </p>
+        <p><b style="color: black">Sastav -</b> {{ model.composition }}</p>
         <p *ngIf="productType === 'outlet'">
-          <b style="color: black;">Kontakt prodavca -</b>
+          <b style="color: black">Kontakt prodavca -</b>
           <span> {{ this.email }}</span>
         </p>
       </div>
@@ -27,26 +29,10 @@
   <div class="productReCap">
     <div class="d-flex flex-row justify-content-between">
       <h4>{{ model.name }}</h4>
-      <div
-        class="iconContainer"
-        (mouseover)="iconHover()"
-        (mouseleave)="this.iconActive = false"
-      >
-        <i
-          *ngIf="!this.iconActive"
-          class="far fa-heart text-dark"
-          style="font-size: 30px;"
-        ></i>
-        <i
-          *ngIf="this.iconActive"
-          class="fas fa-heart"
-          style="font-size: 30px; color: rgb(230, 30, 35);"
-        ></i>
-      </div>
     </div>
     <h4>{{ model.price | pointReplacer }} RSD</h4>
-    <h6>{{ model.color | titlecase }}</h6>
-    <p class="mt-2 mb-1">Select size</p>
+    <h6>{{ chosenColorPrinter() }}</h6>
+    <p class="mt-2 mb-1">Izaberite veličinu:</p>
     <div
       class="sizeContainer d-flex flex-row flex-wrap justify-content-start mb-2"
     >
@@ -120,7 +106,7 @@
     </div>
     <div class="quantityContainer" *ngIf="productType !== 'outlet'">
       <form [formGroup]="myForm">
-        <label for="quantity">Quantity: </label>
+        <label for="quantity">Količina: </label>
         <input
           type="number"
           id="quantity"
@@ -135,7 +121,7 @@
     </div>
     <div class="quantityContainer" *ngIf="productType === 'outlet'">
       <form [formGroup]="myForm">
-        <label for="outletQuantity">Quantity: </label>
+        <label for="outletQuantity">Količina: </label>
         <input
           type="number"
           id="outletQuantity"
@@ -148,13 +134,30 @@
         </div>
       </form>
     </div>
-    <button
+    <!-- <button
       type="submit"
       class="btn btn-lg btn-block addToCartbtn"
       (click)="addToCart()"
       [disabled]="f.quantity.errors || selectedSize == undefined"
     >
       Dodaj u korpu
-    </button>
+    </button> -->
+    <div
+      class="formButtonContainer"
+      [ngClass]="
+        f.quantity.errors || selectedSize == undefined
+          ? 'formButtonInvalid'
+          : 'formButtonValid'
+      "
+      (mousemove)="showErrorDialog($event)"
+      (mouseleave)="hideErrorDialog()"
+    >
+      <button class="btn btn-lg btn-block" type="submit" (click)="addToCart()">
+        Sačuvajte
+      </button>
+    </div>
+    <div class="dialogMessage" id="dialogMessage">
+      Produkt je uspešno dodat u korpu.
+    </div>
   </div>
 </div>

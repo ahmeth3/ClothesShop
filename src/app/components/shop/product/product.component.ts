@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -53,6 +53,17 @@ export class ProductComponent implements OnInit {
           }
         );
       }
+    }
+  }
+
+  redirectToDetails() {
+    if (!this.adminView) {
+      let navigationParams: NavigationExtras = {
+        queryParams: { product: JSON.stringify(this.model) },
+        queryParamsHandling: 'merge',
+      };
+
+      this.router.navigate(['/product-details'], navigationParams);
     }
   }
 }

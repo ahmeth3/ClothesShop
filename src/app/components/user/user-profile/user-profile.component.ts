@@ -9,6 +9,7 @@ import { Product } from 'src/app/models/Product';
 import { UserProduct } from 'src/app/models/UserProduct';
 import { UserOrderService } from 'src/app/services/user-order.service';
 import { UserOrder } from 'src/app/models/UserOrder';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,7 +17,7 @@ import { UserOrder } from 'src/app/models/UserOrder';
   styleUrls: ['./user-profile.component.css'],
 })
 export class UserProfileComponent implements OnInit {
-  activeContent: number = 4;
+  activeContent: number = 1;
 
   addressForm: FormGroup;
 
@@ -77,6 +78,7 @@ export class UserProfileComponent implements OnInit {
   products = [];
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private userService: UserService,
     private orderService: OrderService,
@@ -86,24 +88,51 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.addressForm = this.fb.group({
-      name: ['', [Validators.required]],
-      surname: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      zipCode: ['', [Validators.required]],
-      country: ['', [Validators.required]],
+      name: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš ]+$')],
+      ],
+      surname: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš ]+$')],
+      ],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9+]+$')]],
+      address: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš0-9 ]+$')],
+      ],
+      city: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš ]+$')],
+      ],
+      zipCode: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      country: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš ]+$')],
+      ],
     });
 
     this.productForm = this.fb.group({
-      nameOfProduct: ['', [Validators.required]],
-      price: ['', [Validators.required]],
+      nameOfProduct: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš ]+$')],
+      ],
+      price: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       gender: ['', [Validators.required]],
       category: ['', [Validators.required]],
       color: ['', [Validators.required]],
-      size: ['', [Validators.required]],
-      caption: ['', [Validators.required]],
-      composition: ['', [Validators.required]],
+      size: ['', [Validators.required, Validators.pattern('^[XSML2]+$')]],
+      caption: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš0-9,.? ]+$')],
+      ],
+      composition: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš0-9,.?% ]+$'),
+        ],
+      ],
     });
 
     this.getAddress();
@@ -503,5 +532,10 @@ export class UserProfileComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/product-page/men']);
   }
 }

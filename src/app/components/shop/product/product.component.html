@@ -1,29 +1,17 @@
-<div class="card m-3" style="max-width: 18rem;">
+<div class="card m-3" style="max-width: 18rem" (click)="redirectToDetails()">
   <div class="imageContainer">
     <img src="{{ this.model.picUrl }}" class="card-img-top" />
     <div
       class="card-img-overlay d-flex flex-column justify-content-center align-items-center"
       (click)="deleteProduct()"
     >
-      <h2 *ngIf="!adminView" class="overlayText text-light mt-auto">
+      <h2 *ngIf="!adminView" class="overlayText text-light my-auto">
         Detaljnije<br />
-        <!-- <i
-          class="fas fa-long-arrow-alt-right d-flex justify-content-center"
-          style="font-size: 35px;"
-        ></i> -->
       </h2>
 
       <h2 *ngIf="adminView" class="overlayText text-light my-auto">
         Izbrišite
       </h2>
-
-      <div
-        *ngIf="!adminView"
-        class="favWrapper overlayText d-flex justify--end align-self-start m-0 px-1 mt-auto"
-      >
-        <i class="far fa-heart text-light mr-1" style="font-size: 30px;"></i>
-        <h5 class="text-light">Dodaj u favorite</h5>
-      </div>
     </div>
   </div>
   <div class="card-body text-dark">

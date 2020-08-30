@@ -9,6 +9,8 @@ import { FullPageCartComponent } from './components/shop/cart/full-page-cart/ful
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { CheckoutComponent } from './components/shop/checkout/checkout.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
+import { AuthGuardGuard } from './guard/auth-guard.guard';
+import { UserGuardGuard } from './guard/user-guard.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'product-page/men', pathMatch: 'full' },
@@ -18,9 +20,17 @@ const routes: Routes = [
   { path: 'product', component: ProductComponent },
   { path: 'product-details', component: ProductDetailsComponent },
   { path: 'cart', component: FullPageCartComponent },
-  { path: 'user-profile', component: UserProfileComponent },
+  {
+    path: 'user-profile',
+    component: UserProfileComponent,
+    canActivate: [UserGuardGuard],
+  },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'admin-page', component: AdminPageComponent },
+  {
+    path: 'admin-page',
+    component: AdminPageComponent,
+    canActivate: [AuthGuardGuard],
+  },
 ];
 
 @NgModule({

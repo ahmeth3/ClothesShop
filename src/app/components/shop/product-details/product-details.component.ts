@@ -104,6 +104,7 @@ export class ProductDetailsComponent implements OnInit {
     }
 
     this.cartService.addToCart(ch);
+    this.succesfullDialog();
   }
 
   selectedSizeHandler(size: string) {
@@ -125,5 +126,60 @@ export class ProductDetailsComponent implements OnInit {
         }
       );
     }
+  }
+
+  chosenColorPrinter() {
+    var translatedColors = [
+      'white',
+      'gray',
+      'black',
+      'blue',
+      'green',
+      'red',
+      'brown',
+      'yellow',
+      'orange',
+      'pink',
+      'purple',
+    ];
+
+    if (this.model.color == 'white') return 'Bela';
+    if (this.model.color == 'gray') return 'Siva';
+    if (this.model.color == 'black') return 'Crna';
+    if (this.model.color == 'blue') return 'Plava';
+    if (this.model.color == 'green') return 'Zelena';
+    if (this.model.color == 'red') return 'Crvena';
+    if (this.model.color == 'brown') return 'Braon';
+    if (this.model.color == 'yellow') return 'Žuta';
+    if (this.model.color == 'orange') return 'Narandžasta';
+    if (this.model.color == 'pink') return 'Pink';
+    if (this.model.color == 'purple') return 'Ljubičasta';
+  }
+
+  showErrorDialog($event) {
+    if (this.f.quantity.errors || this.selectedSize == undefined) {
+      console.log('idk');
+      var xOffset = $event.pageX + 5;
+      var yOffset = $event.pageY - 42;
+
+      document.getElementById('dialogErrorMessage').style.display = 'block';
+      document.getElementById('dialogErrorMessage').style.left = xOffset + 'px';
+      document.getElementById('dialogErrorMessage').style.top = yOffset + 'px';
+    }
+  }
+
+  hideErrorDialog() {
+    document.getElementById('dialogErrorMessage').style.display = 'none';
+  }
+
+  succesfullDialog() {
+    document.getElementById('dialogMessage').style.display = 'block';
+
+    setTimeout(this.hideSucessfullDialog, 3500);
+    clearTimeout();
+  }
+
+  hideSucessfullDialog() {
+    document.getElementById('dialogMessage').style.display = 'none';
   }
 }

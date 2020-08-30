@@ -37,13 +37,28 @@ export class CheckoutComponent implements OnInit {
     this.products = this.cartService.getProducts();
 
     this.addressForm = this.fb.group({
-      name: ['', [Validators.required]],
-      surname: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      zipCode: ['', [Validators.required]],
-      country: ['', [Validators.required]],
+      name: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš ]+$')],
+      ],
+      surname: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš ]+$')],
+      ],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9+]+$')]],
+      address: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš0-9 ]+$')],
+      ],
+      city: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš ]+$')],
+      ],
+      zipCode: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      country: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-ZČĆĐŠŽčćžđš ]+$')],
+      ],
     });
   }
 
@@ -76,17 +91,21 @@ export class CheckoutComponent implements OnInit {
   }
 
   proceedToAddressForm() {
-    var token = localStorage.getItem('token');
-    this.userService.autoLogin(token).subscribe(
-      (res) => {
-        this.logged = true;
-        this.getAddress();
-      },
-      (err) => {
-        this.logged = false;
-      }
-    );
-    this.proceed = true;
+    if (this.products.length == 0) {
+      alert('Korpa je prazna!');
+    } else {
+      var token = localStorage.getItem('token');
+      this.userService.loginDecide(token).subscribe(
+        (res) => {
+          this.logged = true;
+          this.getAddress();
+        },
+        (err) => {
+          this.logged = false;
+        }
+      );
+      this.proceed = true;
+    }
   }
 
   getAddress() {
@@ -191,7 +210,7 @@ export class CheckoutComponent implements OnInit {
     var price = this.getTotalPrice();
 
     var orderedProducts = '';
-    
+
     this.products.forEach((prod) => {
       orderedProducts +=
         prod.quantity + ',' + prod.chosenSize + ',' + prod.id + ';';
@@ -212,9 +231,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     this.orderService.createOrder(order, token).subscribe(
-      (res) => {
-        // console.log(res);
-      },
+      (res) => {},
       (err) => {
         console.log('err je ' + err);
       }
@@ -222,13 +239,43 @@ export class CheckoutComponent implements OnInit {
 
     userOrders.forEach((ord) => {
       this.userOrderService.createOrder(ord, token).subscribe(
-        (res) => {
-          console.log(res);
-        },
+        (res) => {},
         (err) => {
           console.log('err je ' + err);
         }
       );
     });
+
+    this.succesfullDialog();
+    this.cartService.clearCart();
+    this.router.navigate(['/product-page/men']);
+  }
+
+  navigateToShop() {}
+
+  succesfullDialog() {
+    document.getElementById('dialogMessage').style.display = 'block';
+
+    setTimeout(this.hideSucessfullDialog, 3500);
+    clearTimeout();
+  }
+
+  hideSucessfullDialog() {
+    document.getElementById('dialogMessage').style.display = 'none';
+  }
+
+  showErrorDialog($event) {
+    if (this.addressForm.invalid) {
+      var xOffset = $event.pageX + 5;
+      var yOffset = $event.pageY - 42;
+
+      document.getElementById('dialogErrorMessage').style.display = 'block';
+      document.getElementById('dialogErrorMessage').style.left = xOffset + 'px';
+      document.getElementById('dialogErrorMessage').style.top = yOffset + 'px';
+    }
+  }
+
+  hideErrorDialog() {
+    document.getElementById('dialogErrorMessage').style.display = 'none';
   }
 }

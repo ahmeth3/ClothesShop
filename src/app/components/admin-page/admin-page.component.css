@@ -31,6 +31,13 @@ button:focus {
   outline: none;
 }
 
+.logoutButton {
+  width: 60%;
+  margin-top: 10;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .content {
   width: 70%;
   margin-top: 20px;

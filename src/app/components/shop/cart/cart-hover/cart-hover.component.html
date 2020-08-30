@@ -2,9 +2,7 @@
   class="container d-flex flex-column"
   [ngStyle]="{ width: productsShow ? '600px' : '300px' }"
 >
-  <p *ngIf="!productsShow" style="margin: auto;">
-    Nema artikala u Vašoj korpi.
-  </p>
+  <p *ngIf="!productsShow" style="margin: auto">Nema artikala u Vašoj korpi.</p>
   <div *ngIf="productsShow" class="productsContainer">
     <div class="topContent d-flex flex-column align-self-end">
       <p *ngIf="getTotalQuantity() === 1">
@@ -15,15 +13,15 @@
       </p>
       <h6>Ukupno: {{ getTotalPrice() | pointReplacer }} RSD</h6>
     </div>
-    <hr style="margin: 5px;" />
+    <hr style="margin: 5px" />
     <div class="products">
       <h6>Nedavno dodati artikli</h6>
       <div *ngFor="let product of recentlyAddedProducts">
         <div class="product">
-          <hr style="margin: 5px; border: 1px dashed rgb(229, 229, 229);" />
+          <hr style="margin: 5px; border: 1px dashed rgb(229, 229, 229)" />
           <div class="productOverview d-flex flex-row">
             <img src="{{ product.picUrl }}" alt="" />
-            <p style="margin-left: 5px;">
+            <p style="margin-left: 5px">
               {{ product.name }} <br />
               <span
                 >{{ product.quantity }} x
@@ -31,13 +29,13 @@
                 RSD</span
               >
             </p>
-            <p style="margin: auto;">Veličina: {{ product.chosenSize }}</p>
+            <p style="margin: auto">Veličina: {{ product.chosenSize }}</p>
             <div
-              style="margin-left: auto; margin-top: auto; margin-bottom: auto;"
+              style="margin-left: auto; margin-top: auto; margin-bottom: auto"
             >
               <i
                 class="fas fa-times-circle"
-                style="font-size: 24px; color: rgb(225, 123, 94);"
+                style="font-size: 24px; color: rgb(225, 123, 94)"
                 (click)="removeProduct(product)"
               ></i>
             </div>

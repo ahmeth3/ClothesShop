@@ -29,7 +29,7 @@ export class FullPageCartComponent implements OnInit {
   }
 
   clearCart() {
-    this.products = this.cartService.clearCart();
+    this.products = this.cartService.clearCartt();
     this.productsShow = false;
   }
 

@@ -27,7 +27,7 @@
           data-dismiss="modal"
           aria-hidden="true"
           (click)="modalDismissedHandler()"
-          style="outline: none;"
+          style="outline: none"
         >
           &times;
         </button>
@@ -46,9 +46,7 @@
               placeholder="Email"
             />
             <div *ngIf="email.errors && email.touched" class="mt-1">
-              <span *ngIf="email.errors.required">
-                Unesite email adresu
-              </span>
+              <span *ngIf="email.errors.required"> Unesite email adresu </span>
               <span *ngIf="email.errors.email">
                 Email mora biti validna email adresa
               </span>
@@ -71,6 +69,9 @@
                 <span *ngIf="password.errors.required">Unesite lozinku</span>
                 <span *ngIf="password.errors.minlength"
                   >Lozinka mora imati minimum 6 karaktera</span
+                ><span *ngIf="password.errors.pattern"
+                  >Lozinka sme imati samo velika slova, mala slova i
+                  brojeve.</span
                 >
               </div>
             </div>

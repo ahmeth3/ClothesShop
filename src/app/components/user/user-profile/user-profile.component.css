@@ -26,6 +26,13 @@ hr {
   outline: none;
 }
 
+.logoutButton {
+  width: 60%;
+  margin-top: 50;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* .buttonContainer button:focus {
   background-color: rgb(108, 117, 125);
   color: white;

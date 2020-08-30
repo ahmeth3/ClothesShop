@@ -1,17 +1,16 @@
 <div class="wrapper container-fluid d-flex flex-row">
   <div class="sidebar d-flex flex-column">
     <h4><i class="fas fa-user"></i> Admin panel</h4>
-    <hr style="margin: 0 auto;" />
+    <hr style="margin: 0 auto" />
     <div class="buttonContainer d-flex flex-column">
       <button (click)="setActiveContent(1)" id="1">Kreiraj proizvod</button>
-      <button (click)="setActiveContent(2)" id="2">
-        Svi produkti
-      </button>
-      <button (click)="setActiveContent(3)" id="3">
-        Narudžbine
-      </button>
+      <button (click)="setActiveContent(2)" id="2">Svi produkti</button>
+      <button (click)="setActiveContent(3)" id="3">Narudžbine</button>
     </div>
-    <hr style="margin: 0 auto;" />
+    <hr style="margin-left: auto; margin-top: 0; margin-bottom: 10" />
+    <button class="btn btn-outline-secondary logoutButton" (click)="logout()">
+      Odjavite se
+    </button>
   </div>
   <div class="content">
     <div class="createProductForm" *ngIf="activeContent === 1">
@@ -30,9 +29,10 @@
             placeholder="Naziv proizvoda"
           />
           <div *ngIf="name.errors && name.touched" class="mt-1">
-            <span *ngIf="name.errors.required">
-              Unesite naziv proizvoda
-            </span>
+            <span *ngIf="name.errors.required"> Unesite naziv proizvoda </span>
+            <span *ngIf="name.errors.pattern"
+              >Samo su slova dozvoljena.</span
+            >
           </div>
         </div>
         <div class="form-group">
@@ -47,8 +47,9 @@
             placeholder="Cena"
           />
           <div *ngIf="price.errors && price.touched" class="mt-1">
-            <span *ngIf="price.errors.required">
-              Unesite cenu proizvoda
+            <span *ngIf="price.errors.required"> Unesite cenu proizvoda </span
+            ><span *ngIf="price.errors.pattern">
+              Samo su brojevi dozvoljeni.
             </span>
           </div>
         </div>
@@ -63,12 +64,12 @@
             formControlName="gender"
             (change)="changeGender($event)"
           >
-            <option value="" disabled
-              >Izaberite pol za koji je produkt namenjen</option
-            >
-            <option *ngFor="let gender of genders" [ngValue]="gender">{{
-              gender
-            }}</option>
+            <option value="" disabled>
+              Izaberite pol za koji je produkt namenjen
+            </option>
+            <option *ngFor="let gender of genders" [ngValue]="gender">
+              {{ gender }}
+            </option>
           </select>
           <div *ngIf="gender.errors && gender.touched" class="mt-1">
             <span *ngIf="gender.errors.required">
@@ -88,9 +89,9 @@
             (change)="changeCategory($event)"
           >
             <option value="" disabled>Izaberite kategoriju produkta</option>
-            <option *ngFor="let category of categories" [ngValue]="category">{{
-              category
-            }}</option>
+            <option *ngFor="let category of categories" [ngValue]="category">
+              {{ category }}
+            </option>
           </select>
           <div *ngIf="category.errors && category.touched" class="mt-1">
             <span *ngIf="category.errors.required">
@@ -110,9 +111,9 @@
             (change)="changeColor($event)"
           >
             <option value="" disabled>Izaberite boju produkta</option>
-            <option *ngFor="let color of colors" [ngValue]="color">{{
-              color
-            }}</option>
+            <option *ngFor="let color of colors" [ngValue]="color">
+              {{ color }}
+            </option>
           </select>
           <div *ngIf="color.errors && color.touched" class="mt-1">
             <span *ngIf="color.errors.required">
@@ -134,7 +135,9 @@
           <div *ngIf="size.errors && size.touched" class="mt-1">
             <span *ngIf="size.errors.required">
               Unesite veličine proizvoda ili proverite da li ste ih zapisali u
-              korektnom formatu
+              korektnom formatu </span
+            ><span *ngIf="size.errors.pattern">
+              Veličina sme da sadrži znake 'XS S M L XL 2XL i ,'.
             </span>
           </div>
         </div>
@@ -150,8 +153,9 @@
             placeholder="Opis proizvoda"
           />
           <div *ngIf="caption.errors && caption.touched" class="mt-1">
-            <span *ngIf="caption.errors.required">
-              Unesite opis proizvoda
+            <span *ngIf="caption.errors.required"> Unesite opis proizvoda </span
+            ><span *ngIf="caption.errors.pattern">
+              Dozvoljena su samo slova, brojevi i znaci ', . ?'.
             </span>
           </div>
         </div>
@@ -168,7 +172,9 @@
           />
           <div *ngIf="composition.errors && composition.touched" class="mt-1">
             <span *ngIf="composition.errors.required">
-              Unesite sastav proizvoda
+              Unesite sastav proizvoda </span
+            ><span *ngIf="composition.errors.pattern">
+              Dozvoljena su samo slova, brojevi i znaci ', . ? %'.
             </span>
           </div>
         </div>
@@ -182,7 +188,7 @@
               <input
                 #imageInput
                 type="file"
-                style="display: none;"
+                style="display: none"
                 accept="image/*"
                 (change)="processFile(imageInput)"
               />
@@ -196,7 +202,7 @@
             <label class="btn btn-secondary">
               <i class="fa fa-image"></i> Izaberite 4 slike proizvoda<input
                 type="file"
-                style="display: none;"
+                style="display: none"
                 accept="image/*"
                 multiple
                 (change)="processFiles($event)"
@@ -224,7 +230,7 @@
             type="submit"
             (click)="createProduct()"
           >
-            Sačuvajte
+            Kreirajte
           </button>
         </div>
         <div class="dialogErrorMessage" id="dialogErrorMessage">
@@ -246,7 +252,7 @@
             <i
               class="fas fa-angle-down d-flex align-self-center"
               [ngClass]="maleCategoryActive ? 'IconUp' : 'IconDown'"
-              style="margin-left: auto;"
+              style="margin-left: auto"
             ></i>
           </div>
           <hr />
@@ -276,7 +282,7 @@
             <i
               class="fas fa-angle-down d-flex align-self-center"
               [ngClass]="femaleCategoryActive ? 'IconUp' : 'IconDown'"
-              style="margin-left: auto;"
+              style="margin-left: auto"
             ></i>
           </div>
           <hr />

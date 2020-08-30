@@ -56,6 +56,18 @@ export class UserService {
 
   // auto login (if token is valid)
   autoLogin(token: string) {
+    this.http
+      .get(`${this.baseUrl}/automaticLogin`, { params: { token: token } })
+      .pipe(
+        map((res) => {
+          if (res['id'] == '39') return true;
+          else return false;
+        })
+        // catchError(this.handleError)
+      );
+  }
+
+  loginDecide(token: string) {
     return this.http
       .get(`${this.baseUrl}/automaticLogin`, { params: { token: token } })
       .pipe(

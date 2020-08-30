@@ -17,8 +17,8 @@ export class ProductPageComponent implements OnInit {
   sizeCategory = 'None'; // product size handler (defines chosen product size)
 
   categoryActive: boolean = true;
-  colorsActive: boolean = false;
-  sizeActive: boolean = false;
+  colorsActive: boolean = true;
+  sizeActive: boolean = true;
   sortActive: boolean = false;
   maleOutletActive: boolean = true;
   femaleOutletActive: boolean = true;
@@ -95,7 +95,7 @@ export class ProductPageComponent implements OnInit {
           color = 'white';
           break;
         case 1:
-          color = 'grey';
+          color = 'gray';
           break;
         case 2:
           color = 'black';
@@ -268,5 +268,47 @@ export class ProductPageComponent implements OnInit {
           this.error = err;
         }
       );
+  }
+
+  chosenProductCategoryPrinter() {
+    var reformattedText = '';
+
+    if (this.productCategory == 'Shirts') return 'košulje';
+    if (this.productCategory == 'Jackets') return 'jakne';
+    if (this.productCategory == 'Dresses') return 'haljine';
+  }
+
+  chosenColorPrinter() {
+    var translatedColors = [
+      'white',
+      'gray',
+      'black',
+      'blue',
+      'green',
+      'red',
+      'brown',
+      'yellow',
+      'orange',
+      'pink',
+      'purple',
+    ];
+
+    if (this.colorCategory == 'white') return 'bela';
+    if (this.colorCategory == 'gray') return 'siva';
+    if (this.colorCategory == 'black') return 'crna';
+    if (this.colorCategory == 'blue') return 'plava';
+    if (this.colorCategory == 'green') return 'zelena';
+    if (this.colorCategory == 'red') return 'crvena';
+    if (this.colorCategory == 'brown') return 'braon';
+    if (this.colorCategory == 'yellow') return 'žuta';
+    if (this.colorCategory == 'orange') return 'narandžasta';
+    if (this.colorCategory == 'pink') return 'pink';
+    if (this.colorCategory == 'purple') return 'ljubičasta';
+  }
+
+  resetFilters() {
+    this.productCategory = 'View All';
+    this.colorCategory = 'None';
+    this.sizeCategory = 'None';
   }
 }

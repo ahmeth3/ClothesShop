@@ -4,33 +4,13 @@
   <div class="jumbotron jumbotron-fluid mb-0 py-2 bg-light d-flex flex-row">
     <div
       class="d-flex justify-content-center headerContainer"
-      style="margin-left: auto;"
+      style="margin-left: 100px; margin-right: auto"
     >
       <h1 class="display-4">Strive Shop</h1>
     </div>
-    <div class="d-flex justify-content-center align-items-center formContainer">
-      <form
-        class="form-inline my-2 my-lg-0 row"
-        [formGroup]=""
-        style="width: 100%;"
-      >
-        <input
-          class="form-control mr-sm-2 searchBox col"
-          type="search"
-          placeholder="Pretraga"
-          aria-label="Search"
-        />
-        <button
-          class="btn btn-outline-secondary my-2 my-sm-0 col-lg-1 col-xs-2"
-          type="submit"
-        >
-          <i class="fas fa-search"></i>
-        </button>
-      </form>
-    </div>
     <div
       class="d-flex justify-content-center linkContainer"
-      style="margin-left: auto;"
+      style="margin-left: auto"
     >
       <div>
         <a routerLink="nacini-placanja" class="text-dark mx-2"
@@ -71,40 +51,20 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <section class="collapseContent container-fluid w-100">
-      <ul class="navbar-nav" style="margin-left: auto;">
+      <ul class="navbar-nav" style="margin-left: auto">
         <li class="nav-item mx-3">
-          <a [routerLink]="['product-page', 'men']" class="nav-link">Men</a>
-        </li>
-        <li class="nav-item mx-3">
-          <a [routerLink]="['product-page', 'women']" class="nav-link">Women</a>
-        </li>
-        <li class="nav-item mx-3">
-          <a [routerLink]="['product-page', 'outlet']" class="nav-link">Outlet</a>
-        </li>
-        <!-- <li class="nav-item dropdown mx-3">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Odeća
-        </a>
-        <div class="dropdown-menu py-0" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="['product-page', 'men']"
+          <a [routerLink]="['product-page', 'men']" class="nav-link"
             >Muškarci</a
           >
-          <div class="dropdown-divider my-0"></div>
-          <a class="dropdown-item" [routerLink]="['product-page', 'women']"
-            >Žene</a
+        </li>
+        <li class="nav-item mx-3">
+          <a [routerLink]="['product-page', 'women']" class="nav-link">Žene</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a [routerLink]="['product-page', 'outlet']" class="nav-link"
+            >Outlet</a
           >
-          <div class="dropdown-divider my-0"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li> -->
+        </li>
       </ul>
       <div class="buttonContainer">
         <button

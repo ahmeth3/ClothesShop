@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { CartHoverComponent } from '../../shop/cart/cart-hover/cart-hover.component';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,7 @@ export class HeaderComponent implements OnInit {
   loginShow() {
     // Automatic login
     var token = localStorage.getItem('token');
-    this.userService.autoLogin(token).subscribe(
+    this.userService.loginDecide(token).subscribe(
       (res) => {
         if (res['id'] == '39') this.router.navigate(['/admin-page']);
         else this.router.navigate(['/user-profile']);
